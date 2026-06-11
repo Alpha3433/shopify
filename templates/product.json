@@ -7,6 +7,16 @@
         "b2": { "type": "benefit", "settings": { "text": "Eagle & stars detail burned in by hand, never printed" } },
         "b3": { "type": "benefit", "settings": { "text": "Arrives ready to hang — hardware included" } },
         "b4": { "type": "benefit", "settings": { "text": "Hand-signed & numbered by the maker" } },
+        "tg1": {
+          "type": "tile_guarantee",
+          "settings": {
+            "scheme": "cream",
+            "badge_value": "60",
+            "badge_label": "Days",
+            "heading": "Hang it risk-free for 60 days",
+            "text": "If it doesn't stop you in your tracks every time you walk past it, send it back for a full refund. We even cover return shipping."
+          }
+        },
         "a1": {
           "type": "accordion",
           "settings": {
@@ -22,7 +32,7 @@
           }
         }
       },
-      "block_order": ["b1", "b2", "b3", "b4", "a1", "a2"],
+      "block_order": ["b1", "b2", "b3", "b4", "tg1", "a1", "a2"],
       "settings": {}
     },
     "story": {
@@ -75,16 +85,6 @@
       "block_order": ["r1", "r2", "r3"],
       "settings": {}
     },
-    "guarantee": {
-      "type": "guarantee",
-      "blocks": {
-        "g1": { "type": "item", "settings": { "text": "60-day money-back guarantee — full refund" } },
-        "g2": { "type": "item", "settings": { "text": "Free, fully-insured shipping both ways" } },
-        "g3": { "type": "item", "settings": { "text": "Lifetime craftsmanship warranty on every carving" } }
-      },
-      "block_order": ["g1", "g2", "g3"],
-      "settings": {}
-    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -119,7 +119,42 @@
       },
       "block_order": ["q1", "q2", "q3", "q4"],
       "settings": {}
+    },
+    "value_props": {
+      "type": "value-props",
+      "blocks": {
+        "v1": {
+          "type": "prop",
+          "settings": {
+            "icon": "truck",
+            "title": "Free Shipping",
+            "text": "Free, fully-insured delivery anywhere in the U.S. In-stock pieces ship within 1 business day."
+          }
+        },
+        "v2": {
+          "type": "prop",
+          "settings": {
+            "icon": "shield",
+            "title": "Easy Returns",
+            "text": "60-day money-back guarantee. We even cover the return shipping — no forms, no hard feelings."
+          }
+        },
+        "v3": {
+          "type": "prop",
+          "settings": {
+            "icon": "medal",
+            "title": "Veteran-Owned",
+            "text": "Every carving is made start-to-finish by a retired U.S. Army veteran in his American workshop."
+          }
+        }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
     }
   },
-  "order": ["main", "story", "testimonials", "guarantee", "faq"]
+  "order": ["main", "story", "testimonials", "faq", "value_props", "newsletter"]
 }

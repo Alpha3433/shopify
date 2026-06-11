@@ -1,22 +1,23 @@
 <header class="site-header" data-header>
   <div class="container site-header__inner">
-    <button type="button" class="header-icon-btn menu-toggle" data-menu-open aria-label="Open menu">
-      {% render 'icon', name: 'menu' %}
-    </button>
-
-    <a href="{{ routes.root_url }}" class="site-header__logo">
-      {%- if section.settings.logo -%}
-        <img
-          src="{{ section.settings.logo | image_url: width: 300 }}"
-          srcset="{{ section.settings.logo | image_url: width: 300 }} 1x, {{ section.settings.logo | image_url: width: 600 }} 2x"
-          alt="{{ shop.name | escape }}"
-          width="{{ section.settings.logo_width }}"
-          style="width: {{ section.settings.logo_width }}px"
-          loading="eager">
-      {%- else -%}
-        <span class="site-header__wordmark"><span class="star">★</span> {{ shop.name }}</span>
-      {%- endif -%}
-    </a>
+    <div class="site-header__left">
+      <button type="button" class="header-icon-btn menu-toggle" data-menu-open aria-label="Open menu">
+        {% render 'icon', name: 'menu' %}
+      </button>
+      <a href="{{ routes.root_url }}" class="site-header__logo">
+        {%- if section.settings.logo -%}
+          <img
+            src="{{ section.settings.logo | image_url: width: 300 }}"
+            srcset="{{ section.settings.logo | image_url: width: 300 }} 1x, {{ section.settings.logo | image_url: width: 600 }} 2x"
+            alt="{{ shop.name | escape }}"
+            width="{{ section.settings.logo_width }}"
+            style="width: {{ section.settings.logo_width }}px"
+            loading="eager">
+        {%- else -%}
+          <span class="site-header__wordmark"><span class="star">★</span> {{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
 
     <nav class="site-header__nav" aria-label="Main navigation">
       {%- for link in section.settings.menu.links -%}
@@ -25,8 +26,15 @@
     </nav>
 
     <div class="site-header__actions">
-      {%- if section.settings.cta_label != blank -%}
-        <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--primary">{{ section.settings.cta_label }}</a>
+      {%- if section.settings.show_search -%}
+        <a href="{{ routes.search_url }}" class="header-icon-btn" aria-label="Search">
+          {% render 'icon', name: 'search' %}
+        </a>
+      {%- endif -%}
+      {%- if shop.customer_accounts_enabled and section.settings.show_account -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header-icon-btn" aria-label="Account">
+          {% render 'icon', name: 'user' %}
+        </a>
       {%- endif -%}
       <a href="{{ routes.cart_url }}" class="header-icon-btn" data-cart-open aria-label="Open cart">
         {% render 'icon', name: 'cart' %}
@@ -51,8 +59,8 @@
       {%- endfor -%}
     </nav>
     <div class="mobile-menu__cta">
-      <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--primary btn--full">
-        {{ section.settings.cta_label | default: 'Shop Now' }}
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary btn--full">
+        {{ section.settings.mobile_cta_label | default: 'Shop Now' }}
       </a>
     </div>
   </div>
@@ -75,7 +83,7 @@
       "step": 10,
       "unit": "px",
       "label": "Logo width",
-      "default": 160
+      "default": 150
     },
     {
       "type": "link_list",
@@ -84,16 +92,22 @@
       "default": "main-menu"
     },
     {
-      "type": "text",
-      "id": "cta_label",
-      "label": "Button label",
-      "info": "Keep the header focused: one button, one goal.",
-      "default": "Get Yours"
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search icon",
+      "default": true
     },
     {
-      "type": "url",
-      "id": "cta_link",
-      "label": "Button link"
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account icon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "mobile_cta_label",
+      "label": "Mobile menu button label",
+      "default": "Shop Now"
     }
   ]
 }

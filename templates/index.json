@@ -16,6 +16,20 @@
       "block_order": ["m1", "m2", "m3", "m4", "m5"],
       "settings": {}
     },
+    "editorial_lines": {
+      "type": "editorial-lines",
+      "blocks": {
+        "l1": { "type": "line", "settings": { "text": "Carved by hand." } },
+        "l2": { "type": "line", "settings": { "text": "Burned into the grain." } },
+        "l3": { "type": "line", "settings": { "text": "Built for generations." } }
+      },
+      "block_order": ["l1", "l2", "l3"],
+      "settings": {}
+    },
+    "countdown_banner": {
+      "type": "countdown-banner",
+      "settings": {}
+    },
     "comparison": {
       "type": "comparison",
       "blocks": {
@@ -132,6 +146,16 @@
       "block_order": ["g1", "g2", "g3"],
       "settings": {}
     },
+    "big_marquee": {
+      "type": "big-marquee",
+      "blocks": {
+        "bm1": { "type": "item", "settings": { "text": "Hang It Once", "style": "outline" } },
+        "bm2": { "type": "item", "settings": { "text": "Pass It Down", "style": "fill" } },
+        "bm3": { "type": "item", "settings": { "text": "Made in America", "style": "outline" } }
+      },
+      "block_order": ["bm1", "bm2", "bm3"],
+      "settings": {}
+    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -184,11 +208,48 @@
     "final_cta": {
       "type": "final-cta",
       "settings": {}
+    },
+    "value_props": {
+      "type": "value-props",
+      "blocks": {
+        "v1": {
+          "type": "prop",
+          "settings": {
+            "icon": "truck",
+            "title": "Free Shipping",
+            "text": "Free, fully-insured delivery anywhere in the U.S. In-stock pieces ship within 1 business day."
+          }
+        },
+        "v2": {
+          "type": "prop",
+          "settings": {
+            "icon": "shield",
+            "title": "Easy Returns",
+            "text": "60-day money-back guarantee. We even cover the return shipping — no forms, no hard feelings."
+          }
+        },
+        "v3": {
+          "type": "prop",
+          "settings": {
+            "icon": "medal",
+            "title": "Veteran-Owned",
+            "text": "Every carving is made start-to-finish by a retired U.S. Army veteran in his American workshop."
+          }
+        }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
     }
   },
   "order": [
     "hero",
     "marquee",
+    "editorial_lines",
+    "countdown_banner",
     "comparison",
     "story",
     "featured_product",
@@ -196,7 +257,10 @@
     "process",
     "stats",
     "guarantee",
+    "big_marquee",
     "faq",
-    "final_cta"
+    "final_cta",
+    "value_props",
+    "newsletter"
   ]
 }

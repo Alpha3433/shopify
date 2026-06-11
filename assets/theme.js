@@ -155,17 +155,28 @@
     });
   }
 
-  /* ---------- Variant picker ---------- */
+  /* ---------- Variant picker (pill radios or selects) ---------- */
   function initVariantPickers() {
     document.querySelectorAll('[data-product-form]').forEach(function (wrapper) {
       var jsonEl = wrapper.querySelector('[data-product-json]');
+      var groups = wrapper.querySelectorAll('[data-option-group]');
       var selects = wrapper.querySelectorAll('[data-option-select]');
-      if (!jsonEl || !selects.length) return;
+      if (!jsonEl || (!groups.length && !selects.length)) return;
       var product;
       try { product = JSON.parse(jsonEl.textContent); } catch (e) { return; }
 
+      function chosenOptions() {
+        if (groups.length) {
+          return Array.prototype.map.call(groups, function (g) {
+            var checked = g.querySelector('input:checked');
+            return checked ? checked.value : null;
+          });
+        }
+        return Array.prototype.map.call(selects, function (s) { return s.value; });
+      }
+
       function currentVariant() {
-        var chosen = Array.prototype.map.call(selects, function (s) { return s.value; });
+        var chosen = chosenOptions();
         return product.variants.find(function (v) {
           return v.options.every(function (opt, idx) { return opt === chosen[idx]; });
         });
@@ -201,6 +212,45 @@
       }
 
       selects.forEach(function (s) { s.addEventListener('change', update); });
+      groups.forEach(function (g) {
+        g.addEventListener('change', function (e) {
+          if (e.target.matches('input')) update();
+        });
+      });
+    });
+  }
+
+  /* ---------- Promo countdown (deadline chips) ---------- */
+  function initPromoCountdown() {
+    document.querySelectorAll('[data-deadline]').forEach(function (el) {
+      var raw = (el.getAttribute('data-deadline') || '').trim().replace(' ', 'T');
+      var deadline = new Date(raw);
+      if (!raw || isNaN(deadline.getTime())) { el.hidden = true; return; }
+      var nums = {
+        d: el.querySelector('[data-count-d]'),
+        h: el.querySelector('[data-count-h]'),
+        m: el.querySelector('[data-count-m]'),
+        s: el.querySelector('[data-count-s]')
+      };
+      var timer;
+      function tick() {
+        var diff = deadline - new Date();
+        if (diff <= 0) {
+          el.hidden = true;
+          if (timer) clearInterval(timer);
+          return;
+        }
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        if (nums.d) nums.d.textContent = String(d).padStart(2, '0');
+        if (nums.h) nums.h.textContent = String(h).padStart(2, '0');
+        if (nums.m) nums.m.textContent = String(m).padStart(2, '0');
+        if (nums.s) nums.s.textContent = String(s).padStart(2, '0');
+      }
+      tick();
+      timer = setInterval(tick, 1000);
     });
   }
 
@@ -436,7 +486,7 @@
 
   /* ---------- Marquee: duplicate content for seamless loop ---------- */
   function initMarquee() {
-    document.querySelectorAll('.marquee__track').forEach(function (track) {
+    document.querySelectorAll('.marquee__track, .big-marquee__track').forEach(function (track) {
       var content = track.innerHTML;
       // Track halves must be identical and wider than any viewport for a
       // seamless translateX(-50%) loop, so render the items four times.
@@ -458,6 +508,7 @@
     initAddToCart();
     initStickyAtc();
     initCountdown();
+    initPromoCountdown();
     initMarquee();
   });
 })();

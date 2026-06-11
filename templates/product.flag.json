@@ -6,8 +6,50 @@
         "b1": { "type": "benefit", "settings": { "text": "Hand-carved solid wood — feels heavy, because it is" } },
         "b2": { "type": "benefit", "settings": { "text": "Eagle, stars & stripes burned in by hand — never printed" } },
         "b3": { "type": "benefit", "settings": { "text": "Carved by a retired U.S. Army veteran in his American workshop" } },
-        "b4": { "type": "benefit", "settings": { "text": "Arrives ready to hang — hardware included, on the wall in 5 minutes" } },
+        "b4": { "type": "benefit", "settings": { "text": "Arrives ready to hang — hardware included" } },
         "b5": { "type": "benefit", "settings": { "text": "Hand-signed & numbered — no two are ever the same" } },
+        "tb1": {
+          "type": "tile_banner",
+          "settings": {
+            "scheme": "navy",
+            "heading": "A flag worthy of the people who carried it.",
+            "pill_1": "Hand-carved waving form",
+            "pill_2": "Burned-in eagle & stars",
+            "pill_3": "Solid wood, real weight"
+          }
+        },
+        "ti1": {
+          "type": "tile_info",
+          "settings": {
+            "scheme": "cream",
+            "full_width": false,
+            "heading": "What's in the box",
+            "item_1": "Your hand-signed, numbered carving",
+            "item_2": "Keyhole mounts + rated hardware",
+            "item_3": "Certificate of authenticity"
+          }
+        },
+        "ti2": {
+          "type": "tile_info",
+          "settings": {
+            "scheme": "red",
+            "full_width": false,
+            "heading": "Three days of work",
+            "item_1": "Day 1 — carved from solid hardwood",
+            "item_2": "Day 2 — detail burned into the grain",
+            "item_3": "Day 3 — sealed, signed & numbered"
+          }
+        },
+        "tg1": {
+          "type": "tile_guarantee",
+          "settings": {
+            "scheme": "cream",
+            "badge_value": "60",
+            "badge_label": "Days",
+            "heading": "Hang it risk-free for 60 days",
+            "text": "If it doesn't stop you in your tracks every time you walk past it, send it back for a full refund. We even cover return shipping."
+          }
+        },
         "a1": {
           "type": "accordion",
           "settings": {
@@ -30,11 +72,13 @@
           }
         }
       },
-      "block_order": ["b1", "b2", "b3", "b4", "b5", "a1", "a2", "a3"],
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "tb1", "ti1", "ti2", "tg1", "a1", "a2", "a3"],
       "settings": {
+        "vendor_label": "Veteran-Owned Workshop",
         "rating_text": "4.9/5 from 800+ verified owners",
         "tagline": "The hand-carved eagle & American flag. Cut, burned, sealed, and signed by a retired Army veteran — a tribute worthy of the flag it honors.",
         "button_label": "Add to Cart — Ships Free",
+        "show_dynamic_checkout": true,
         "button_note": "Secure checkout · 60-day money-back guarantee",
         "show_countdown": true,
         "cutoff_hour": 14,
@@ -170,14 +214,14 @@
       "block_order": ["st1", "st2", "st3", "st4"],
       "settings": {}
     },
-    "guarantee": {
-      "type": "guarantee",
+    "big_marquee": {
+      "type": "big-marquee",
       "blocks": {
-        "g1": { "type": "item", "settings": { "text": "60-day money-back guarantee — full refund" } },
-        "g2": { "type": "item", "settings": { "text": "Free, fully-insured shipping both ways" } },
-        "g3": { "type": "item", "settings": { "text": "Lifetime craftsmanship warranty on every carving" } }
+        "bm1": { "type": "item", "settings": { "text": "Hang It Once", "style": "outline" } },
+        "bm2": { "type": "item", "settings": { "text": "Pass It Down", "style": "fill" } },
+        "bm3": { "type": "item", "settings": { "text": "Made in America", "style": "outline" } }
       },
-      "block_order": ["g1", "g2", "g3"],
+      "block_order": ["bm1", "bm2", "bm3"],
       "settings": {}
     },
     "faq": {
@@ -243,6 +287,41 @@
         "reassure_2": "60-day money-back guarantee",
         "reassure_3": "Hand-signed by the maker"
       }
+    },
+    "value_props": {
+      "type": "value-props",
+      "blocks": {
+        "v1": {
+          "type": "prop",
+          "settings": {
+            "icon": "truck",
+            "title": "Free Shipping",
+            "text": "Free, fully-insured delivery anywhere in the U.S. In-stock pieces ship within 1 business day."
+          }
+        },
+        "v2": {
+          "type": "prop",
+          "settings": {
+            "icon": "shield",
+            "title": "Easy Returns",
+            "text": "60-day money-back guarantee. We even cover the return shipping — no forms, no hard feelings."
+          }
+        },
+        "v3": {
+          "type": "prop",
+          "settings": {
+            "icon": "medal",
+            "title": "Veteran-Owned",
+            "text": "Every carving is made start-to-finish by a retired U.S. Army veteran in his American workshop."
+          }
+        }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
     }
   },
   "order": [
@@ -253,8 +332,10 @@
     "comparison",
     "process",
     "stats",
-    "guarantee",
+    "big_marquee",
     "faq",
-    "final_cta"
+    "final_cta",
+    "value_props",
+    "newsletter"
   ]
 }

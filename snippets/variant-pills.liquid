@@ -1,0 +1,25 @@
+{% comment %} Pill-style variant picker. Pass product and a unique uid. {% endcomment %}
+{%- unless product.has_only_default_variant -%}
+  <div class="variant-picker">
+    {%- for option in product.options_with_values -%}
+      <fieldset class="opt-group" data-option-group>
+        <legend class="opt-label">{{ option.name }}</legend>
+        <div class="opt-pills">
+          {%- for value in option.values -%}
+            <label class="pill-opt">
+              <input
+                type="radio"
+                class="visually-hidden"
+                name="{{ uid }}-option-{{ forloop.parentloop.index0 }}"
+                value="{{ value | escape }}"
+                data-option-input
+                {% if option.selected_value == value %}checked{% endif %}>
+              <span>{{ value }}</span>
+            </label>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+    {%- endfor -%}
+  </div>
+  <script type="application/json" data-product-json>{{ product | json }}</script>
+{%- endunless -%}

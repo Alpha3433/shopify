@@ -1,50 +1,86 @@
-<section class="hero">
-  <div class="container hero__grid">
-    <div class="hero__content">
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
-      {%- endif -%}
-      <h1 class="hero__title" data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h1>
-      {%- if section.settings.subheading != blank -%}
-        <p class="hero__sub lead" data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
-      {%- endif -%}
-      <div class="hero__cta-row" data-reveal style="--reveal-delay: 3">
-        {%- if section.settings.cta_scroll -%}
-          {%- assign cta_href = '#buy' -%}
-        {%- else -%}
-          {%- assign cta_href = section.settings.cta_link | default: routes.all_products_collection_url -%}
+<section class="hero-ed">
+  <div class="container">
+    <div class="hero-ed__top">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
         {%- endif -%}
-        <a href="{{ cta_href }}" class="btn btn--primary btn--lg">
-          {{ section.settings.cta_label }} {% render 'icon', name: 'arrow-right' %}
-        </a>
+        <h1 class="hero-ed__title" data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h1>
       </div>
-      {%- if section.settings.rating_text != blank -%}
-        <div class="hero__rating" data-reveal style="--reveal-delay: 4">
-          {% render 'stars', rating: 5 %}
-          <span>{{ section.settings.rating_text }}</span>
+      <div class="hero-ed__side">
+        {%- if section.settings.subheading != blank -%}
+          <p data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+        <div class="hero-ed__cta-row" data-reveal style="--reveal-delay: 3">
+          {%- if section.settings.cta_scroll -%}
+            {%- assign cta_href = '#buy' -%}
+          {%- else -%}
+            {%- assign cta_href = section.settings.cta_link | default: routes.all_products_collection_url -%}
+          {%- endif -%}
+          <a href="{{ cta_href }}" class="btn btn--primary btn--lg">
+            {{ section.settings.cta_label }} {% render 'icon', name: 'arrow-right' %}
+          </a>
         </div>
-      {%- endif -%}
+        {%- if section.settings.rating_text != blank -%}
+          <div class="hero-ed__rating" data-reveal style="--reveal-delay: 4">
+            {% render 'stars', rating: 5 %}
+            <span>{{ section.settings.rating_text }}</span>
+          </div>
+        {%- endif -%}
+      </div>
     </div>
 
-    <div class="hero__media" data-reveal="right" style="--reveal-delay: 2">
-      {%- if section.settings.corner_badge != blank -%}
-        <span class="hero__corner-flag">{{ section.settings.corner_badge }}</span>
+    <div class="hero-ed__collage">
+      {%- if section.settings.sticker_text != blank -%}
+        <span class="hero-ed__sticker">{{ section.settings.sticker_text }}</span>
       {%- endif -%}
-      <div class="hero__media-inner">
-        {%- if section.settings.image -%}
+
+      <div class="hero-ed__tile hero-ed__tile--first" data-reveal style="--reveal-delay: 2">
+        {%- if section.settings.image_1 -%}
           <img
-            src="{{ section.settings.image | image_url: width: 900 }}"
-            srcset="{{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 900 }} 900w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
-            sizes="(min-width: 880px) 45vw, 92vw"
-            alt="{{ section.settings.image.alt | escape | default: section.settings.heading | escape }}"
+            src="{{ section.settings.image_1 | image_url: width: 900 }}"
+            srcset="{{ section.settings.image_1 | image_url: width: 600 }} 600w, {{ section.settings.image_1 | image_url: width: 900 }} 900w, {{ section.settings.image_1 | image_url: width: 1200 }} 1200w"
+            sizes="(min-width: 760px) 40vw, 50vw"
+            alt="{{ section.settings.image_1.alt | escape | default: section.settings.heading | escape }}"
             width="900" height="900"
             fetchpriority="high">
         {%- else -%}
           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
       </div>
-      {%- if section.settings.badge_text != blank -%}
-        <span class="hero__badge">{% render 'icon', name: 'medal' %} {{ section.settings.badge_text }}</span>
+
+      <div class="hero-ed__tile" data-reveal style="--reveal-delay: 3">
+        {%- if section.settings.image_2 -%}
+          <img
+            src="{{ section.settings.image_2 | image_url: width: 700 }}"
+            srcset="{{ section.settings.image_2 | image_url: width: 500 }} 500w, {{ section.settings.image_2 | image_url: width: 700 }} 700w"
+            sizes="(min-width: 760px) 28vw, 50vw"
+            alt="{{ section.settings.image_2.alt | escape }}"
+            loading="lazy"
+            width="700" height="875">
+        {%- else -%}
+          {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.image_3 -%}
+        <div class="hero-ed__tile" data-reveal style="--reveal-delay: 4">
+          <img
+            src="{{ section.settings.image_3 | image_url: width: 700 }}"
+            srcset="{{ section.settings.image_3 | image_url: width: 500 }} 500w, {{ section.settings.image_3 | image_url: width: 700 }} 700w"
+            sizes="(min-width: 760px) 28vw, 50vw"
+            alt="{{ section.settings.image_3.alt | escape }}"
+            loading="lazy"
+            width="700" height="875">
+        </div>
+      {%- else -%}
+        <div class="hero-ed__tile hero-ed__tile--stat" data-reveal style="--reveal-delay: 4">
+          <p class="eyebrow">{{ section.settings.stat_eyebrow }}</p>
+          <div>
+            <div class="stat-big">{{ section.settings.stat_value }}</div>
+            <p>{{ section.settings.stat_label }}</p>
+          </div>
+        </div>
       {%- endif -%}
     </div>
   </div>
@@ -64,13 +100,13 @@
       "type": "textarea",
       "id": "heading",
       "label": "Heading",
-      "default": "Own a Piece of America That Was Actually Made in America."
+      "default": "Own a piece of America that was actually made in America."
     },
     {
       "type": "textarea",
       "id": "subheading",
       "label": "Subheading",
-      "default": "Most “patriotic” décor is printed on plastic overseas. Every one of our eagle & flag carvings is cut, burned, and sealed by hand in an American workshop — a tribute worthy of the flag it honors."
+      "default": "Most “patriotic” décor is printed on plastic overseas. Every one of our eagle & flag carvings is cut, burned, and sealed by hand in an American workshop."
     },
     {
       "type": "text",
@@ -98,22 +134,54 @@
       "default": "4.9/5 — Trusted by 2,500+ American families"
     },
     {
+      "type": "header",
+      "content": "Collage"
+    },
+    {
       "type": "image_picker",
-      "id": "image",
-      "label": "Hero image",
-      "info": "Square product or lifestyle shot works best (min 900×900px)."
+      "id": "image_1",
+      "label": "Large tile image",
+      "info": "Your best product shot (square, 1200×1200+)."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Second tile image",
+      "info": "Lifestyle or detail shot (portrait 4:5)."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Third tile image",
+      "info": "Optional. If empty, the stat tile below shows instead."
     },
     {
       "type": "text",
-      "id": "badge_text",
-      "label": "Image badge",
-      "default": "Hand-Signed & Numbered"
-    },
-    {
-      "type": "text",
-      "id": "corner_badge",
-      "label": "Corner badge",
+      "id": "sticker_text",
+      "label": "Round sticker text",
       "default": "100% USA Made"
+    },
+    {
+      "type": "header",
+      "content": "Stat tile (shows when third image is empty)"
+    },
+    {
+      "type": "text",
+      "id": "stat_eyebrow",
+      "label": "Stat eyebrow",
+      "default": "Since 2018"
+    },
+    {
+      "type": "text",
+      "id": "stat_value",
+      "label": "Stat value",
+      "default": "2,500+"
+    },
+    {
+      "type": "text",
+      "id": "stat_label",
+      "label": "Stat label",
+      "default": "Hand-carved flags hanging in American homes"
     }
   ],
   "presets": [

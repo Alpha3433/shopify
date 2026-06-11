@@ -1,0 +1,88 @@
+<section class="vprops">
+  <div class="container">
+    <div class="vprops__grid">
+      {%- for block in section.blocks -%}
+        <div class="vprop" data-reveal style="--reveal-delay: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          {% render 'icon', name: block.settings.icon %}
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Value props",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "prop",
+      "name": "Value prop",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "truck", "label": "Truck" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "medal", "label": "Medal" },
+            { "value": "flag", "label": "Flag" },
+            { "value": "tool", "label": "Hand tool" },
+            { "value": "package", "label": "Package" },
+            { "value": "gift", "label": "Gift" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "heart", "label": "Heart" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Free, fully-insured delivery anywhere in the U.S."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Value props",
+      "blocks": [
+        {
+          "type": "prop",
+          "settings": {
+            "icon": "truck",
+            "title": "Free Shipping",
+            "text": "Free, fully-insured delivery anywhere in the U.S. In-stock pieces ship within 1 business day."
+          }
+        },
+        {
+          "type": "prop",
+          "settings": {
+            "icon": "shield",
+            "title": "Easy Returns",
+            "text": "60-day money-back guarantee. We even cover the return shipping — no forms, no hard feelings."
+          }
+        },
+        {
+          "type": "prop",
+          "settings": {
+            "icon": "medal",
+            "title": "Veteran-Owned",
+            "text": "Every carving is made start-to-finish by a retired U.S. Army veteran in his American workshop."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -79,21 +79,7 @@
           {%- endif -%}
 
           <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart>
-            {%- unless product.has_only_default_variant -%}
-              <div class="variant-picker">
-                {%- for option in product.options_with_values -%}
-                  <div>
-                    <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
-                    <select id="Option-{{ section.id }}-{{ forloop.index0 }}" data-option-select>
-                      {%- for value in option.values -%}
-                        <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
-                      {%- endfor -%}
-                    </select>
-                  </div>
-                {%- endfor -%}
-              </div>
-              <script type="application/json" data-product-json>{{ product | json }}</script>
-            {%- endunless -%}
+            {% render 'variant-pills', product: product, uid: section.id %}
 
             <input type="hidden" name="id" value="{{ current_variant.id }}">
             <div data-atc-anchor></div>

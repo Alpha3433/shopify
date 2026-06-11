@@ -41,6 +41,27 @@
           {%- endfor -%}
         </ul>
       </div>
+
+      {%- if section.settings.show_subscribe -%}
+        <div class="footer__subscribe">
+          <h3 class="footer__heading">{{ section.settings.subscribe_heading }}</h3>
+          <p>{{ section.settings.subscribe_text }}</p>
+          {%- form 'customer', id: 'FooterSubscribe' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            {%- if form.posted_successfully? -%}
+              <p class="form-success">You're in. Welcome to the family.</p>
+            {%- else -%}
+              <div class="subscribe-form">
+                <input type="email" name="contact[email]" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+                <button type="submit" class="btn btn--gold" aria-label="Subscribe">{% render 'icon', name: 'arrow-right' %}</button>
+              </div>
+              {%- if form.errors -%}
+                <p class="form-errors">{{ form.errors | default_errors }}</p>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      {%- endif -%}
     </div>
 
     <div class="footer-trust">
@@ -104,6 +125,28 @@
       "id": "menu_2",
       "label": "Menu 2",
       "default": "footer"
+    },
+    {
+      "type": "header",
+      "content": "Subscribe"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subscribe",
+      "label": "Show subscribe form",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "subscribe_heading",
+      "label": "Subscribe heading",
+      "default": "Subscribe"
+    },
+    {
+      "type": "textarea",
+      "id": "subscribe_text",
+      "label": "Subscribe text",
+      "default": "Workshop updates, new carvings, and the occasional story. No spam — we're too busy carving."
     },
     {
       "type": "header",

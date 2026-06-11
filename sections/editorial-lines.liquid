@@ -1,0 +1,40 @@
+<section class="section section--tight">
+  <div class="container">
+    <div class="ed-lines">
+      {%- for block in section.blocks -%}
+        <p class="ed-lines__line" data-reveal style="--reveal-delay: {{ forloop.index0 }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial statements",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "line",
+      "name": "Statement line",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Carved by hand."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial statements",
+      "blocks": [
+        { "type": "line", "settings": { "text": "Carved by hand." } },
+        { "type": "line", "settings": { "text": "Burned into the grain." } },
+        { "type": "line", "settings": { "text": "Built for generations." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -2,7 +2,9 @@
 
 A custom Shopify Online Store 2.0 theme built for a single hero product: a **hand-carved wooden American flag with eagle**, sold through the story of a veteran-owned American workshop.
 
-Designed mobile-first, fully responsive, with modern subtle animations (scroll reveals, count-up stats, marquee, floating hero, button sheen) that respect `prefers-reduced-motion`.
+**v2 design language** (original code, editorial-commerce style): cream canvas, big rounded tiles, pill buttons and pill variant pickers, large serif editorial type, navy band sections, countdown sale banner, giant gold-outline text marquees, newsletter band, sticky product buy column with a collage gallery — all in the navy / cream / heritage-red / gold palette.
+
+Designed mobile-first, fully responsive, with modern subtle animations (scroll reveals, count-up stats, marquees, floating sticker, button sheen) that respect `prefers-reduced-motion`.
 
 ## Install
 
@@ -33,17 +35,23 @@ Shopify Admin → **Online Store → Themes → Add theme → Connect from GitHu
 
 | # | Section | Job |
 |---|---------|-----|
-| 1 | Hero | Problem-first headline, single CTA, star-rating trust line |
-| 2 | Marquee | Modern motion + repeats core trust claims |
-| 3 | Comparison | Agitates the "cheap import" pain (them vs. us) |
-| 4 | Story | The veteran founder story — the emotional core |
-| 5 | Featured product | The one and only buy box: benefits, urgency countdown, trust row |
-| 6 | Testimonials | Social proof placed *right after* the price/quality objection |
-| 7 | Process | "3 days of work" — justifies the price |
-| 8 | Stats | Animated count-up credibility numbers |
-| 9 | Guarantee | Kills the last objection (risk) |
-| 10 | FAQ | Handles everything else |
-| 11 | Final CTA | One last, single ask |
+| 1 | Hero (editorial + collage) | Problem-first headline, single CTA, rating line, image collage with stat tile + round sticker |
+| 2 | Marquee ticker | Modern motion + repeats core trust claims |
+| 3 | Editorial statements | Big serif brand lines ("Carved by hand. / Burned into the grain.") |
+| 4 | Countdown banner | Batch urgency with live countdown chips (auto-hides when passed) |
+| 5 | Comparison | Agitates the "cheap import" pain (them vs. us) |
+| 6 | Story | The veteran founder story — the emotional core |
+| 7 | Featured product | The one and only buy box: benefits, pill variants, urgency countdown, trust row |
+| 8 | Testimonials | Social proof placed *right after* the price/quality objection |
+| 9 | Process | "3 days of work" — justifies the price |
+| 10 | Stats | Animated count-up credibility numbers |
+| 11 | Guarantee | Kills the last objection (risk) |
+| 12 | Big marquee | Giant outline-text motion break ("Hang It Once ★ Pass It Down") |
+| 13 | FAQ | Handles everything else |
+| 14 | Final CTA | One last, single ask |
+| 15 | Value props + Newsletter | Reassurance strip and list capture for non-buyers |
+
+The **`flag` product template** pairs a sticky buy column (pill variant picker, quantity, dynamic checkout, workshop note box) with a scrolling collage gallery where your product photos are interleaved with built-in content tiles — a navy banner tile, "What's in the box" and "Three days of work" info tiles, and a round "60 Days" guarantee badge tile. All tiles are editable blocks; add `Gallery tile: extra image` blocks as you shoot more photos.
 
 One goal per page: the hero and final CTAs smooth-scroll to the buy box (`#buy`) instead of navigating away. The **`flag` product template** repeats the full ladder (buy box → story → proof → comparison → process → stats → guarantee → FAQ → final CTA) for ad traffic that lands there directly; the default `product` template is a shorter version for any other products.
 

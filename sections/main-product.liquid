@@ -4,40 +4,116 @@
 
 <section class="section" id="buy">
   <div class="container">
-    <div class="buybox__grid">
-      <div data-gallery>
-        <div class="gallery__main">
-          {%- if product.featured_image -%}
-            <img
-              data-gallery-main
-              src="{{ product.featured_image | image_url: width: 900 }}"
-              srcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 900 }} 900w, {{ product.featured_image | image_url: width: 1400 }} 1400w"
-              sizes="(min-width: 880px) 48vw, 92vw"
-              alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
-              width="900" height="900"
-              fetchpriority="high">
-          {%- else -%}
-            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-          {%- endif -%}
-        </div>
-        {%- if product.images.size > 1 -%}
-          <div class="gallery__thumbs">
-            {%- for image in product.images limit: 8 -%}
-              <button
-                type="button"
-                class="gallery__thumb{% if forloop.first %} is-active{% endif %}"
-                data-gallery-thumb
-                data-full="{{ image | image_url: width: 900 }}"
-                data-full-srcset="{{ image | image_url: width: 600 }} 600w, {{ image | image_url: width: 900 }} 900w, {{ image | image_url: width: 1400 }} 1400w"
-                aria-label="View image {{ forloop.index }}">
-                <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape }}" loading="lazy" width="76" height="76">
-              </button>
-            {%- endfor -%}
-          </div>
+    <div class="pdp__grid">
+
+      {%- comment -%} Collage gallery: product photos + content tiles {%- endcomment -%}
+      <div class="pdp__gallery">
+        {%- if product.images.size > 0 -%}
+          {%- for image in product.images limit: 2 -%}
+            <div class="tile{% if forloop.first and product.images.size == 1 %} tile--full{% endif %}">
+              <img
+                src="{{ image | image_url: width: 800 }}"
+                srcset="{{ image | image_url: width: 500 }} 500w, {{ image | image_url: width: 800 }} 800w, {{ image | image_url: width: 1100 }} 1100w"
+                sizes="(min-width: 880px) 28vw, 46vw"
+                alt="{{ image.alt | escape | default: product.title | escape }}"
+                width="800" height="800"
+                {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="tile">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+          <div class="tile">{{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+        {%- endif -%}
+
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'tile_banner' -%}
+              <div class="tile tile--full tile--content tile--{{ block.settings.scheme }}" {{ block.shopify_attributes }}>
+                <h2 class="tile__heading">{{ block.settings.heading }}</h2>
+                {%- if block.settings.text != blank -%}
+                  <p class="tile__text">{{ block.settings.text }}</p>
+                {%- endif -%}
+                <div class="tile__pills">
+                  {%- if block.settings.pill_1 != blank -%}
+                    <span class="tile__pill">{% render 'icon', name: 'check' %} {{ block.settings.pill_1 }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.pill_2 != blank -%}
+                    <span class="tile__pill">{% render 'icon', name: 'check' %} {{ block.settings.pill_2 }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.pill_3 != blank -%}
+                    <span class="tile__pill">{% render 'icon', name: 'check' %} {{ block.settings.pill_3 }}</span>
+                  {%- endif -%}
+                </div>
+              </div>
+
+            {%- when 'tile_info' -%}
+              <div class="tile tile--content tile--{{ block.settings.scheme }}{% if block.settings.full_width %} tile--full{% endif %}" {{ block.shopify_attributes }}>
+                <h3 class="tile__heading">{{ block.settings.heading }}</h3>
+                {%- if block.settings.item_1 != blank or block.settings.item_2 != blank or block.settings.item_3 != blank -%}
+                  <ul class="tile__list">
+                    {%- if block.settings.item_1 != blank -%}
+                      <li>{% render 'icon', name: 'check-circle' %} {{ block.settings.item_1 }}</li>
+                    {%- endif -%}
+                    {%- if block.settings.item_2 != blank -%}
+                      <li>{% render 'icon', name: 'check-circle' %} {{ block.settings.item_2 }}</li>
+                    {%- endif -%}
+                    {%- if block.settings.item_3 != blank -%}
+                      <li>{% render 'icon', name: 'check-circle' %} {{ block.settings.item_3 }}</li>
+                    {%- endif -%}
+                  </ul>
+                {%- endif -%}
+              </div>
+
+            {%- when 'tile_guarantee' -%}
+              <div class="tile tile--full tile--content tile--guarantee tile--{{ block.settings.scheme }}" {{ block.shopify_attributes }}>
+                <div class="tile-badge">
+                  <span class="tile-badge__num">{{ block.settings.badge_value }}</span>
+                  <span class="tile-badge__label">{{ block.settings.badge_label }}</span>
+                </div>
+                <h3 class="tile__heading">{{ block.settings.heading }}</h3>
+                <p class="tile__text">{{ block.settings.text }}</p>
+              </div>
+
+            {%- when 'tile_image' -%}
+              <div class="tile{% if block.settings.full_width %} tile--full{% endif %}" {{ block.shopify_attributes }}>
+                {%- if block.settings.image -%}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 1100 }}"
+                    srcset="{{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 1100 }} 1100w"
+                    sizes="(min-width: 880px) {% if block.settings.full_width %}56vw{% else %}28vw{% endif %}, 92vw"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    loading="lazy"
+                    width="1100" height="{% if block.settings.full_width %}825{% else %}1100{% endif %}">
+                {%- else -%}
+                  {{ 'product-3' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+
+        {%- if product.images.size > 2 -%}
+          {%- for image in product.images offset: 2 limit: 8 -%}
+            <div class="tile">
+              <img
+                src="{{ image | image_url: width: 800 }}"
+                srcset="{{ image | image_url: width: 500 }} 500w, {{ image | image_url: width: 800 }} 800w"
+                sizes="(min-width: 880px) 28vw, 46vw"
+                alt="{{ image.alt | escape | default: product.title | escape }}"
+                loading="lazy"
+                width="800" height="800">
+            </div>
+          {%- endfor -%}
         {%- endif -%}
       </div>
 
-      <div class="buybox__panel" data-product-form>
+      {%- comment -%} Sticky buy column {%- endcomment -%}
+      <div class="pdp__buy" data-product-form>
+        {%- if section.settings.vendor_label != blank -%}
+          <p class="pdp__vendor">{{ section.settings.vendor_label }}</p>
+        {%- endif -%}
+
+        <h1 class="pdp__title">{{ product.title }}</h1>
+
         {%- if section.settings.rating_text != blank -%}
           <div class="rating-line">
             {% render 'stars', rating: 5 %}
@@ -45,9 +121,8 @@
           </div>
         {%- endif -%}
 
-        <h1 class="buybox__title">{{ product.title }}</h1>
         {%- if section.settings.tagline != blank -%}
-          <p class="buybox__tagline">{{ section.settings.tagline }}</p>
+          <p class="pdp__tagline">{{ section.settings.tagline }}</p>
         {%- endif -%}
 
         <div class="price">
@@ -67,22 +142,8 @@
           </ul>
         {%- endif -%}
 
-        <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart>
-          {%- unless product.has_only_default_variant -%}
-            <div class="variant-picker">
-              {%- for option in product.options_with_values -%}
-                <div>
-                  <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
-                  <select id="Option-{{ section.id }}-{{ forloop.index0 }}" data-option-select>
-                    {%- for value in option.values -%}
-                      <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
-                    {%- endfor -%}
-                  </select>
-                </div>
-              {%- endfor -%}
-            </div>
-            <script type="application/json" data-product-json>{{ product | json }}</script>
-          {%- endunless -%}
+        {%- form 'product', product, data-ajax-cart: 'true' -%}
+          {% render 'variant-pills', product: product, uid: section.id %}
 
           <input type="hidden" name="id" value="{{ current_variant.id }}">
           <div data-atc-anchor></div>
@@ -101,11 +162,13 @@
               data-text-unavailable="Unavailable"
               {% unless current_variant.available %}disabled{% endunless %}>
               <span data-atc-label>{% if current_variant.available %}{{ section.settings.button_label | default: 'Add to Cart' }}{% else %}Sold Out{% endif %}</span>
-              {% render 'icon', name: 'arrow-right' %}
             </button>
           </div>
+          {%- if section.settings.show_dynamic_checkout -%}
+            {{ form | payment_button }}
+          {%- endif -%}
           <p class="btn-note">{% render 'icon', name: 'lock' %} {{ section.settings.button_note }}</p>
-        </form>
+        {%- endform -%}
 
         {%- if section.settings.show_countdown -%}
           <div class="countdown-box" data-countdown-cutoff="{{ section.settings.cutoff_hour }}">
@@ -116,6 +179,16 @@
 
         {%- if section.settings.stock_note != blank -%}
           <p class="stock-note"><span class="pulse-dot"></span> {{ section.settings.stock_note }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.note_heading != blank or section.settings.note_text != blank -%}
+          <div class="note-box">
+            {% render 'icon', name: 'tool' %}
+            <div>
+              <strong>{{ section.settings.note_heading }}</strong>
+              <p>{{ section.settings.note_text }}</p>
+            </div>
+          </div>
         {%- endif -%}
 
         <div class="trust-row">
@@ -192,6 +265,12 @@
   "settings": [
     {
       "type": "text",
+      "id": "vendor_label",
+      "label": "Label above title",
+      "default": "Veteran-Owned Workshop"
+    },
+    {
+      "type": "text",
       "id": "rating_text",
       "label": "Rating text",
       "default": "4.9/5 from 800+ verified owners"
@@ -209,10 +288,32 @@
       "default": "Add to Cart — Ships Free"
     },
     {
+      "type": "checkbox",
+      "id": "show_dynamic_checkout",
+      "label": "Show dynamic checkout button (Shop Pay etc.)",
+      "default": true
+    },
+    {
       "type": "text",
       "id": "button_note",
-      "label": "Text under button",
+      "label": "Text under buttons",
       "default": "Secure checkout · 60-day money-back guarantee"
+    },
+    {
+      "type": "header",
+      "content": "Workshop note box"
+    },
+    {
+      "type": "text",
+      "id": "note_heading",
+      "label": "Note heading",
+      "default": "From the workshop"
+    },
+    {
+      "type": "textarea",
+      "id": "note_text",
+      "label": "Note text",
+      "default": "Every carving is cut, burned, sealed, and signed by hand before it ships. If your batch is sold out, the next one starts from raw lumber."
     },
     {
       "type": "header",
@@ -278,7 +379,7 @@
   "blocks": [
     {
       "type": "benefit",
-      "name": "Benefit",
+      "name": "Benefit (buy column)",
       "settings": [
         {
           "type": "text",
@@ -290,7 +391,7 @@
     },
     {
       "type": "accordion",
-      "name": "Accordion",
+      "name": "Accordion (buy column)",
       "settings": [
         {
           "type": "text",
@@ -304,6 +405,107 @@
           "label": "Content",
           "default": "<p>Free insured shipping anywhere in the U.S. In-stock pieces ship within 1 business day. 60-day money-back guarantee — we even cover return shipping.</p>"
         }
+      ]
+    },
+    {
+      "type": "tile_banner",
+      "name": "Gallery tile: banner",
+      "settings": [
+        {
+          "type": "select",
+          "id": "scheme",
+          "label": "Color",
+          "options": [
+            { "value": "navy", "label": "Navy" },
+            { "value": "red", "label": "Red" },
+            { "value": "cream", "label": "Cream" }
+          ],
+          "default": "navy"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading",
+          "default": "A flag worthy of the people who carried it."
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        { "type": "text", "id": "pill_1", "label": "Pill 1", "default": "Hand-carved waving form" },
+        { "type": "text", "id": "pill_2", "label": "Pill 2", "default": "Burned-in eagle & stars" },
+        { "type": "text", "id": "pill_3", "label": "Pill 3", "default": "Solid wood, real weight" }
+      ]
+    },
+    {
+      "type": "tile_info",
+      "name": "Gallery tile: info list",
+      "settings": [
+        {
+          "type": "select",
+          "id": "scheme",
+          "label": "Color",
+          "options": [
+            { "value": "cream", "label": "Cream" },
+            { "value": "navy", "label": "Navy" },
+            { "value": "red", "label": "Red" }
+          ],
+          "default": "cream"
+        },
+        {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full width",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "What's in the box"
+        },
+        { "type": "text", "id": "item_1", "label": "Item 1", "default": "Your hand-signed, numbered carving" },
+        { "type": "text", "id": "item_2", "label": "Item 2", "default": "Keyhole mounts + rated hardware" },
+        { "type": "text", "id": "item_3", "label": "Item 3", "default": "Certificate of authenticity" }
+      ]
+    },
+    {
+      "type": "tile_guarantee",
+      "name": "Gallery tile: guarantee badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "scheme",
+          "label": "Color",
+          "options": [
+            { "value": "cream", "label": "Cream" },
+            { "value": "navy", "label": "Navy" }
+          ],
+          "default": "cream"
+        },
+        { "type": "text", "id": "badge_value", "label": "Badge value", "default": "60" },
+        { "type": "text", "id": "badge_label", "label": "Badge label", "default": "Days" },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Hang it risk-free for 60 days"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "If it doesn't stop you in your tracks every time you walk past it, send it back for a full refund. We even cover return shipping."
+        }
+      ]
+    },
+    {
+      "type": "tile_image",
+      "name": "Gallery tile: extra image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "checkbox", "id": "full_width", "label": "Full width", "default": false }
       ]
     },
     {
