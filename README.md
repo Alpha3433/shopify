@@ -90,3 +90,9 @@ sections/    homepage + main-* template sections (all customizer-editable)
 snippets/    icon, stars, product-card, cart-drawer
 templates/   JSON templates + customers/ + gift_card.liquid
 ```
+
+## Elixir-based variant (`elixir-american/`)
+
+A second, separate storefront built on the store owner's licensed Elixir theme (v1.5.4): all demo colors re-mapped to the navy/cream/heritage-red/gold palette via global settings + per-section values, typography switched to Playfair Display / Work Sans, and the homepage, product page, announcement bar, and footer rewritten with the Old Glory veteran-story copy and conversion ladder (quantity-break bundles, scarcity notice, FAQ, comparison table, before/after, statistics, guarantee). Upload `dist/elixir-american.zip` as a new theme. Keep this repository private — Elixir is licensed third-party code.
+
+After upload: assign your real collections in the "Shop the collection" and product-grid sections, upload your photos, relink the upsell products, and create the volume discounts matching the bundle offers.
