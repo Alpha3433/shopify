@@ -6,7 +6,12 @@
       <p class="lead" data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
     {%- endif -%}
     <div data-reveal style="--reveal-delay: 3">
-      <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--primary btn--lg">
+      {%- if section.settings.cta_scroll -%}
+        {%- assign cta_href = '#buy' -%}
+      {%- else -%}
+        {%- assign cta_href = section.settings.cta_link | default: routes.all_products_collection_url -%}
+      {%- endif -%}
+      <a href="{{ cta_href }}" class="btn btn--primary btn--lg">
         {{ section.settings.cta_label }} {% render 'icon', name: 'arrow-right' %}
       </a>
     </div>
@@ -47,9 +52,16 @@
       "default": "Claim Yours — Ships Free"
     },
     {
+      "type": "checkbox",
+      "id": "cta_scroll",
+      "label": "Scroll to the buy box instead of linking",
+      "info": "Keeps visitors on this page — one page, one goal. Requires a Featured product or Product section on the page.",
+      "default": true
+    },
+    {
       "type": "url",
       "id": "cta_link",
-      "label": "Button link"
+      "label": "Button link (when not scrolling)"
     },
     {
       "type": "text",

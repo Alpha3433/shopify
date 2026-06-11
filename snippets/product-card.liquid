@@ -1,8 +1,4 @@
-{%- liquid
-  comment
-    Renders a product card. Usage: {% render 'product-card', card_product: product %}
-  endcomment
--%}
+{% comment %} Product card. Pass card_product. {% endcomment %}
 <a href="{{ card_product.url }}" class="product-card" data-reveal>
   <div class="product-card__media">
     {%- if card_product.featured_image -%}

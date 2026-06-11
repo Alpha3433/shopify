@@ -120,10 +120,14 @@
     if (msgs.length < 2) return;
     var i = 0;
     setInterval(function () {
+      // Fade the current message fully out before fading the next in,
+      // so two messages never overlap in the same spot.
       msgs[i].classList.remove('is-active');
-      i = (i + 1) % msgs.length;
-      msgs[i].classList.add('is-active');
-    }, 4000);
+      setTimeout(function () {
+        i = (i + 1) % msgs.length;
+        msgs[i].classList.add('is-active');
+      }, 520);
+    }, 4500);
   }
 
   /* ---------- Product gallery ---------- */

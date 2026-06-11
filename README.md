@@ -16,7 +16,7 @@ Shopify Admin → **Online Store → Themes → Add theme → Connect from GitHu
 
 ## 10-minute setup checklist
 
-1. **Product** — create your flag product with 3–6 photos (square, 1200×1200+). Set a `Compare-at price` to activate the "Save %" badge.
+1. **Product** — create your flag product with 3–6 photos (square, 1200×1200+). Set a `Compare-at price` to activate the "Save %" badge. Then, in the product admin's **Theme template** dropdown (right sidebar), select **`flag`** — this is the dedicated high-converting landing template (buy box → veteran story → testimonials → comparison → process → stats → guarantee → FAQ → final CTA).
 2. **Homepage → Featured product section** — pick your product.
 3. **Hero section** — upload your best product/lifestyle shot (square).
 4. **Story section** — upload a photo of the maker at work (portrait 4:5); edit the story copy and signature to your real founder details.
@@ -45,7 +45,11 @@ Shopify Admin → **Online Store → Themes → Add theme → Connect from GitHu
 | 10 | FAQ | Handles everything else |
 | 11 | Final CTA | One last, single ask |
 
-One goal per page: every CTA on the homepage points at the buy box / product. The product page repeats the same ladder (buy box → story → proof → guarantee → FAQ) for ad traffic that lands there directly.
+One goal per page: the hero and final CTAs smooth-scroll to the buy box (`#buy`) instead of navigating away. The **`flag` product template** repeats the full ladder (buy box → story → proof → comparison → process → stats → guarantee → FAQ → final CTA) for ad traffic that lands there directly; the default `product` template is a shorter version for any other products.
+
+## Troubleshooting
+
+**"Liquid error: Could not find asset snippets/icon.liquid" (or stars/product-card) all over the page** — your theme install is missing the `snippets/` files (an earlier version of this theme had snippet headers that Shopify's upload validator rejected, causing those files to be silently skipped). Fix: rebuild the zip from this repo (`./package.sh`), then upload it as a **new** theme (Online Store → Themes → Add theme → Upload zip file) and republish. Re-select your product in the Featured product section afterward.
 
 ## Features
 
