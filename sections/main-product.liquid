@@ -145,6 +145,36 @@
         {%- form 'product', product, data-ajax-cart: 'true' -%}
           {% render 'variant-pills', product: product, uid: section.id %}
 
+          {%- assign bundle_blocks = section.blocks | where: 'type', 'bundle' -%}
+          {%- if bundle_blocks.size > 0 -%}
+            <fieldset class="bundle-cards" data-bundle-group>
+              <legend class="opt-label">{{ section.settings.bundle_heading }}</legend>
+              {%- for block in bundle_blocks -%}
+                <label class="bundle-card" {{ block.shopify_attributes }}>
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="{{ section.id }}-bundle"
+                    data-bundle-qty="{{ block.settings.qty }}"
+                    {% if forloop.first %}checked{% endif %}>
+                  {%- if block.settings.badge != blank -%}
+                    <span class="bundle-card__badge">{{ block.settings.badge }}</span>
+                  {%- endif -%}
+                  <span class="bundle-card__check">{% render 'icon', name: 'check' %}</span>
+                  <span class="bundle-card__body">
+                    <span class="bundle-card__title">{{ block.settings.title }}</span>
+                    {%- if block.settings.subtitle != blank -%}
+                      <span class="bundle-card__sub">{{ block.settings.subtitle }}</span>
+                    {%- endif -%}
+                  </span>
+                  {%- if block.settings.save_text != blank -%}
+                    <span class="bundle-card__save">{{ block.settings.save_text }}</span>
+                  {%- endif -%}
+                </label>
+              {%- endfor -%}
+            </fieldset>
+          {%- endif -%}
+
           <input type="hidden" name="id" value="{{ current_variant.id }}">
           <div data-atc-anchor></div>
           <div class="qty-row">
@@ -295,6 +325,13 @@
     },
     {
       "type": "text",
+      "id": "bundle_heading",
+      "label": "Bundle offers heading",
+      "info": "Shown above 'Bundle offer' blocks. Pair with a Shopify automatic volume discount (Discounts → Amount off products → quantity minimum) so the savings are real at checkout.",
+      "default": "Bundle & Save"
+    },
+    {
+      "type": "text",
       "id": "button_note",
       "label": "Text under buttons",
       "default": "Secure checkout · 60-day money-back guarantee"
@@ -386,6 +423,45 @@
           "id": "text",
           "label": "Benefit text",
           "default": "Carved from solid American hardwood"
+        }
+      ]
+    },
+    {
+      "type": "bundle",
+      "name": "Bundle offer (buy column)",
+      "settings": [
+        {
+          "type": "range",
+          "id": "qty",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "label": "Quantity",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Single Carving"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Free U.S. shipping"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "info": "e.g. Most Popular"
+        },
+        {
+          "type": "text",
+          "id": "save_text",
+          "label": "Savings pill",
+          "info": "e.g. Save 10% — must match a real volume discount."
         }
       ]
     },

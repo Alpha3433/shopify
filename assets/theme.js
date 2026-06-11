@@ -188,9 +188,13 @@
         var btn = wrapper.querySelector('[data-atc-button]');
         var priceEl = wrapper.querySelector('[data-price-current]');
         var compareEl = wrapper.querySelector('[data-price-compare]');
+        var stickyPrice = document.querySelector('[data-sticky-atc] [data-price-current]');
+        var stickyBtn = document.querySelector('[data-sticky-atc] [data-sticky-submit]');
         if (variant) {
           if (idInput) idInput.value = variant.id;
           if (priceEl) priceEl.textContent = formatMoney(variant.price);
+          if (stickyPrice) stickyPrice.textContent = formatMoney(variant.price);
+          if (stickyBtn) stickyBtn.disabled = !variant.available;
           if (compareEl) {
             if (variant.compare_at_price && variant.compare_at_price > variant.price) {
               compareEl.textContent = formatMoney(variant.compare_at_price);
@@ -204,10 +208,13 @@
             var label = btn.querySelector('[data-atc-label]');
             if (label) label.textContent = variant.available ? btn.getAttribute('data-text-add') : btn.getAttribute('data-text-soldout');
           }
-        } else if (btn) {
-          btn.disabled = true;
-          var lbl = btn.querySelector('[data-atc-label]');
-          if (lbl) lbl.textContent = btn.getAttribute('data-text-unavailable') || 'Unavailable';
+        } else {
+          if (btn) {
+            btn.disabled = true;
+            var lbl = btn.querySelector('[data-atc-label]');
+            if (lbl) lbl.textContent = btn.getAttribute('data-text-unavailable') || 'Unavailable';
+          }
+          if (stickyBtn) stickyBtn.disabled = true;
         }
       }
 
@@ -217,6 +224,21 @@
           if (e.target.matches('input')) update();
         });
       });
+    });
+  }
+
+  /* ---------- Bundle offer cards (sync quantity) ---------- */
+  function initBundles() {
+    document.querySelectorAll('[data-bundle-group]').forEach(function (group) {
+      var form = group.closest('form');
+      if (!form) return;
+      function sync() {
+        var checked = group.querySelector('input[data-bundle-qty]:checked');
+        var qtyInput = form.querySelector('input[name="quantity"]');
+        if (checked && qtyInput) qtyInput.value = parseInt(checked.getAttribute('data-bundle-qty'), 10) || 1;
+      }
+      group.addEventListener('change', sync);
+      sync();
     });
   }
 
@@ -503,6 +525,7 @@
     initAnnouncement();
     initGalleries();
     initVariantPickers();
+    initBundles();
     initQty();
     drawer.init();
     initAddToCart();

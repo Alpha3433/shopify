@@ -8,7 +8,7 @@
       </button>
     </div>
 
-    <div class="cart-drawer__ship" data-ship-bar {% if settings.free_shipping_threshold == 0 %}hidden{% endif %}>
+    <div class="cart-drawer__ship" data-ship-bar {% if settings.free_shipping_threshold == blank or settings.free_shipping_threshold == 0 %}hidden{% endif %}>
       <p class="ship-bar__label">&nbsp;</p>
       <div class="ship-bar__track"><div class="ship-bar__fill"></div></div>
     </div>

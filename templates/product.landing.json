@@ -1,0 +1,431 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "text": "Hand-carved solid wood — feels heavy, because it is" } },
+        "b2": { "type": "benefit", "settings": { "text": "Eagle, stars & stripes burned in by hand — never printed" } },
+        "b3": { "type": "benefit", "settings": { "text": "Carved by a retired U.S. Army veteran in his American workshop" } },
+        "b4": { "type": "benefit", "settings": { "text": "Arrives ready to hang — hardware included" } },
+        "b5": { "type": "benefit", "settings": { "text": "Hand-signed & numbered — no two are ever the same" } },
+        "bu1": {
+          "type": "bundle",
+          "settings": {
+            "qty": 1,
+            "title": "Single Carving",
+            "subtitle": "Free insured U.S. shipping",
+            "badge": "",
+            "save_text": ""
+          }
+        },
+        "bu2": {
+          "type": "bundle",
+          "settings": {
+            "qty": 2,
+            "title": "Patriot Pair",
+            "subtitle": "One for home, one for a gift",
+            "badge": "Most Popular",
+            "save_text": "Save 10%"
+          }
+        },
+        "bu3": {
+          "type": "bundle",
+          "settings": {
+            "qty": 3,
+            "title": "Family Set",
+            "subtitle": "The heirloom for every household",
+            "badge": "",
+            "save_text": "Save 15%"
+          }
+        },
+        "tb1": {
+          "type": "tile_banner",
+          "settings": {
+            "scheme": "navy",
+            "heading": "A flag worthy of the people who carried it.",
+            "pill_1": "Hand-carved waving form",
+            "pill_2": "Burned-in eagle & stars",
+            "pill_3": "Solid wood, real weight"
+          }
+        },
+        "ti1": {
+          "type": "tile_info",
+          "settings": {
+            "scheme": "cream",
+            "full_width": false,
+            "heading": "What's in the box",
+            "item_1": "Your hand-signed, numbered carving",
+            "item_2": "Keyhole mounts + rated hardware",
+            "item_3": "Certificate of authenticity"
+          }
+        },
+        "ti2": {
+          "type": "tile_info",
+          "settings": {
+            "scheme": "red",
+            "full_width": false,
+            "heading": "Three days of work",
+            "item_1": "Day 1 — carved from solid hardwood",
+            "item_2": "Day 2 — detail burned into the grain",
+            "item_3": "Day 3 — sealed, signed & numbered"
+          }
+        },
+        "tg1": {
+          "type": "tile_guarantee",
+          "settings": {
+            "scheme": "cream",
+            "badge_value": "60",
+            "badge_label": "Days",
+            "heading": "Hang it risk-free for 60 days",
+            "text": "If it doesn't stop you in your tracks every time you walk past it, send it back for a full refund. We even cover return shipping."
+          }
+        },
+        "a1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Free insured shipping anywhere in the U.S. In-stock pieces ship within 1 business day; most orders arrive in 3–5 business days. 60-day money-back guarantee — we even cover return shipping.</p>"
+          }
+        },
+        "a2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Wood, Finish & Care",
+            "content": "<p>Solid American hardwood with a hand-rubbed, furniture-grade finish. Dust with a dry cloth — that’s it. Keep it out of direct rain and it will outlive all of us.</p>"
+          }
+        },
+        "a3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who Carves It",
+            "content": "<p>Every carving is made start-to-finish by our founder — a retired U.S. Army veteran — in his own workshop. He cuts it, burns the detail in, seals it, and signs it before it ships. No factory. No imports. No exceptions.</p>"
+          }
+        }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "bu1", "bu2", "bu3", "tb1", "ti1", "ti2", "tg1", "a1", "a2", "a3"],
+      "settings": {
+        "vendor_label": "Veteran-Owned Workshop",
+        "rating_text": "4.9/5 from 800+ verified owners",
+        "tagline": "The hand-carved eagle & American flag. Cut, burned, sealed, and signed by a retired Army veteran — a tribute worthy of the flag it honors.",
+        "button_label": "Add to Cart — Ships Free",
+        "show_dynamic_checkout": true,
+        "bundle_heading": "Bundle & Save",
+        "button_note": "Secure checkout · 60-day money-back guarantee",
+        "show_countdown": true,
+        "cutoff_hour": 14,
+        "countdown_text": "Order within",
+        "stock_note": "Small-batch workshop — limited carvings finished each week"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "m1": { "type": "item", "settings": { "text": "Hand-Carved in the USA" } },
+        "m2": { "type": "item", "settings": { "text": "Veteran-Owned & Operated" } },
+        "m3": { "type": "item", "settings": { "text": "Solid Wood — No Prints, No Plastic" } },
+        "m4": { "type": "item", "settings": { "text": "60-Day Money-Back Guarantee" } },
+        "m5": { "type": "item", "settings": { "text": "Free U.S. Shipping" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5"],
+      "settings": {}
+    },
+    "countdown_banner": {
+      "type": "countdown-banner",
+      "settings": {
+        "eyebrow": "Limited Run",
+        "heading": "This batch is almost spoken for.",
+        "text": "Each batch is small because each one is carved by hand. When this run is gone, the next one starts from raw lumber.",
+        "deadline": "2026-07-04 20:00",
+        "cta_label": "Reserve Yours",
+        "cta_scroll": true
+      }
+    },
+    "story": {
+      "type": "story",
+      "settings": {
+        "color_scheme": "navy",
+        "flip": false,
+        "eyebrow": "Why This Carving Exists",
+        "heading": "Carved by Hands That Served Under This Flag.",
+        "text": "<p>After 22 years in the U.S. Army, I came home and couldn’t find a flag worth hanging. Everything in the stores was printed plastic with a “patriotic” label slapped on it — made anywhere but here.</p><p>So I went out to my garage, picked up a chisel, and carved my own. A neighbor asked for one. Then his brother. Then half the county.</p><p>Today, every carving still passes through my hands before it ships. I cut it, burn the detail in, seal it, and sign it — because the flag I served under deserves better than a factory line.</p>",
+        "signature_name": "— Frank D.",
+        "signature_role": "Founder · U.S. Army (Ret.)",
+        "stamp_text": "EST. 2018 · USA"
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "blocks": {
+        "rv1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "My husband teared up. 26 years in the Corps.",
+            "text": "I bought this for my husband's retirement. He's not an emotional man. He held it for a long minute, ran his thumb over the eagle, and hung it over the fireplace himself that night. Worth every penny.",
+            "name": "Sarah K.",
+            "location": "Knoxville, Tennessee",
+            "date_text": "1 week ago",
+            "verified": true
+          }
+        },
+        "rv2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "This is NOT the big-box printed stuff",
+            "text": "I'll admit I was skeptical — everything online says 'handmade' these days. Then I picked it up. It's heavy, the carving has real depth you can feel, and the burn marks in the grain tell you a person made this, not a machine.",
+            "name": "Mike D.",
+            "location": "Cedar Rapids, Iowa",
+            "date_text": "3 weeks ago",
+            "verified": true
+          }
+        },
+        "rv3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Third one I've ordered",
+            "text": "One for our house, one for my brother's Navy retirement, one for my son's first home. Each one is a little different because they're carved by hand — that's exactly the point. This is what we'll pass down.",
+            "name": "Earl W.",
+            "location": "Mobile, Alabama",
+            "date_text": "1 month ago",
+            "verified": true
+          }
+        },
+        "rv4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Shipped fast, packed like a tank",
+            "text": "Ordered Monday, on my wall Friday. Double-boxed with corner protectors, hardware included, and a hand-signed card from the maker. The keyhole mounts made hanging it a five-minute job.",
+            "name": "Denise H.",
+            "location": "Boise, Idaho",
+            "date_text": "1 month ago",
+            "verified": true
+          }
+        },
+        "rv5": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "title": "Beautiful work, took a little longer",
+            "text": "Mine was made to order so it took about two weeks to arrive — they told me up front, but I was impatient. When it showed up I understood why. You can't rush this kind of work.",
+            "name": "Carl B.",
+            "location": "Tulsa, Oklahoma",
+            "date_text": "2 months ago",
+            "verified": true
+          }
+        }
+      },
+      "block_order": ["rv1", "rv2", "rv3", "rv4", "rv5"],
+      "settings": {
+        "eyebrow": "Owner Reviews",
+        "heading": "“Is It Really Hand-Carved?” Read What Arrives in the Box.",
+        "average": "4.9",
+        "count_text": "Based on 800+ verified reviews",
+        "bar_5": 93,
+        "bar_4": 5,
+        "bar_3": 1,
+        "bar_2": 1,
+        "bar_1": 0
+      }
+    },
+    "comparison": {
+      "type": "comparison",
+      "blocks": {
+        "t1": { "type": "them_item", "settings": { "text": "Printed on MDF or plastic — made overseas" } },
+        "t2": { "type": "them_item", "settings": { "text": "Fades and warps within a year or two" } },
+        "t3": { "type": "them_item", "settings": { "text": "Identical to ten thousand others" } },
+        "t4": { "type": "them_item", "settings": { "text": "Profits leave the country" } },
+        "u1": { "type": "us_item", "settings": { "text": "Carved from solid American hardwood" } },
+        "u2": { "type": "us_item", "settings": { "text": "Detail burned in by hand — built to outlast you" } },
+        "u3": { "type": "us_item", "settings": { "text": "Every piece unique, hand-signed & numbered" } },
+        "u4": { "type": "us_item", "settings": { "text": "Made by a retired Army veteran, start to finish" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "u1", "u2", "u3", "u4"],
+      "settings": {
+        "eyebrow": "Know What You're Buying",
+        "heading": "Most “Patriotic” Décor Isn't What It Claims to Be.",
+        "subheading": "Flip over most flag décor and you'll find a sticker that tells the real story. Here's the difference you're paying for."
+      }
+    },
+    "process": {
+      "type": "process",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Carved",
+            "text": "Solid American hardwood is cut and shaped into the waving flag — every ripple done by hand, so no two are ever the same."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Burned & Detailed",
+            "text": "The eagle, stars, and stripes are burned and tooled into the grain. That's depth you can run your fingers across — not a printed picture."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Sealed, Signed & Shipped",
+            "text": "A hand-rubbed finish protects it for decades. The maker signs and numbers each piece, then it ships free — insured, with hanging hardware included."
+          }
+        }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": {
+        "eyebrow": "Three Days of Work",
+        "heading": "From Rough American Lumber to Family Heirloom.",
+        "subheading": "No factory line. No shortcuts. Every carving takes three days of honest work."
+      }
+    },
+    "stats": {
+      "type": "stats",
+      "blocks": {
+        "st1": { "type": "stat", "settings": { "value": "2500", "suffix": "+", "label": "Carvings in American homes" } },
+        "st2": { "type": "stat", "settings": { "value": "50", "suffix": "", "label": "States shipped to" } },
+        "st3": { "type": "stat", "settings": { "value": "4.9", "suffix": "★", "label": "Average owner rating" } },
+        "st4": { "type": "stat", "settings": { "value": "100", "suffix": "%", "label": "Carved in the USA" } }
+      },
+      "block_order": ["st1", "st2", "st3", "st4"],
+      "settings": {}
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "blocks": {
+        "g1": { "type": "item", "settings": { "text": "60-day money-back guarantee — full refund" } },
+        "g2": { "type": "item", "settings": { "text": "Free, fully-insured shipping both ways" } },
+        "g3": { "type": "item", "settings": { "text": "Lifetime craftsmanship warranty on every carving" } }
+      },
+      "block_order": ["g1", "g2", "g3"],
+      "settings": {}
+    },
+    "big_marquee": {
+      "type": "big-marquee",
+      "blocks": {
+        "bm1": { "type": "item", "settings": { "text": "Hang It Once", "style": "outline" } },
+        "bm2": { "type": "item", "settings": { "text": "Pass It Down", "style": "fill" } },
+        "bm3": { "type": "item", "settings": { "text": "Made in America", "style": "outline" } }
+      },
+      "block_order": ["bm1", "bm2", "bm3"],
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Is it really handmade in the USA?",
+            "answer": "<p>Yes — every single carving is cut, burned, sealed, and signed by our founder, a retired U.S. Army veteran, in his American workshop. Nothing is imported, outsourced, or printed. That's the whole point of this company.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "How big is it, and is it heavy?",
+            "answer": "<p>Dimensions are listed above. It's solid hardwood, so it has real weight to it — that's the first thing people notice when they pick it up. Mounting hardware rated for the weight is included.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "How do I hang it?",
+            "answer": "<p>It arrives ready to hang with keyhole mounts cut into the back and the hardware included. Most folks have it on the wall within five minutes of opening the box.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "How long until it arrives?",
+            "answer": "<p>In-stock carvings ship within 1 business day, fully insured and free anywhere in the U.S. Most orders arrive in 3–5 business days. Made-to-order pieces show their build time above.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Can I give it as a gift?",
+            "answer": "<p>It's one of the most popular retirement, Veterans Day, and Father's Day gifts we know of. Add a note at checkout and we'll include a handwritten card — no prices on anything.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What if I don't love it?",
+            "answer": "<p>Send it back within 60 days for a full refund — we even cover the return shipping. It's a promise we can afford to make because returns almost never happen.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
+      "settings": {
+        "eyebrow": "Straight Answers",
+        "heading": "Questions? We Shoot Straight."
+      }
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "heading": "Hang It Once. Pass It Down Forever.",
+        "subheading": "Your grandkids won't fight over a printed sign from a big-box store. They'll fight over this.",
+        "cta_label": "Claim Yours — Ships Free",
+        "cta_scroll": true,
+        "reassure_1": "Free U.S. shipping",
+        "reassure_2": "60-day money-back guarantee",
+        "reassure_3": "Hand-signed by the maker"
+      }
+    },
+    "value_props": {
+      "type": "value-props",
+      "blocks": {
+        "v1": {
+          "type": "prop",
+          "settings": {
+            "icon": "truck",
+            "title": "Free Shipping",
+            "text": "Free, fully-insured delivery anywhere in the U.S. In-stock pieces ship within 1 business day."
+          }
+        },
+        "v2": {
+          "type": "prop",
+          "settings": {
+            "icon": "shield",
+            "title": "Easy Returns",
+            "text": "60-day money-back guarantee. We even cover the return shipping — no forms, no hard feelings."
+          }
+        },
+        "v3": {
+          "type": "prop",
+          "settings": {
+            "icon": "medal",
+            "title": "Veteran-Owned",
+            "text": "Every carving is made start-to-finish by a retired U.S. Army veteran in his American workshop."
+          }
+        }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "marquee",
+    "countdown_banner",
+    "story",
+    "reviews",
+    "comparison",
+    "process",
+    "stats",
+    "guarantee",
+    "big_marquee",
+    "faq",
+    "final_cta",
+    "value_props",
+    "newsletter"
+  ]
+}

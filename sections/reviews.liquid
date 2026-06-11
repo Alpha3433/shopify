@@ -1,0 +1,244 @@
+<section class="section section--cream2">
+  <div class="container">
+    <div class="section-head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="reviews__layout">
+      <div class="reviews__summary" data-reveal="left">
+        <div class="reviews__avg">{{ section.settings.average }}</div>
+        {% render 'stars', rating: 5 %}
+        <p class="reviews__count">{{ section.settings.count_text }}</p>
+        <div class="reviews__bars">
+          <div class="review-bar">
+            <span class="review-bar__star">5★</span>
+            <span class="review-bar__track"><span class="review-bar__fill" style="width: {{ section.settings.bar_5 }}%"></span></span>
+            <span class="review-bar__pct">{{ section.settings.bar_5 }}%</span>
+          </div>
+          <div class="review-bar">
+            <span class="review-bar__star">4★</span>
+            <span class="review-bar__track"><span class="review-bar__fill" style="width: {{ section.settings.bar_4 }}%"></span></span>
+            <span class="review-bar__pct">{{ section.settings.bar_4 }}%</span>
+          </div>
+          <div class="review-bar">
+            <span class="review-bar__star">3★</span>
+            <span class="review-bar__track"><span class="review-bar__fill" style="width: {{ section.settings.bar_3 }}%"></span></span>
+            <span class="review-bar__pct">{{ section.settings.bar_3 }}%</span>
+          </div>
+          <div class="review-bar">
+            <span class="review-bar__star">2★</span>
+            <span class="review-bar__track"><span class="review-bar__fill" style="width: {{ section.settings.bar_2 }}%"></span></span>
+            <span class="review-bar__pct">{{ section.settings.bar_2 }}%</span>
+          </div>
+          <div class="review-bar">
+            <span class="review-bar__star">1★</span>
+            <span class="review-bar__track"><span class="review-bar__fill" style="width: {{ section.settings.bar_1 }}%"></span></span>
+            <span class="review-bar__pct">{{ section.settings.bar_1 }}%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews__list" data-reveal="right">
+        {%- for block in section.blocks -%}
+          <article class="review-item" {{ block.shopify_attributes }}>
+            <div class="review-item__head">
+              {% render 'stars', rating: block.settings.rating %}
+              {%- if block.settings.verified -%}
+                <span class="verified">{% render 'icon', name: 'check-circle' %} Verified Buyer</span>
+              {%- endif -%}
+            </div>
+            {%- if block.settings.title != blank -%}
+              <h3 class="review-item__title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            <p class="review-item__text">{{ block.settings.text }}</p>
+            <div class="review-item__meta">
+              <span class="review-item__name">{{ block.settings.name }}</span>
+              {%- if block.settings.location != blank -%}
+                <span>· {{ block.settings.location }}</span>
+              {%- endif -%}
+              {%- if block.settings.date_text != blank -%}
+                <span>· {{ block.settings.date_text }}</span>
+              {%- endif -%}
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Review list",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "⚠ Use real customer reviews and accurate numbers only — fabricated reviews violate FTC rules and Shopify policy."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Owner Reviews"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Read What Arrives in the Box."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "average",
+      "label": "Average rating",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "count_text",
+      "label": "Count text",
+      "default": "Based on 800+ verified reviews"
+    },
+    {
+      "type": "header",
+      "content": "Rating distribution (%)"
+    },
+    { "type": "range", "id": "bar_5", "min": 0, "max": 100, "step": 1, "label": "5 star", "default": 93 },
+    { "type": "range", "id": "bar_4", "min": 0, "max": 100, "step": 1, "label": "4 star", "default": 5 },
+    { "type": "range", "id": "bar_3", "min": 0, "max": 100, "step": 1, "label": "3 star", "default": 1 },
+    { "type": "range", "id": "bar_2", "min": 0, "max": 100, "step": 1, "label": "2 star", "default": 1 },
+    { "type": "range", "id": "bar_1", "min": 0, "max": 100, "step": 1, "label": "1 star", "default": 0 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star rating",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review title",
+          "default": "Heavier and better-looking than the photos"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review text",
+          "default": "You can feel the work in it the second you lift it out of the box."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer name",
+          "default": "Tom R."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "Amarillo, Texas"
+        },
+        {
+          "type": "text",
+          "id": "date_text",
+          "label": "Date text",
+          "default": "2 weeks ago"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show 'Verified Buyer' badge",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review list",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "My husband teared up. 26 years in the Corps.",
+            "text": "I bought this for my husband's retirement. He's not an emotional man. He held it for a long minute, ran his thumb over the eagle, and hung it over the fireplace himself that night. Worth every penny.",
+            "name": "Sarah K.",
+            "location": "Knoxville, Tennessee",
+            "date_text": "1 week ago",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "This is NOT the big-box printed stuff",
+            "text": "I'll admit I was skeptical — everything online says 'handmade' these days. Then I picked it up. It's heavy, the carving has real depth you can feel, and the burn marks in the grain tell you a person made this, not a machine.",
+            "name": "Mike D.",
+            "location": "Cedar Rapids, Iowa",
+            "date_text": "3 weeks ago",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Third one I've ordered",
+            "text": "One for our house, one for my brother's Navy retirement, one for my son's first home. Each one is a little different because they're carved by hand — that's exactly the point. This is what we'll pass down.",
+            "name": "Earl W.",
+            "location": "Mobile, Alabama",
+            "date_text": "1 month ago",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Shipped fast, packed like a tank",
+            "text": "Ordered Monday, on my wall Friday. Double-boxed with corner protectors, hardware included, and a hand-signed card from the maker. The keyhole mounts made hanging it a five-minute job.",
+            "name": "Denise H.",
+            "location": "Boise, Idaho",
+            "date_text": "1 month ago",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "title": "Beautiful work, took a little longer",
+            "text": "Mine was made to order so it took about two weeks to arrive — they told me up front, but I was impatient. When it showed up I understood why. You can't rush this kind of work.",
+            "name": "Carl B.",
+            "location": "Tulsa, Oklahoma",
+            "date_text": "2 months ago",
+            "verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

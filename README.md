@@ -51,7 +51,17 @@ Shopify Admin → **Online Store → Themes → Add theme → Connect from GitHu
 | 14 | Final CTA | One last, single ask |
 | 15 | Value props + Newsletter | Reassurance strip and list capture for non-buyers |
 
-The **`flag` product template** pairs a sticky buy column (pill variant picker, quantity, dynamic checkout, workshop note box) with a scrolling collage gallery where your product photos are interleaved with built-in content tiles — a navy banner tile, "What's in the box" and "Three days of work" info tiles, and a round "60 Days" guarantee badge tile. All tiles are editable blocks; add `Gallery tile: extra image` blocks as you shoot more photos.
+## Product templates
+
+Assign a template in the product admin's **Theme template** dropdown (right sidebar):
+
+- **`landing`** — the maximal conversion page. Sticky buy column with pill variants, **Bundle & Save offer cards** (Single / Patriot Pair / Family Set), quantity, dynamic checkout, dispatch countdown, and workshop note box; collage gallery with built-in content tiles; then countdown banner → veteran story → **Amazon-style review list** (rating summary + distribution bars) → comparison → process → stats → guarantee → outline marquee → FAQ → final CTA → value props → newsletter. Use this one for ad traffic.
+- **`flag`** — the same ladder without bundles/review-list (testimonial cards instead). A lighter alternative.
+- **`product`** (default) — short version for any other products.
+
+> **Bundles:** the offer cards set the cart quantity and show the savings pill — create a matching Shopify **automatic volume discount** (Discounts → Amount off products → minimum quantity) so the discount is real at checkout.
+
+The collage gallery tiles (banner, info lists, round "60 Days" guarantee badge, extra images) are editable blocks on the Product page section; add `Gallery tile: extra image` blocks as you shoot more photos.
 
 One goal per page: the hero and final CTAs smooth-scroll to the buy box (`#buy`) instead of navigating away. The **`flag` product template** repeats the full ladder (buy box → story → proof → comparison → process → stats → guarantee → FAQ → final CTA) for ad traffic that lands there directly; the default `product` template is a shorter version for any other products.
 
