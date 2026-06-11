@@ -2,9 +2,13 @@
 
 A custom Shopify Online Store 2.0 theme built for a single hero product: a **hand-carved wooden American flag with eagle**, sold through the story of a veteran-owned American workshop.
 
-**v2 design language** (original code, editorial-commerce style): cream canvas, big rounded tiles, pill buttons and pill variant pickers, large serif editorial type, navy band sections, countdown sale banner, giant gold-outline text marquees, newsletter band, sticky product buy column with a collage gallery — all in the navy / cream / heritage-red / gold palette.
+**v3 "quiet" design language** (original code, editorial-commerce style): cream canvas, big rounded tiles, pill buttons and pill variant pickers, large serif editorial type, navy band sections, sticky product buy column with a collage gallery — all in the navy / cream / heritage-red / gold palette. The homepage is deliberately restrained: a short ladder of sections, soft scroll reveals, and **no stacked hype** (no marquees, ticking countdowns, or fake scarcity by default). The high-energy sections (marquees, countdown banner, comparison, process, stats) are still in the theme and can be re-added per page in the customizer.
 
-Designed mobile-first, fully responsive, with modern subtle animations (scroll reveals, count-up stats, marquees, floating sticker, button sheen) that respect `prefers-reduced-motion`.
+**Honest urgency, built in:** the buy box has a *Sale offer* box with a real end date (it hides itself automatically after the date passes), a concrete *"Order today — arrives [date range]"* line computed from your real delivery settings, and sold-out variant states. Use a real Shopify discount with the sale, and keep the deadline real.
+
+**Claims policy:** all default copy avoids made-in-USA, veteran-made, and hand-signed claims. Do not re-add origin or maker-identity claims unless they are literally true for your fulfillment — the FTC's Made-in-USA rule and deceptive-endorsement rules carry per-violation penalties, and ad platforms ban for it.
+
+Designed mobile-first, fully responsive, with modern subtle animations (scroll reveals, count-up stats, floating sticker) that respect `prefers-reduced-motion`.
 
 ## Install
 
@@ -33,23 +37,21 @@ Shopify Admin → **Online Store → Themes → Add theme → Connect from GitHu
 
 ## Conversion architecture (why the homepage is ordered this way)
 
+The quiet ladder: every CTA scrolls to the single buy box (`#buy`). Restraint is the tactic — the page should read like a small workshop brand, not a funnel.
+
 | # | Section | Job |
 |---|---------|-----|
-| 1 | Hero (editorial + collage) | Problem-first headline, single CTA, rating line, image collage with stat tile + round sticker |
-| 2 | Marquee ticker | Modern motion + repeats core trust claims |
-| 3 | Editorial statements | Big serif brand lines ("Carved by hand. / Burned into the grain.") |
-| 4 | Countdown banner | Batch urgency with live countdown chips (auto-hides when passed) |
-| 5 | Comparison | Agitates the "cheap import" pain (them vs. us) |
-| 6 | Story | The veteran founder story — the emotional core |
-| 7 | Featured product | The one and only buy box: benefits, pill variants, urgency countdown, trust row |
-| 8 | Testimonials | Social proof placed *right after* the price/quality objection |
-| 9 | Process | "3 days of work" — justifies the price |
-| 10 | Stats | Animated count-up credibility numbers |
-| 11 | Guarantee | Kills the last objection (risk) |
-| 12 | Big marquee | Giant outline-text motion break ("Hang It Once ★ Pass It Down") |
-| 13 | FAQ | Handles everything else |
-| 14 | Final CTA | One last, single ask |
-| 15 | Value props + Newsletter | Reassurance strip and list capture for non-buyers |
+| 1 | Hero (editorial + collage) | Problem-first headline ("carved, not printed"), single CTA, guarantee stat tile |
+| 2 | Story | Why carved beats printed — the emotional core, in plain we-voice |
+| 3 | Featured product | The one and only buy box: benefits, pill variants, sale box with real end date, "arrives by" dates, trust row |
+| 4 | Testimonials | Social proof placed *right after* the price/quality objection (replace placeholders with real reviews) |
+| 5 | Guarantee | Kills the last objection (risk) — refund without return |
+| 6 | FAQ | Handles everything else, including "Is it really hand-carved?" |
+| 7 | Final CTA | One last, single ask |
+
+Sections still available to add in the customizer if you want more energy: marquee tickers, editorial lines, countdown banner (auto-hides after its date), comparison, process, stats, big outline marquee, value props, newsletter.
+
+> **Stale-date check:** the announcement bar and the buy-box sale offer default to "Father's Day Sale … June 21". The sale box hides itself after June 21 automatically; the announcement bar does **not** — edit it when the sale changes.
 
 ## Product templates
 

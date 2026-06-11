@@ -26,13 +26,13 @@
         <span>Subtotal</span>
         <span data-cart-subtotal>{{ cart.total_price | money }}</span>
       </div>
-      <p class="cart-drawer__note">Shipping &amp; taxes calculated at checkout. Ships from our American workshop.</p>
+      <p class="cart-drawer__note">Shipping &amp; taxes calculated at checkout. Fully insured in transit — damaged pieces are replaced free.</p>
       <a href="{{ routes.cart_url }}/checkout" class="btn btn--primary btn--full btn--lg">
         {% render 'icon', name: 'lock' %} Secure Checkout
       </a>
       <div class="footer-trust">
         <span>{% render 'icon', name: 'shield' %} 60-Day Guarantee</span>
-        <span>{% render 'icon', name: 'flag' %} Made in the USA</span>
+        <span>{% render 'icon', name: 'flag' %} Hand-Carved Wood</span>
       </div>
     </div>
   </aside>

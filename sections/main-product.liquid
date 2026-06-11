@@ -200,6 +200,15 @@
           <p class="btn-note">{% render 'icon', name: 'lock' %} {{ section.settings.button_note }}</p>
         {%- endform -%}
 
+        {% render 'offer-urgency',
+          sale_text: section.settings.sale_text,
+          sale_subtext: section.settings.sale_subtext,
+          sale_end: section.settings.sale_end,
+          show_delivery: section.settings.show_delivery,
+          delivery_min: section.settings.delivery_min,
+          delivery_max: section.settings.delivery_max
+        %}
+
         {%- if section.settings.show_countdown -%}
           <div class="countdown-box" data-countdown-cutoff="{{ section.settings.cutoff_hour }}">
             {% render 'icon', name: 'clock' %}
@@ -297,13 +306,13 @@
       "type": "text",
       "id": "vendor_label",
       "label": "Label above title",
-      "default": "Veteran-Owned Workshop"
+      "default": "Small-Batch Wood Carving"
     },
     {
       "type": "text",
       "id": "rating_text",
       "label": "Rating text",
-      "default": "4.9/5 from 800+ verified owners"
+      "info": "Only show a real rating from real reviews."
     },
     {
       "type": "textarea",
@@ -350,7 +359,60 @@
       "type": "textarea",
       "id": "note_text",
       "label": "Note text",
-      "default": "Every carving is cut, burned, sealed, and signed by hand before it ships. If your batch is sold out, the next one starts from raw lumber."
+      "default": "Every flag is carved, stained, and sealed by hand, then inspected before it ships. Hand-worked means no two are exactly alike."
+    },
+    {
+      "type": "header",
+      "content": "Sale offer",
+      "info": "Honest urgency: the box hides itself after the end date."
+    },
+    {
+      "type": "text",
+      "id": "sale_text",
+      "label": "Sale text",
+      "info": "e.g. Father's Day Sale — 30% off everything. Leave blank to hide. Pair with a real discount."
+    },
+    {
+      "type": "text",
+      "id": "sale_subtext",
+      "label": "Sale subtext",
+      "default": "Applied automatically at checkout"
+    },
+    {
+      "type": "text",
+      "id": "sale_end",
+      "label": "Sale end date (YYYY-MM-DD)",
+      "info": "Keep deadlines real — the box disappears after this date."
+    },
+    {
+      "type": "header",
+      "content": "Delivery estimate"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_delivery",
+      "label": "Show \"arrives by\" date range",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "delivery_min",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "unit": "d",
+      "label": "Fastest delivery (days)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "delivery_max",
+      "min": 2,
+      "max": 45,
+      "step": 1,
+      "unit": "d",
+      "label": "Slowest delivery (days)",
+      "default": 14
     },
     {
       "type": "header",
@@ -360,7 +422,7 @@
       "type": "checkbox",
       "id": "show_countdown",
       "label": "Show dispatch countdown",
-      "default": true
+      "default": false
     },
     {
       "type": "range",
@@ -381,8 +443,7 @@
       "type": "text",
       "id": "stock_note",
       "label": "Scarcity note",
-      "info": "Only use real numbers — trust is the whole brand.",
-      "default": "Small-batch workshop — limited carvings finished each week"
+      "info": "Only use if it's true — trust is the whole brand."
     },
     {
       "type": "header",
@@ -392,7 +453,7 @@
       "type": "text",
       "id": "trust_1",
       "label": "Trust item 1",
-      "default": "Handmade in the USA"
+      "default": "Hand-carved solid wood"
     },
     {
       "type": "text",
@@ -422,7 +483,7 @@
           "type": "text",
           "id": "text",
           "label": "Benefit text",
-          "default": "Carved from solid American hardwood"
+          "default": "Carved from solid hardwood"
         }
       ]
     },

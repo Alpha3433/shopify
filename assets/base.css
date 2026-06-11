@@ -176,15 +176,15 @@ p { margin: 0; }
 /* ---------- Reveal animations ---------- */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
-  transition-delay: calc(var(--reveal-delay, 0) * 90ms);
+  transform: translateY(14px);
+  transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+  transition-delay: calc(var(--reveal-delay, 0) * 70ms);
   will-change: opacity, transform;
 }
 [data-reveal].is-revealed { opacity: 1; transform: none; }
-[data-reveal="left"] { transform: translateX(-34px); }
-[data-reveal="right"] { transform: translateX(34px); }
-[data-reveal="zoom"] { transform: scale(0.95); }
+[data-reveal="left"] { transform: translateX(-18px); }
+[data-reveal="right"] { transform: translateX(18px); }
+[data-reveal="zoom"] { transform: scale(0.97); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -623,6 +623,21 @@ p { margin: 0; }
 }
 .countdown-box svg { width: 18px; height: 18px; color: var(--red); flex-shrink: 0; }
 .countdown-box strong { color: var(--red); font-variant-numeric: tabular-nums; }
+
+.offer-box {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: rgba(178, 34, 52, 0.06);
+  border: 1px solid rgba(178, 34, 52, 0.28);
+  border-radius: var(--radius-sm);
+  padding: 13px 16px; margin-top: 16px;
+  font-size: 0.9rem;
+}
+.offer-box svg { width: 18px; height: 18px; color: var(--red); flex-shrink: 0; margin-top: 2px; }
+.offer-box strong { color: var(--red); display: block; }
+.offer-box span { color: var(--muted); font-size: 0.84rem; }
+
+.delivery-note { display: flex; align-items: center; gap: 9px; font-size: 0.88rem; margin-top: 14px; }
+.delivery-note__dot { width: 8px; height: 8px; border-radius: 50%; background: #2e7d4f; flex-shrink: 0; }
 
 .stock-note { display: flex; align-items: center; gap: 9px; font-size: 0.86rem; font-weight: 600; color: var(--red); margin-top: 14px; }
 .stock-note .pulse-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--red); position: relative; }

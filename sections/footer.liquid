@@ -80,7 +80,7 @@
     </div>
 
     <div class="footer__bottom">
-      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved. Proudly American.</span>
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
       {%- if section.settings.show_payment_icons -%}
         <div class="payment-icons">
           {%- for type in shop.enabled_payment_types -%}
@@ -100,7 +100,7 @@
       "type": "textarea",
       "id": "tagline",
       "label": "Brand tagline",
-      "default": "Hand-carved American flag art from a veteran-owned workshop. Every piece is cut, burned, and sealed by hand — built to be passed down, not thrown out."
+      "default": "Hand-carved wooden flag art with depth you can feel. Every piece is carved from solid wood and finished by hand — built to hang for generations."
     },
     {
       "type": "text",
@@ -156,13 +156,13 @@
       "type": "text",
       "id": "trust_1",
       "label": "Badge 1",
-      "default": "Veteran-Owned & Operated"
+      "default": "Small-Batch · Carved to Order"
     },
     {
       "type": "text",
       "id": "trust_2",
       "label": "Badge 2",
-      "default": "Handmade in the USA"
+      "default": "Hand-carved solid wood"
     },
     {
       "type": "text",

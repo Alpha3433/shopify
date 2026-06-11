@@ -3,10 +3,30 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "b1": { "type": "benefit", "settings": { "text": "Solid hardwood — feels heavy, because it is" } },
-        "b2": { "type": "benefit", "settings": { "text": "Eagle & stars detail burned in by hand, never printed" } },
-        "b3": { "type": "benefit", "settings": { "text": "Arrives ready to hang — hardware included" } },
-        "b4": { "type": "benefit", "settings": { "text": "Hand-signed & numbered by the maker" } },
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Solid hardwood — feels heavy, because it is"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "text": "Stars, stripes & eagle carved in deep relief — never printed"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "text": "Arrives ready to hang — hardware included"
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "text": "No two alike — every flag is one of one"
+          }
+        },
         "tg1": {
           "type": "tile_guarantee",
           "settings": {
@@ -28,12 +48,28 @@
           "type": "accordion",
           "settings": {
             "title": "Wood, Finish & Care",
-            "content": "<p>Solid American hardwood with a hand-rubbed, furniture-grade finish. Dust with a dry cloth — that’s it. Keep out of direct rain and it will outlive all of us.</p>"
+            "content": "<p>Solid hardwood with a hand-rubbed, furniture-grade finish. Dust with a dry cloth — that’s it. Keep out of direct rain and it will outlive all of us.</p>"
           }
         }
       },
-      "block_order": ["b1", "b2", "b3", "b4", "tg1", "a1", "a2"],
-      "settings": {}
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "tg1",
+        "a1",
+        "a2"
+      ],
+      "settings": {
+        "sale_text": "Father's Day Sale — 30% off everything",
+        "sale_subtext": "Applied automatically at checkout",
+        "sale_end": "2026-06-21",
+        "show_delivery": true,
+        "delivery_min": 8,
+        "delivery_max": 14,
+        "show_countdown": false
+      }
     },
     "story": {
       "type": "story",
@@ -41,11 +77,11 @@
         "color_scheme": "navy",
         "flip": true,
         "eyebrow": "Who Makes It",
-        "heading": "Every Carving Passes Through a Veteran's Hands.",
-        "text": "<p>After 22 years in the U.S. Army, I couldn’t find a flag worth hanging — so I carved my own. Today, every piece that leaves this workshop is cut, burned, sealed, and signed by hand before it ships to your door.</p>",
-        "signature_name": "— Frank D.",
-        "signature_role": "Founder · U.S. Army (Ret.)",
-        "stamp_text": "EST. 2018 · USA"
+        "heading": "You Can't Print Depth.",
+        "text": "<p>Pick up a printed flag and you feel a board. Pick up a carved one and you feel ridges, grain, and weight.</p><p>Every flag we sell is carved from solid wood and finished by hand in small batches — the ripple, the feathers, the stars all sit in real relief, so no two are ever exactly alike.</p><p>We check every piece before it ships. If yours arrives less than perfect, we replace it free.</p>",
+        "signature_name": "",
+        "signature_role": "",
+        "stamp_text": "CARVED BY HAND · NO TWO ALIKE"
       }
     },
     "testimonials": {
@@ -75,14 +111,18 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "quote": "Third one I've ordered. One for the house, one for my brother's retirement from the Navy, one for my son's first home. This is what we'll pass down.",
+            "quote": "Third one I've ordered. One for the house, one for my brother's retirement, one for my son's first home. This is what we'll pass down.",
             "name": "Earl W.",
             "location": "Mobile, Alabama",
             "verified": true
           }
         }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {}
     },
     "faq": {
@@ -91,8 +131,8 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "Is it really handmade in the USA?",
-            "answer": "<p>Yes — every single carving is cut, burned, sealed, and signed in our American workshop. Nothing is imported, outsourced, or printed.</p>"
+            "question": "Is it really hand-carved?",
+            "answer": "<p>Yes. Every flag is carved from solid wood and finished by hand — the stars, stripes, and eagle sit in real relief. Run your fingers across it and you'll feel the depth. Because it's hand-worked, no two are exactly alike.</p>"
           }
         },
         "q2": {
@@ -117,7 +157,12 @@
           }
         }
       },
-      "block_order": ["q1", "q2", "q3", "q4"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
       "settings": {}
     },
     "value_props": {
@@ -128,7 +173,7 @@
           "settings": {
             "icon": "truck",
             "title": "Free Shipping",
-            "text": "Free, fully-insured delivery anywhere in the U.S. In-stock pieces ship within 1 business day."
+            "text": "Free, fully-insured delivery anywhere in the U.S. — tracked the whole way."
           }
         },
         "v2": {
@@ -136,19 +181,23 @@
           "settings": {
             "icon": "shield",
             "title": "Easy Returns",
-            "text": "60-day money-back guarantee. We even cover the return shipping — no forms, no hard feelings."
+            "text": "60-day money-back guarantee — full refund, and you don't even need to ship it back."
           }
         },
         "v3": {
           "type": "prop",
           "settings": {
             "icon": "medal",
-            "title": "Veteran-Owned",
-            "text": "Every carving is made start-to-finish by a retired U.S. Army veteran in his American workshop."
+            "title": "Carved, Not Printed",
+            "text": "Real relief carved into solid wood — depth and grain you can feel, never a flat print."
           }
         }
       },
-      "block_order": ["v1", "v2", "v3"],
+      "block_order": [
+        "v1",
+        "v2",
+        "v3"
+      ],
       "settings": {}
     },
     "newsletter": {
@@ -156,5 +205,12 @@
       "settings": {}
     }
   },
-  "order": ["main", "story", "testimonials", "faq", "value_props", "newsletter"]
+  "order": [
+    "main",
+    "story",
+    "testimonials",
+    "faq",
+    "value_props",
+    "newsletter"
+  ]
 }
