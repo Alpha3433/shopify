@@ -1,0 +1,25 @@
+<section class="section">
+  <div class="container">
+    <header class="article-head">
+      <span class="post-card__date">{{ article.published_at | date: '%B %-d, %Y' }}</span>
+      <h1>{{ article.title }}</h1>
+    </header>
+
+    {%- if article.image -%}
+      <div class="article-img">
+        <img src="{{ article.image | image_url: width: 1400 }}" alt="{{ article.image.alt | escape | default: article.title | escape }}" width="1400" height="788">
+      </div>
+    {%- endif -%}
+
+    <div class="article-body rte">
+      {{ article.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

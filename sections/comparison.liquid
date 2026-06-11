@@ -1,0 +1,120 @@
+<section class="section section--cream2">
+  <div class="container">
+    <div class="section-head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="compare__grid">
+      <div class="compare__col compare__col--them" data-reveal="left">
+        <p class="compare__label">{{ section.settings.them_label }}</p>
+        <h3 class="compare__title">{{ section.settings.them_title }}</h3>
+        <ul class="compare__list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'them_item' -%}
+              <li {{ block.shopify_attributes }}>{% render 'icon', name: 'x-circle' %} {{ block.settings.text }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="compare__col compare__col--us" data-reveal="right">
+        <p class="compare__label">{{ section.settings.us_label }}</p>
+        <h3 class="compare__title">{{ section.settings.us_title }}</h3>
+        <ul class="compare__list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'us_item' -%}
+              <li {{ block.shopify_attributes }}>{% render 'icon', name: 'check-circle' %} {{ block.settings.text }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Read the Fine Print"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You’ve Seen What “For Patriots” Usually Means."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Flip over most flag décor and you’ll find a sticker that tells the real story. Here’s the difference you’re paying for."
+    },
+    {
+      "type": "text",
+      "id": "them_label",
+      "label": "Left column label",
+      "default": "What they sell"
+    },
+    {
+      "type": "text",
+      "id": "them_title",
+      "label": "Left column title",
+      "default": "Mass-Produced “Patriotic” Décor"
+    },
+    {
+      "type": "text",
+      "id": "us_label",
+      "label": "Right column label",
+      "default": "What leaves our workshop"
+    },
+    {
+      "type": "text",
+      "id": "us_title",
+      "label": "Right column title",
+      "default": "A Hand-Carved American Heirloom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "them_item",
+      "name": "Left column item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Printed on MDF or plastic overseas" }
+      ]
+    },
+    {
+      "type": "us_item",
+      "name": "Right column item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Carved from solid wood in the USA" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison",
+      "blocks": [
+        { "type": "them_item", "settings": { "text": "Printed on MDF or plastic — made overseas" } },
+        { "type": "them_item", "settings": { "text": "Fades and warps within a year or two" } },
+        { "type": "them_item", "settings": { "text": "Identical to ten thousand others" } },
+        { "type": "them_item", "settings": { "text": "Profits leave the country" } },
+        { "type": "us_item", "settings": { "text": "Carved from solid American hardwood" } },
+        { "type": "us_item", "settings": { "text": "Detail burned in by hand — built to outlast you" } },
+        { "type": "us_item", "settings": { "text": "Every piece unique, hand-signed & numbered" } },
+        { "type": "us_item", "settings": { "text": "Supports a veteran-owned American workshop" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,79 @@
+<section class="section section--navy final-cta">
+  <div class="container">
+    <div class="star-divider" data-reveal>★ ★ ★</div>
+    <h2 data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h2>
+    {%- if section.settings.subheading != blank -%}
+      <p class="lead" data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+    <div data-reveal style="--reveal-delay: 3">
+      <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--primary btn--lg">
+        {{ section.settings.cta_label }} {% render 'icon', name: 'arrow-right' %}
+      </a>
+    </div>
+    <div class="final-cta__reassure" data-reveal style="--reveal-delay: 4">
+      {%- if section.settings.reassure_1 != blank -%}
+        <span>{% render 'icon', name: 'check' %} {{ section.settings.reassure_1 }}</span>
+      {%- endif -%}
+      {%- if section.settings.reassure_2 != blank -%}
+        <span>{% render 'icon', name: 'check' %} {{ section.settings.reassure_2 }}</span>
+      {%- endif -%}
+      {%- if section.settings.reassure_3 != blank -%}
+        <span>{% render 'icon', name: 'check' %} {{ section.settings.reassure_3 }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Final call to action",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Hang It Once. Pass It Down Forever."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Your grandkids won’t fight over a printed sign from a big-box store. They’ll fight over this."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Claim Yours — Ships Free"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "reassure_1",
+      "label": "Reassurance 1",
+      "default": "Free U.S. shipping"
+    },
+    {
+      "type": "text",
+      "id": "reassure_2",
+      "label": "Reassurance 2",
+      "default": "60-day money-back guarantee"
+    },
+    {
+      "type": "text",
+      "id": "reassure_3",
+      "label": "Reassurance 3",
+      "default": "Hand-signed by the maker"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Final call to action"
+    }
+  ]
+}
+{% endschema %}

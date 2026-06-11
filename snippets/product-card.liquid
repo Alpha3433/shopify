@@ -1,0 +1,32 @@
+{%- liquid
+  comment
+    Renders a product card. Usage: {% render 'product-card', card_product: product %}
+  endcomment
+-%}
+<a href="{{ card_product.url }}" class="product-card" data-reveal>
+  <div class="product-card__media">
+    {%- if card_product.featured_image -%}
+      <img
+        src="{{ card_product.featured_image | image_url: width: 600 }}"
+        srcset="{{ card_product.featured_image | image_url: width: 400 }} 400w, {{ card_product.featured_image | image_url: width: 600 }} 600w, {{ card_product.featured_image | image_url: width: 900 }} 900w"
+        sizes="(min-width: 880px) 33vw, 50vw"
+        alt="{{ card_product.featured_image.alt | escape | default: card_product.title | escape }}"
+        loading="lazy"
+        width="600" height="600">
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+    {%- if card_product.compare_at_price > card_product.price -%}
+      <span class="product-card__badge">Save {{ card_product.compare_at_price | minus: card_product.price | times: 100 | divided_by: card_product.compare_at_price }}%</span>
+    {%- endif -%}
+  </div>
+  <div class="product-card__info">
+    <h3 class="product-card__title">{{ card_product.title }}</h3>
+    <div class="product-card__price">
+      <span>{{ card_product.price | money }}</span>
+      {%- if card_product.compare_at_price > card_product.price -%}
+        <s>{{ card_product.compare_at_price | money }}</s>
+      {%- endif -%}
+    </div>
+  </div>
+</a>

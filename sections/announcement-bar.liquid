@@ -1,0 +1,51 @@
+<div class="announcement">
+  <div class="announcement__inner">
+    {%- assign first = true -%}
+    {%- if section.settings.message_1 != blank -%}
+      <p class="announcement__msg {% if first %}is-active{% endif %}">{{ section.settings.message_1 }}</p>
+      {%- assign first = false -%}
+    {%- endif -%}
+    {%- if section.settings.message_2 != blank -%}
+      <p class="announcement__msg {% if first %}is-active{% endif %}">{{ section.settings.message_2 }}</p>
+      {%- assign first = false -%}
+    {%- endif -%}
+    {%- if section.settings.message_3 != blank -%}
+      <p class="announcement__msg {% if first %}is-active{% endif %}">{{ section.settings.message_3 }}</p>
+      {%- assign first = false -%}
+    {%- endif -%}
+    {%- if first -%}
+      <p class="announcement__msg is-active">🇺🇸 Handmade in America &middot; Free U.S. Shipping</p>
+    {%- endif -%}
+  </div>
+</div>
+<div class="flag-bar" aria-hidden="true"></div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Messages rotate every 4 seconds. Leave a field blank to skip it."
+    },
+    {
+      "type": "text",
+      "id": "message_1",
+      "label": "Message 1",
+      "default": "🇺🇸 Handmade in America — Every single one. No exceptions."
+    },
+    {
+      "type": "text",
+      "id": "message_2",
+      "label": "Message 2",
+      "default": "★ Veteran-owned & operated — Free U.S. shipping on every order"
+    },
+    {
+      "type": "text",
+      "id": "message_3",
+      "label": "Message 3",
+      "default": "Hand-signed & numbered — 60-day money-back guarantee"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,144 @@
+<footer class="site-footer">
+  <div class="flag-bar" aria-hidden="true"></div>
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="site-header__wordmark"><span class="star" style="color: var(--red)">★</span> {{ shop.name }}</span>
+        <p>{{ section.settings.tagline }}</p>
+        <div class="footer__social">
+          {%- if settings.social_facebook != blank -%}
+            <a href="{{ settings.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'icon', name: 'facebook' %}</a>
+          {%- endif -%}
+          {%- if settings.social_instagram != blank -%}
+            <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>
+          {%- endif -%}
+          {%- if settings.social_twitter != blank -%}
+            <a href="{{ settings.social_twitter }}" target="_blank" rel="noopener" aria-label="X (Twitter)">{% render 'icon', name: 'twitter' %}</a>
+          {%- endif -%}
+          {%- if settings.social_youtube != blank -%}
+            <a href="{{ settings.social_youtube }}" target="_blank" rel="noopener" aria-label="YouTube">{% render 'icon', name: 'youtube' %}</a>
+          {%- endif -%}
+          {%- if settings.social_tiktok != blank -%}
+            <a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">{% render 'icon', name: 'tiktok' %}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer__heading">{{ section.settings.menu_1_heading }}</h3>
+        <ul class="footer__menu">
+          {%- for link in section.settings.menu_1.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer__heading">{{ section.settings.menu_2_heading }}</h3>
+        <ul class="footer__menu">
+          {%- for link in section.settings.menu_2.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-trust">
+      {%- if section.settings.trust_1 != blank -%}
+        <span>{% render 'icon', name: 'medal' %} {{ section.settings.trust_1 }}</span>
+      {%- endif -%}
+      {%- if section.settings.trust_2 != blank -%}
+        <span>{% render 'icon', name: 'flag' %} {{ section.settings.trust_2 }}</span>
+      {%- endif -%}
+      {%- if section.settings.trust_3 != blank -%}
+        <span>{% render 'icon', name: 'shield' %} {{ section.settings.trust_3 }}</span>
+      {%- endif -%}
+      {%- if section.settings.trust_4 != blank -%}
+        <span>{% render 'icon', name: 'lock' %} {{ section.settings.trust_4 }}</span>
+      {%- endif -%}
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved. Proudly American.</span>
+      {%- if section.settings.show_payment_icons -%}
+        <div class="payment-icons">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag }}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Brand tagline",
+      "default": "Hand-carved American flag art from a veteran-owned workshop. Every piece is cut, burned, and sealed by hand — built to be passed down, not thrown out."
+    },
+    {
+      "type": "text",
+      "id": "menu_1_heading",
+      "label": "Menu 1 heading",
+      "default": "Shop"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu 1",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_heading",
+      "label": "Menu 2 heading",
+      "default": "Support"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu 2",
+      "default": "footer"
+    },
+    {
+      "type": "header",
+      "content": "Trust badges"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Badge 1",
+      "default": "Veteran-Owned & Operated"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Badge 2",
+      "default": "Handmade in the USA"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Badge 3",
+      "default": "60-Day Money-Back Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "trust_4",
+      "label": "Badge 4",
+      "default": "Secure 256-bit Checkout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

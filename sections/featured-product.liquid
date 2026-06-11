@@ -1,0 +1,267 @@
+{%- liquid
+  assign product = section.settings.product
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+<section class="section" id="buy">
+  <div class="container">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+      <div class="section-head">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="buybox__grid">
+      <div data-gallery data-reveal="left">
+        <div class="gallery__main">
+          {%- if product.featured_image -%}
+            <img
+              data-gallery-main
+              src="{{ product.featured_image | image_url: width: 900 }}"
+              srcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 900 }} 900w, {{ product.featured_image | image_url: width: 1200 }} 1200w"
+              sizes="(min-width: 880px) 48vw, 92vw"
+              alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
+              width="900" height="900">
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        {%- if product.images.size > 1 -%}
+          <div class="gallery__thumbs">
+            {%- for image in product.images limit: 5 -%}
+              <button
+                type="button"
+                class="gallery__thumb{% if forloop.first %} is-active{% endif %}"
+                data-gallery-thumb
+                data-full="{{ image | image_url: width: 900 }}"
+                data-full-srcset="{{ image | image_url: width: 600 }} 600w, {{ image | image_url: width: 900 }} 900w, {{ image | image_url: width: 1200 }} 1200w"
+                aria-label="View image {{ forloop.index }}">
+                <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape }}" loading="lazy" width="76" height="76">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="buybox__panel" data-reveal="right" data-product-form>
+        {%- if product != blank -%}
+          {%- if section.settings.rating_text != blank -%}
+            <div class="rating-line">
+              {% render 'stars', rating: 5 %}
+              <span>{{ section.settings.rating_text }}</span>
+            </div>
+          {%- endif -%}
+
+          <h3 class="buybox__title h2">{{ product.title }}</h3>
+          {%- if section.settings.tagline != blank -%}
+            <p class="buybox__tagline">{{ section.settings.tagline }}</p>
+          {%- endif -%}
+
+          <div class="price">
+            <span class="price__current" data-price-current>{{ current_variant.price | money }}</span>
+            <s class="price__compare" data-price-compare {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
+            {%- if current_variant.compare_at_price > current_variant.price -%}
+              <span class="price__save">Save {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%</span>
+            {%- endif -%}
+          </div>
+
+          {%- if section.blocks.size > 0 -%}
+            <ul class="check-list">
+              {%- for block in section.blocks -%}
+                <li {{ block.shopify_attributes }}>{% render 'icon', name: 'check' %} {{ block.settings.text }}</li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart>
+            {%- unless product.has_only_default_variant -%}
+              <div class="variant-picker">
+                {%- for option in product.options_with_values -%}
+                  <div>
+                    <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+                    <select id="Option-{{ section.id }}-{{ forloop.index0 }}" data-option-select>
+                      {%- for value in option.values -%}
+                        <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                      {%- endfor -%}
+                    </select>
+                  </div>
+                {%- endfor -%}
+              </div>
+              <script type="application/json" data-product-json>{{ product | json }}</script>
+            {%- endunless -%}
+
+            <input type="hidden" name="id" value="{{ current_variant.id }}">
+            <div data-atc-anchor></div>
+            <button
+              type="submit"
+              class="btn btn--primary btn--lg btn--full"
+              data-atc-button
+              data-text-add="{{ section.settings.button_label | default: 'Add to Cart' | escape }}"
+              data-text-soldout="Sold Out"
+              data-text-unavailable="Unavailable"
+              {% unless current_variant.available %}disabled{% endunless %}>
+              <span data-atc-label>{% if current_variant.available %}{{ section.settings.button_label | default: 'Add to Cart' }}{% else %}Sold Out{% endif %}</span>
+              {% render 'icon', name: 'arrow-right' %}
+            </button>
+            <p class="btn-note">{% render 'icon', name: 'lock' %} {{ section.settings.button_note }}</p>
+          </form>
+
+          {%- if section.settings.show_countdown -%}
+            <div class="countdown-box" data-countdown-cutoff="{{ section.settings.cutoff_hour }}">
+              {% render 'icon', name: 'clock' %}
+              <span>{{ section.settings.countdown_text }} <strong data-countdown-time>&nbsp;</strong></span>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.stock_note != blank -%}
+            <p class="stock-note"><span class="pulse-dot"></span> {{ section.settings.stock_note }}</p>
+          {%- endif -%}
+
+          <div class="trust-row">
+            <div class="trust-row__item">{% render 'icon', name: 'flag' %}<span>{{ section.settings.trust_1 }}</span></div>
+            <div class="trust-row__item">{% render 'icon', name: 'truck' %}<span>{{ section.settings.trust_2 }}</span></div>
+            <div class="trust-row__item">{% render 'icon', name: 'shield' %}<span>{{ section.settings.trust_3 }}</span></div>
+          </div>
+
+        {%- else -%}
+          <h3 class="buybox__title h2">Select a product</h3>
+          <p class="buybox__tagline">Choose your flag carving in the theme editor (Featured product section → Product) and this buy box will come to life.</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Original"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "One Carving. Three Days of Work. A Lifetime on Your Wall."
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "4.9/5 from 800+ verified owners"
+    },
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "The hand-carved eagle & American flag — solid wood, burned-in detail, ready to hang the day it arrives."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Claim Yours — Ships Free"
+    },
+    {
+      "type": "text",
+      "id": "button_note",
+      "label": "Text under button",
+      "default": "Secure checkout · 60-day money-back guarantee"
+    },
+    {
+      "type": "header",
+      "content": "Urgency"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Show dispatch countdown",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "cutoff_hour",
+      "min": 0,
+      "max": 23,
+      "step": 1,
+      "label": "Daily dispatch cutoff hour (24h, visitor's local time)",
+      "default": 14
+    },
+    {
+      "type": "text",
+      "id": "countdown_text",
+      "label": "Countdown text",
+      "default": "Order within"
+    },
+    {
+      "type": "text",
+      "id": "stock_note",
+      "label": "Scarcity note",
+      "info": "Only use real numbers — trust is the whole brand.",
+      "default": "Small-batch workshop — limited carvings finished each week"
+    },
+    {
+      "type": "header",
+      "content": "Trust row"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust item 1",
+      "default": "Handmade in the USA"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust item 2",
+      "default": "Free insured U.S. shipping"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust item 3",
+      "default": "60-day money-back guarantee"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text",
+          "default": "Carved from solid American hardwood"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Featured product",
+      "blocks": [
+        { "type": "benefit", "settings": { "text": "Solid hardwood — feels heavy, because it is" } },
+        { "type": "benefit", "settings": { "text": "Eagle & stars detail burned in by hand, never printed" } },
+        { "type": "benefit", "settings": { "text": "Arrives ready to hang — hardware included" } },
+        { "type": "benefit", "settings": { "text": "Hand-signed & numbered by the maker" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

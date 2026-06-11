@@ -1,0 +1,119 @@
+<section class="section section--cream2" id="faq">
+  <div class="container">
+    <div class="section-head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="faq__list">
+      {%- for block in section.blocks -%}
+        <details class="faq-item" data-reveal style="--reveal-delay: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <summary>
+            {{ block.settings.question }}
+            {% render 'icon', name: 'plus' %}
+          </summary>
+          <div class="faq-item__a rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Straight Answers"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Questions? We Shoot Straight."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Is it really handmade in the USA?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Yes — every single one, start to finish, in our American workshop.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "Is it really handmade in the USA?",
+            "answer": "<p>Yes — every single carving is cut, burned, sealed, and signed in our American workshop. Nothing is imported, outsourced, or printed. That’s the whole point of this company.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How big is it, and is it heavy?",
+            "answer": "<p>Sizes are listed on the product page. It’s solid hardwood, so it has real weight to it — that’s the first thing people notice when they pick it up. Mounting hardware rated for the weight is included.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How do I hang it?",
+            "answer": "<p>It arrives ready to hang with keyhole mounts cut into the back and the hardware included. Most folks have it on the wall within five minutes of opening the box.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How long until it arrives?",
+            "answer": "<p>In-stock carvings ship within 1 business day, fully insured and free anywhere in the U.S. Most orders arrive in 3–5 business days. Made-to-order pieces show their build time on the product page.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Can I give it as a gift?",
+            "answer": "<p>It’s one of the most popular retirement, Veterans Day, and Father’s Day gifts we know of. Add a note at checkout and we’ll include a handwritten card — no prices on anything.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What if I don’t love it?",
+            "answer": "<p>Send it back within 60 days for a full refund — we even cover the return shipping. It’s a promise we can afford to make because returns almost never happen.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

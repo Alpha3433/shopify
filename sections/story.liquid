@@ -1,0 +1,109 @@
+<section class="section{% if section.settings.color_scheme == 'navy' %} section--navy{% endif %}">
+  <div class="container">
+    <div class="story__grid{% if section.settings.flip %} story__grid--flip{% endif %}">
+      <div class="story__media" data-reveal="left">
+        <div class="story__media-frame">
+          {%- if section.settings.image -%}
+            <img
+              src="{{ section.settings.image | image_url: width: 800 }}"
+              srcset="{{ section.settings.image | image_url: width: 500 }} 500w, {{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1100 }} 1100w"
+              sizes="(min-width: 880px) 42vw, 92vw"
+              alt="{{ section.settings.image.alt | escape | default: section.settings.heading | escape }}"
+              loading="lazy"
+              width="800" height="1000">
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        {%- if section.settings.stamp_text != blank -%}
+          <span class="story__stamp">{{ section.settings.stamp_text }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="story__content" data-reveal="right">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        <div class="story__text rte">{{ section.settings.text }}</div>
+        {%- if section.settings.signature_name != blank -%}
+          <div class="story__signature">
+            <span class="story__signature-name">{{ section.settings.signature_name }}</span>
+            <span class="story__signature-role">{{ section.settings.signature_role }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "cream", "label": "Cream" },
+        { "value": "navy", "label": "Navy" }
+      ],
+      "default": "cream"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip",
+      "label": "Image on right",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Portrait orientation works best (4:5). A photo of the maker at work builds the most trust."
+    },
+    {
+      "type": "text",
+      "id": "stamp_text",
+      "label": "Stamp badge text",
+      "default": "EST. 2018 · USA"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our Story"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Carved by Hands That Served Under This Flag."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>After 22 years in the U.S. Army, I came home and couldn’t find a flag worth hanging. Everything in the stores was printed plastic with a “patriotic” label slapped on it — made anywhere but here.</p><p>So I went out to my garage, picked up a chisel, and carved my own. A neighbor asked for one. Then his brother. Then half the county.</p><p>Today, every carving still passes through my hands before it ships. I cut it, burn the detail in, seal it, and sign it — because the flag I served under deserves better than a factory line.</p>"
+    },
+    {
+      "type": "text",
+      "id": "signature_name",
+      "label": "Signature name",
+      "default": "— Frank D."
+    },
+    {
+      "type": "text",
+      "id": "signature_role",
+      "label": "Signature role",
+      "default": "Founder · U.S. Army (Ret.)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story"
+    }
+  ]
+}
+{% endschema %}

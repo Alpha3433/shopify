@@ -1,0 +1,54 @@
+<div class="page-hero">
+  <div class="container">
+    <h1>Order {{ order.name }}</h1>
+    <p>Placed {{ order.created_at | date: '%B %-d, %Y' }}</p>
+  </div>
+</div>
+<div class="flag-bar" aria-hidden="true"></div>
+
+<section class="section">
+  <div class="container">
+    <table class="cart-page__table">
+      <thead>
+        <tr>
+          <th scope="col">Product</th>
+          <th scope="col">Qty</th>
+          <th scope="col" style="text-align:right">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for line_item in order.line_items -%}
+          <tr>
+            <td>
+              <strong>{{ line_item.title }}</strong>
+              {%- if line_item.fulfillment -%}
+                <div class="cart-line__variant">
+                  Fulfilled {{ line_item.fulfillment.created_at | date: '%B %-d, %Y' }}
+                  {%- if line_item.fulfillment.tracking_number %} · Tracking: {{ line_item.fulfillment.tracking_number }}{% endif -%}
+                </div>
+              {%- endif -%}
+            </td>
+            <td>{{ line_item.quantity }}</td>
+            <td style="text-align:right">{{ line_item.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+
+    <div class="cart-page__summary">
+      <p>Subtotal: <strong>{{ order.line_items_subtotal_price | money }}</strong></p>
+      {%- for shipping_method in order.shipping_methods -%}
+        <p>Shipping ({{ shipping_method.title }}): <strong>{{ shipping_method.price | money }}</strong></p>
+      {%- endfor -%}
+      {%- for tax_line in order.tax_lines -%}
+        <p>Tax ({{ tax_line.title }}): <strong>{{ tax_line.price | money }}</strong></p>
+      {%- endfor -%}
+      <div class="cart-drawer__subtotal">
+        <span>Total</span>
+        <span>{{ order.total_price | money }}</span>
+      </div>
+    </div>
+
+    <a href="{{ routes.account_url }}" class="btn btn--outline" style="margin-top: 32px">&larr; Back to Account</a>
+  </div>
+</section>

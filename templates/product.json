@@ -1,0 +1,125 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "text": "Solid hardwood — feels heavy, because it is" } },
+        "b2": { "type": "benefit", "settings": { "text": "Eagle & stars detail burned in by hand, never printed" } },
+        "b3": { "type": "benefit", "settings": { "text": "Arrives ready to hang — hardware included" } },
+        "b4": { "type": "benefit", "settings": { "text": "Hand-signed & numbered by the maker" } },
+        "a1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Free insured shipping anywhere in the U.S. In-stock pieces ship within 1 business day; most orders arrive in 3–5 business days. 60-day money-back guarantee — we even cover return shipping.</p>"
+          }
+        },
+        "a2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Wood, Finish & Care",
+            "content": "<p>Solid American hardwood with a hand-rubbed, furniture-grade finish. Dust with a dry cloth — that’s it. Keep out of direct rain and it will outlive all of us.</p>"
+          }
+        }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "a1", "a2"],
+      "settings": {}
+    },
+    "story": {
+      "type": "story",
+      "settings": {
+        "color_scheme": "navy",
+        "flip": true,
+        "eyebrow": "Who Makes It",
+        "heading": "Every Carving Passes Through a Veteran's Hands.",
+        "text": "<p>After 22 years in the U.S. Army, I couldn’t find a flag worth hanging — so I carved my own. Today, every piece that leaves this workshop is cut, burned, sealed, and signed by hand before it ships to your door.</p>",
+        "signature_name": "— Frank D.",
+        "signature_role": "Founder · U.S. Army (Ret.)",
+        "stamp_text": "EST. 2018 · USA"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "r1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Bought it for my dad — 26 years in the Marine Corps. He hung it over the fireplace the same day and just said, “Now that's a flag.”",
+            "name": "Sarah K.",
+            "location": "Knoxville, Tennessee",
+            "verified": true
+          }
+        },
+        "r2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "I was worried it'd look like the printed stuff at the big-box stores. Then I picked it up. It's heavy, the eagle detail is unreal, and you can see where it was worked by hand.",
+            "name": "Mike D.",
+            "location": "Cedar Rapids, Iowa",
+            "verified": true
+          }
+        },
+        "r3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Third one I've ordered. One for the house, one for my brother's retirement from the Navy, one for my son's first home. This is what we'll pass down.",
+            "name": "Earl W.",
+            "location": "Mobile, Alabama",
+            "verified": true
+          }
+        }
+      },
+      "block_order": ["r1", "r2", "r3"],
+      "settings": {}
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "blocks": {
+        "g1": { "type": "item", "settings": { "text": "60-day money-back guarantee — full refund" } },
+        "g2": { "type": "item", "settings": { "text": "Free, fully-insured shipping both ways" } },
+        "g3": { "type": "item", "settings": { "text": "Lifetime craftsmanship warranty on every carving" } }
+      },
+      "block_order": ["g1", "g2", "g3"],
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Is it really handmade in the USA?",
+            "answer": "<p>Yes — every single carving is cut, burned, sealed, and signed in our American workshop. Nothing is imported, outsourced, or printed.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "How do I hang it?",
+            "answer": "<p>It arrives ready to hang with keyhole mounts cut into the back and the hardware included. Most folks have it on the wall within five minutes of opening the box.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "How long until it arrives?",
+            "answer": "<p>In-stock carvings ship within 1 business day, fully insured and free anywhere in the U.S. Most orders arrive in 3–5 business days.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What if I don’t love it?",
+            "answer": "<p>Send it back within 60 days for a full refund — we even cover the return shipping.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {}
+    }
+  },
+  "order": ["main", "story", "testimonials", "guarantee", "faq"]
+}

@@ -1,0 +1,35 @@
+{
+  "general": {
+    "search": {
+      "placeholder": "Search our store",
+      "submit": "Search"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "Looks like this page marched off. Let's get you back home."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "checkout": "Secure Checkout",
+      "subtotal": "Subtotal"
+    }
+  },
+  "customer": {
+    "login": {
+      "title": "Sign in",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in"
+    }
+  }
+}

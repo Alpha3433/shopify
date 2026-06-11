@@ -1,0 +1,11 @@
+{%- liquid
+  comment
+    Renders a row of 5 stars. Usage: {% render 'stars', rating: 5 %}
+  endcomment
+  assign star_rating = rating | default: 5 | times: 1
+-%}
+<span class="stars" role="img" aria-label="{{ star_rating }} out of 5 stars">
+  {%- for i in (1..5) -%}
+    <span {% if i > star_rating %}style="opacity:0.25"{% endif %}>{% render 'icon', name: 'star' %}</span>
+  {%- endfor -%}
+</span>

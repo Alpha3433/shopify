@@ -1,0 +1,82 @@
+<div class="page-hero">
+  <div class="container">
+    <h1>Addresses</h1>
+  </div>
+</div>
+<div class="flag-bar" aria-hidden="true"></div>
+
+<section class="section">
+  <div class="container container--narrow">
+    {%- paginate customer.addresses by 10 -%}
+      {%- for address in customer.addresses -%}
+        <div class="form-card" style="max-width: none; margin-bottom: 20px">
+          {%- if address == customer.default_address -%}
+            <p class="eyebrow" style="margin-bottom: 10px">Default</p>
+          {%- endif -%}
+          <p>
+            {{ address.first_name }} {{ address.last_name }}<br>
+            {{ address.address1 }}{% if address.address2 != blank %}, {{ address.address2 }}{% endif %}<br>
+            {{ address.city }}, {{ address.province_code }} {{ address.zip }}<br>
+            {{ address.country }}
+          </p>
+          <div style="display:flex; gap:12px; margin-top: 16px">
+            <form method="post" action="{{ routes.account_addresses_url }}/{{ address.id }}">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="cart-line__remove" onclick="return confirm('Delete this address?')">Delete</button>
+            </form>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endpaginate -%}
+
+    <div class="form-card" style="max-width: none">
+      <h2 class="h3" style="margin-bottom: 20px">Add a New Address</h2>
+      {%- form 'customer_address', customer.new_address -%}
+        <div class="field">
+          <label for="AddressFirstName">First name</label>
+          <input type="text" id="AddressFirstName" name="address[first_name]" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="AddressLastName">Last name</label>
+          <input type="text" id="AddressLastName" name="address[last_name]" autocomplete="family-name">
+        </div>
+        <div class="field">
+          <label for="AddressAddress1">Address</label>
+          <input type="text" id="AddressAddress1" name="address[address1]" autocomplete="address-line1">
+        </div>
+        <div class="field">
+          <label for="AddressAddress2">Apartment, suite, etc.</label>
+          <input type="text" id="AddressAddress2" name="address[address2]" autocomplete="address-line2">
+        </div>
+        <div class="field">
+          <label for="AddressCity">City</label>
+          <input type="text" id="AddressCity" name="address[city]" autocomplete="address-level2">
+        </div>
+        <div class="field">
+          <label for="AddressCountry">Country/Region</label>
+          <select id="AddressCountry" name="address[country]" data-default="{{ customer.new_address.country }}">
+            {{ all_country_option_tags }}
+          </select>
+        </div>
+        <div class="field">
+          <label for="AddressProvince">State/Province</label>
+          <input type="text" id="AddressProvince" name="address[province]" autocomplete="address-level1">
+        </div>
+        <div class="field">
+          <label for="AddressZip">ZIP/Postal code</label>
+          <input type="text" id="AddressZip" name="address[zip]" autocomplete="postal-code">
+        </div>
+        <div class="field">
+          <label for="AddressPhone">Phone</label>
+          <input type="tel" id="AddressPhone" name="address[phone]" autocomplete="tel">
+        </div>
+        <label style="display:flex; gap:8px; align-items:center; margin-bottom: 18px; font-size: 0.92rem">
+          <input type="checkbox" name="address[default]" style="width:auto"> Set as default address
+        </label>
+        <button type="submit" class="btn btn--primary">Add Address</button>
+      {%- endform -%}
+    </div>
+
+    <a href="{{ routes.account_url }}" class="btn btn--outline" style="margin-top: 28px">&larr; Back to Account</a>
+  </div>
+</section>

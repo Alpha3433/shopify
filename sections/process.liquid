@@ -1,0 +1,98 @@
+<section class="section section--navy">
+  <div class="container">
+    <div class="section-head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="process__grid">
+      {%- for block in section.blocks -%}
+        <div class="step-card" data-reveal style="--reveal-delay: {{ forloop.index }}" {{ block.shopify_attributes }}>
+          <div class="step-card__num">{{ forloop.index | prepend: '0' }}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Process steps",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Craft"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "From Rough American Lumber to Family Heirloom."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "No factory line. No shortcuts. Every carving takes three days of honest work."
+    }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Carved"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Each flag is cut from solid hardwood and shaped by hand."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Carved",
+            "text": "Solid American hardwood is cut and shaped into the waving flag — every ripple done by hand, so no two are ever the same."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Burned & Detailed",
+            "text": "The eagle, stars, and stripes are burned and tooled into the grain. That's depth you can run your fingers across — not a printed picture."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Sealed, Signed & Shipped",
+            "text": "A hand-rubbed finish protects it for decades. The maker signs and numbers each piece, then it ships free — insured, with hanging hardware included."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

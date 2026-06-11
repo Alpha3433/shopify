@@ -1,0 +1,42 @@
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {%- for block in section.blocks -%}
+      <span class="marquee__item" {{ block.shopify_attributes }}>
+        <span class="marquee__star">★</span> {{ block.settings.text }}
+      </span>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Scrolling banner",
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Text item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Hand-Carved in the USA"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling banner",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Hand-Carved in the USA" } },
+        { "type": "item", "settings": { "text": "Veteran-Owned & Operated" } },
+        { "type": "item", "settings": { "text": "Solid Wood — No Prints, No Plastic" } },
+        { "type": "item", "settings": { "text": "60-Day Money-Back Guarantee" } },
+        { "type": "item", "settings": { "text": "Free U.S. Shipping" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="{{ settings.color_navy }}">
+
+  <title>
+    {{- page_title -}}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64, height: 64 }}">
+  {%- endif -%}
+
+  {%- comment -%} Open Graph {%- endcomment -%}
+  <meta property="og:site_name" content="{{ shop.name }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:type" content="website">
+  {%- if page_description -%}
+    <meta property="og:description" content="{{ page_description | escape }}">
+  {%- endif -%}
+  {%- if page_image -%}
+    <meta property="og:image" content="http:{{ page_image | image_url: width: 1200 }}">
+    <meta property="og:image:secure_url" content="https:{{ page_image | image_url: width: 1200 }}">
+  {%- endif -%}
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+
+  <style>
+    :root {
+      --navy: {{ settings.color_navy | default: '#0d1b2e' }};
+      --navy-2: {{ settings.color_navy | default: '#0d1b2e' | color_lighten: 4 }};
+      --navy-3: {{ settings.color_navy | default: '#0d1b2e' | color_lighten: 10 }};
+      --red: {{ settings.color_red | default: '#b22234' }};
+      --red-2: {{ settings.color_red | default: '#b22234' | color_darken: 6 }};
+      --gold: {{ settings.color_gold | default: '#c9a227' }};
+      --gold-2: {{ settings.color_gold | default: '#c9a227' | color_lighten: 14 }};
+      --cream: {{ settings.color_cream | default: '#f7f2e7' }};
+      --cream-2: {{ settings.color_cream | default: '#f7f2e7' | color_darken: 4 }};
+      --cream-3: {{ settings.color_cream | default: '#f7f2e7' | color_darken: 10 }};
+      --ink: {{ settings.color_ink | default: '#221f1a' }};
+      --page-width: {{ settings.page_width | default: 1200 }}px;
+    }
+  </style>
+
+  <script>
+    window.theme = {
+      moneyFormat: {{ shop.money_format | json }},
+      cartCount: {{ cart.item_count }},
+      freeShippingThreshold: {{ settings.free_shipping_threshold | default: 0 | times: 100 }},
+      allProductsUrl: {{ routes.all_products_collection_url | json }}
+    };
+  </script>
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+  {{ content_for_header }}
+</head>
+
+<body class="template-{{ template.name | handle }}">
+  <a class="skip-link" href="#MainContent">Skip to content</a>
+
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+
+  <main id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  {% render 'cart-drawer' %}
+</body>
+</html>

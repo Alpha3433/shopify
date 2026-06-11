@@ -1,0 +1,52 @@
+<div class="page-hero">
+  <div class="container">
+    <h1>My Account</h1>
+    <p>{{ customer.first_name }} {{ customer.last_name }} · <a href="{{ routes.account_logout_url }}" style="text-decoration: underline">Log out</a></p>
+  </div>
+</div>
+<div class="flag-bar" aria-hidden="true"></div>
+
+<section class="section">
+  <div class="container">
+    <h2 style="margin-bottom: 24px">Order History</h2>
+    {%- if customer.orders.size > 0 -%}
+      <table class="cart-page__table">
+        <thead>
+          <tr>
+            <th scope="col">Order</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col" style="text-align:right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for order in customer.orders -%}
+            <tr>
+              <td><a href="{{ order.customer_url }}" style="font-weight:700; color: var(--red)">{{ order.name }}</a></td>
+              <td>{{ order.created_at | date: '%B %-d, %Y' }}</td>
+              <td>{{ order.fulfillment_status_label }}</td>
+              <td style="text-align:right">{{ order.total_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    {%- else -%}
+      <p>You haven't placed any orders yet.</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary" style="margin-top: 20px">Shop the Collection</a>
+    {%- endif -%}
+
+    <div style="margin-top: 48px">
+      <h2 style="margin-bottom: 16px">Default Address</h2>
+      {%- if customer.default_address -%}
+        <p>
+          {{ customer.default_address.address1 }}{% if customer.default_address.address2 != blank %}, {{ customer.default_address.address2 }}{% endif %}<br>
+          {{ customer.default_address.city }}, {{ customer.default_address.province_code }} {{ customer.default_address.zip }}<br>
+          {{ customer.default_address.country }}
+        </p>
+      {%- else -%}
+        <p>No address on file.</p>
+      {%- endif -%}
+      <a href="{{ routes.account_addresses_url }}" class="btn btn--outline" style="margin-top: 20px">Manage Addresses</a>
+    </div>
+  </div>
+</section>

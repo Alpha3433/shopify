@@ -1,0 +1,132 @@
+<section class="section section--cream2">
+  <div class="container">
+    <div class="section-head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="testimonials__grid">
+      {%- for block in section.blocks -%}
+        <div class="t-card" data-reveal style="--reveal-delay: {{ forloop.index0 | modulo: 3 }}" {{ block.shopify_attributes }}>
+          {% render 'stars', rating: block.settings.rating %}
+          <p class="t-card__quote">{{ block.settings.quote }}</p>
+          <div class="t-card__author">
+            <div>
+              <div class="t-card__name">{{ block.settings.name }}</div>
+              <div class="t-card__loc">{{ block.settings.location }}</div>
+            </div>
+            {%- if block.settings.verified -%}
+              <span class="verified">{% render 'icon', name: 'check-circle' %} Verified</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "From American Homes"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "“Is It Really Hand-Carved?” Ask the Folks Who Own One."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real words from real owners — fathers, mothers, veterans, and the people who love them."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star rating",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "You can feel the work in it. This isn’t store-bought junk — it’s the real deal."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer name",
+          "default": "Tom R."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "Amarillo, Texas"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show 'Verified' badge",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Bought it for my dad — 26 years in the Marine Corps. He's a man of few words. He hung it over the fireplace the same day and just said, “Now that's a flag.”",
+            "name": "Sarah K.",
+            "location": "Knoxville, Tennessee"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "I was worried it'd look like the printed stuff at the big-box stores. Then I picked it up. It's heavy, the eagle detail is unreal, and you can see the burn marks where it was worked by hand.",
+            "name": "Mike D.",
+            "location": "Cedar Rapids, Iowa"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Third one I've ordered. One for the house, one for my brother's retirement from the Navy, one for my son's first home. This is what we'll pass down.",
+            "name": "Earl W.",
+            "location": "Mobile, Alabama"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

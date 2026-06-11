@@ -1,0 +1,125 @@
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="benefits__grid">
+      {%- for block in section.blocks -%}
+        <div class="benefit-card" data-reveal style="--reveal-delay: {{ forloop.index0 | modulo: 4 }}" {{ block.shopify_attributes }}>
+          <div class="benefit-card__icon">{% render 'icon', name: block.settings.icon %}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why Old Glory"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built the Way Things Used to Be Built."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "tool", "label": "Hand tool" },
+            { "value": "flag", "label": "Flag" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "medal", "label": "Medal" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "package", "label": "Package" },
+            { "value": "gift", "label": "Gift" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "check-circle", "label": "Checkmark" }
+          ],
+          "default": "tool"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Hand-carved, start to finish"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Every ripple in the flag is cut by hand, so no two carvings are ever alike."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "tool",
+            "title": "Hand-carved, start to finish",
+            "text": "Every ripple in the flag is cut by hand, so no two carvings are ever alike. Yours is the only one like it in the world."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "flag",
+            "title": "American wood, American hands",
+            "text": "Solid hardwood sourced here, worked here. No imports wearing a flag sticker."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "medal",
+            "title": "Veteran-owned workshop",
+            "text": "Founded by a retired Army veteran who builds every piece like it's going in his own home — because the first one did."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "title": "Built for generations",
+            "text": "Hand-rubbed finish, lifetime craftsmanship warranty. This is the kind of thing that gets handed down, not thrown out."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

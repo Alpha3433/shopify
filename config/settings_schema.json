@@ -1,0 +1,113 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Old Glory",
+    "theme_version": "1.0.0",
+    "theme_author": "Old Glory Workshop",
+    "theme_documentation_url": "https://shopify.dev/themes",
+    "theme_support_url": "https://shopify.dev/themes"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_navy",
+        "label": "Navy (primary)",
+        "default": "#0d1b2e"
+      },
+      {
+        "type": "color",
+        "id": "color_red",
+        "label": "Heritage red (accent / buttons)",
+        "default": "#b22234"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Gold (highlights)",
+        "default": "#c9a227"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Cream (background)",
+        "default": "#f7f2e7"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Body text",
+        "default": "#221f1a"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1000,
+        "max": 1400,
+        "step": 50,
+        "unit": "px",
+        "label": "Page width",
+        "default": 1200
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold",
+        "info": "In your store currency (e.g. 75 = free shipping over $75). Set to 0 to hide the progress bar.",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "X (Twitter) URL"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  }
+]
