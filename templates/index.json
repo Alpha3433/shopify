@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -8,6 +17,7 @@
         "subheading": "Most patriotic décor is a picture of a flag on a flat board. This is the flag itself — stars, stripes, and eagle carved deep into solid wood, one piece at a time.",
         "cta_label": "See the Flag — Ships Free",
         "cta_scroll": true,
+        "cta_link": "",
         "rating_text": "",
         "sticker_text": "Carved by Hand",
         "stat_eyebrow": "Our Promise",
@@ -18,10 +28,12 @@
     "story": {
       "type": "story",
       "settings": {
+        "color_scheme": "cream",
+        "flip": false,
+        "stamp_text": "CARVED BY HAND · NO TWO ALIKE",
         "eyebrow": "Why We Make These",
         "heading": "You Can't Print Depth.",
         "text": "<p>Pick up a printed flag and you feel a board. Pick up a carved one and you feel ridges, grain, and weight — the difference between a picture of a thing and the thing itself.</p><p>Every flag we sell is carved from solid wood and finished by hand in small batches. The waving ripple, the eagle's feathers, the rows of stars — all of it sits in real relief, which is why no two flags are ever exactly alike.</p><p>We check every piece before it ships. If yours arrives less than perfect, we replace it free. That's the whole arrangement.</p>",
-        "stamp_text": "CARVED BY HAND · NO TWO ALIKE",
         "signature_name": "",
         "signature_role": ""
       }
@@ -29,13 +41,39 @@
     "featured_product": {
       "type": "featured-product",
       "blocks": {
-        "b1": { "type": "benefit", "settings": { "text": "Solid wood — feels heavy, because it is" } },
-        "b2": { "type": "benefit", "settings": { "text": "Stars, stripes & eagle carved in deep relief — never printed" } },
-        "b3": { "type": "benefit", "settings": { "text": "Arrives ready to hang — hardware included" } },
-        "b4": { "type": "benefit", "settings": { "text": "No two alike — every flag is one of one" } }
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Solid wood — feels heavy, because it is"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "text": "Stars, stripes & eagle carved in deep relief — never printed"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "text": "Arrives ready to hang — hardware included"
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "text": "No two alike — every flag is one of one"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
       "settings": {
+        "product": "hand-carved-wooden-american-flag-eagle",
         "eyebrow": "The Flag",
         "heading": "One Piece of Wood. One Flag. Yours.",
         "rating_text": "",
@@ -49,6 +87,8 @@
         "delivery_min": 8,
         "delivery_max": 14,
         "show_countdown": false,
+        "cutoff_hour": 14,
+        "countdown_text": "Order within",
         "stock_note": "",
         "trust_1": "Hand-carved solid wood",
         "trust_2": "Free insured U.S. shipping",
@@ -89,7 +129,11 @@
           }
         }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
         "eyebrow": "From American Homes",
         "heading": "“Is It Really Hand-Carved?” Ask the Folks Who Own One.",
@@ -99,11 +143,30 @@
     "guarantee": {
       "type": "guarantee",
       "blocks": {
-        "g1": { "type": "item", "settings": { "text": "60-day money-back guarantee — full refund" } },
-        "g2": { "type": "item", "settings": { "text": "Free, fully-insured U.S. shipping" } },
-        "g3": { "type": "item", "settings": { "text": "Arrives damaged? Replaced free — no questions" } }
+        "g1": {
+          "type": "item",
+          "settings": {
+            "text": "60-day money-back guarantee — full refund"
+          }
+        },
+        "g2": {
+          "type": "item",
+          "settings": {
+            "text": "Free, fully-insured U.S. shipping"
+          }
+        },
+        "g3": {
+          "type": "item",
+          "settings": {
+            "text": "Arrives damaged? Replaced free — no questions"
+          }
+        }
       },
-      "block_order": ["g1", "g2", "g3"],
+      "block_order": [
+        "g1",
+        "g2",
+        "g3"
+      ],
       "settings": {
         "eyebrow": "Our Promise",
         "heading": "Hang It in Your Home, Risk-Free, for 60 Days.",
@@ -156,8 +219,19 @@
           }
         }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
-      "settings": {}
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "eyebrow": "Straight Answers",
+        "heading": "Questions? We Shoot Straight.",
+        "subheading": ""
+      }
     },
     "final_cta": {
       "type": "final-cta",
@@ -166,6 +240,7 @@
         "subheading": "A printed sign gets replaced. A carved flag gets inherited.",
         "cta_label": "Get Yours — Ships Free",
         "cta_scroll": true,
+        "cta_link": "",
         "reassure_1": "Free U.S. shipping",
         "reassure_2": "60-day money-back guarantee",
         "reassure_3": "Arrives ready to hang"
