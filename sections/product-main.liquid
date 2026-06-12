@@ -1,0 +1,654 @@
+{%- comment -%} sync-rev: 2 {%- endcomment -%}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+<section class="section" id="buy">
+  <div class="container">
+    <div class="pdp__grid">
+
+      {%- comment -%} Collage gallery: product photos + content tiles {%- endcomment -%}
+      <div class="pdp__gallery">
+        {%- if product.images.size > 0 -%}
+          {%- for image in product.images limit: 2 -%}
+            <div class="tile{% if forloop.first and product.images.size == 1 %} tile--full{% endif %}">
+              <img
+                src="{{ image | image_url: width: 800 }}"
+                srcset="{{ image | image_url: width: 500 }} 500w, {{ image | image_url: width: 800 }} 800w, {{ image | image_url: width: 1100 }} 1100w"
+                sizes="(min-width: 880px) 28vw, 46vw"
+                alt="{{ image.alt | escape | default: product.title | escape }}"
+                width="800" height="800"
+                {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="tile">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+          <div class="tile">{{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+        {%- endif -%}
+
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'tile_banner' -%}
+              <div class="tile tile--full tile--content tile--{{ block.settings.scheme }}" {{ block.shopify_attributes }}>
+                <h2 class="tile__heading">{{ block.settings.heading }}</h2>
+                {%- if block.settings.text != blank -%}
+                  <p class="tile__text">{{ block.settings.text }}</p>
+                {%- endif -%}
+                <div class="tile__pills">
+                  {%- if block.settings.pill_1 != blank -%}
+                    <span class="tile__pill">{% render 'icon', name: 'check' %} {{ block.settings.pill_1 }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.pill_2 != blank -%}
+                    <span class="tile__pill">{% render 'icon', name: 'check' %} {{ block.settings.pill_2 }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.pill_3 != blank -%}
+                    <span class="tile__pill">{% render 'icon', name: 'check' %} {{ block.settings.pill_3 }}</span>
+                  {%- endif -%}
+                </div>
+              </div>
+
+            {%- when 'tile_info' -%}
+              <div class="tile tile--content tile--{{ block.settings.scheme }}{% if block.settings.full_width %} tile--full{% endif %}" {{ block.shopify_attributes }}>
+                <h3 class="tile__heading">{{ block.settings.heading }}</h3>
+                {%- if block.settings.item_1 != blank or block.settings.item_2 != blank or block.settings.item_3 != blank -%}
+                  <ul class="tile__list">
+                    {%- if block.settings.item_1 != blank -%}
+                      <li>{% render 'icon', name: 'check-circle' %} {{ block.settings.item_1 }}</li>
+                    {%- endif -%}
+                    {%- if block.settings.item_2 != blank -%}
+                      <li>{% render 'icon', name: 'check-circle' %} {{ block.settings.item_2 }}</li>
+                    {%- endif -%}
+                    {%- if block.settings.item_3 != blank -%}
+                      <li>{% render 'icon', name: 'check-circle' %} {{ block.settings.item_3 }}</li>
+                    {%- endif -%}
+                  </ul>
+                {%- endif -%}
+              </div>
+
+            {%- when 'tile_guarantee' -%}
+              <div class="tile tile--full tile--content tile--guarantee tile--{{ block.settings.scheme }}" {{ block.shopify_attributes }}>
+                <div class="tile-badge">
+                  <span class="tile-badge__num">{{ block.settings.badge_value }}</span>
+                  <span class="tile-badge__label">{{ block.settings.badge_label }}</span>
+                </div>
+                <h3 class="tile__heading">{{ block.settings.heading }}</h3>
+                <p class="tile__text">{{ block.settings.text }}</p>
+              </div>
+
+            {%- when 'tile_image' -%}
+              <div class="tile{% if block.settings.full_width %} tile--full{% endif %}" {{ block.shopify_attributes }}>
+                {%- if block.settings.image -%}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 1100 }}"
+                    srcset="{{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 1100 }} 1100w"
+                    sizes="(min-width: 880px) {% if block.settings.full_width %}56vw{% else %}28vw{% endif %}, 92vw"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    loading="lazy"
+                    width="1100" height="{% if block.settings.full_width %}825{% else %}1100{% endif %}">
+                {%- else -%}
+                  {{ 'product-3' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+
+        {%- if product.images.size > 2 -%}
+          {%- for image in product.images offset: 2 limit: 8 -%}
+            <div class="tile">
+              <img
+                src="{{ image | image_url: width: 800 }}"
+                srcset="{{ image | image_url: width: 500 }} 500w, {{ image | image_url: width: 800 }} 800w"
+                sizes="(min-width: 880px) 28vw, 46vw"
+                alt="{{ image.alt | escape | default: product.title | escape }}"
+                loading="lazy"
+                width="800" height="800">
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Sticky buy column {%- endcomment -%}
+      <div class="pdp__buy" data-product-form>
+        {%- if section.settings.vendor_label != blank -%}
+          <p class="pdp__vendor">{{ section.settings.vendor_label }}</p>
+        {%- endif -%}
+
+        <h1 class="pdp__title">{{ product.title }}</h1>
+
+        {%- if section.settings.rating_text != blank -%}
+          <div class="rating-line">
+            {% render 'stars', rating: 5 %}
+            <span>{{ section.settings.rating_text }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.tagline != blank -%}
+          <p class="pdp__tagline">{{ section.settings.tagline }}</p>
+        {%- endif -%}
+
+        <div class="price">
+          <span class="price__current" data-price-current>{{ current_variant.price | money }}</span>
+          <s class="price__compare" data-price-compare {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
+          {%- if current_variant.compare_at_price > current_variant.price -%}
+            <span class="price__save">Save {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%</span>
+          {%- endif -%}
+        </div>
+
+        {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
+        {%- if benefit_blocks.size > 0 -%}
+          <ul class="check-list">
+            {%- for block in benefit_blocks -%}
+              <li {{ block.shopify_attributes }}>{% render 'icon', name: 'check' %} {{ block.settings.text }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- form 'product', product, data-ajax-cart: 'true' -%}
+          {% render 'variant-pills', product: product, uid: section.id %}
+
+          {%- assign bundle_blocks = section.blocks | where: 'type', 'bundle' -%}
+          {%- if bundle_blocks.size > 0 -%}
+            <fieldset class="bundle-cards" data-bundle-group>
+              <legend class="opt-label">{{ section.settings.bundle_heading }}</legend>
+              {%- for block in bundle_blocks -%}
+                <label class="bundle-card" {{ block.shopify_attributes }}>
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="{{ section.id }}-bundle"
+                    data-bundle-qty="{{ block.settings.qty }}"
+                    {% if forloop.first %}checked{% endif %}>
+                  {%- if block.settings.badge != blank -%}
+                    <span class="bundle-card__badge">{{ block.settings.badge }}</span>
+                  {%- endif -%}
+                  <span class="bundle-card__check">{% render 'icon', name: 'check' %}</span>
+                  <span class="bundle-card__body">
+                    <span class="bundle-card__title">{{ block.settings.title }}</span>
+                    {%- if block.settings.subtitle != blank -%}
+                      <span class="bundle-card__sub">{{ block.settings.subtitle }}</span>
+                    {%- endif -%}
+                  </span>
+                  {%- if block.settings.save_text != blank -%}
+                    <span class="bundle-card__save">{{ block.settings.save_text }}</span>
+                  {%- endif -%}
+                </label>
+              {%- endfor -%}
+            </fieldset>
+          {%- endif -%}
+
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+          <div data-atc-anchor></div>
+          <div class="qty-row">
+            <div class="qty">
+              <button type="button" data-qty-change="-1" aria-label="Decrease quantity">{% render 'icon', name: 'minus' %}</button>
+              <input type="number" name="quantity" value="1" min="1" aria-label="Quantity">
+              <button type="button" data-qty-change="1" aria-label="Increase quantity">{% render 'icon', name: 'plus' %}</button>
+            </div>
+            <button
+              type="submit"
+              class="btn btn--primary btn--lg"
+              data-atc-button
+              data-text-add="{{ section.settings.button_label | default: 'Add to Cart' | escape }}"
+              data-text-soldout="Sold Out"
+              data-text-unavailable="Unavailable"
+              {% unless current_variant.available %}disabled{% endunless %}>
+              <span data-atc-label>{% if current_variant.available %}{{ section.settings.button_label | default: 'Add to Cart' }}{% else %}Sold Out{% endif %}</span>
+            </button>
+          </div>
+          {%- if section.settings.show_dynamic_checkout -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+          <p class="btn-note">{% render 'icon', name: 'lock' %} {{ section.settings.button_note }}</p>
+        {%- endform -%}
+
+        {% render 'offer-urgency',
+          sale_text: section.settings.sale_text,
+          sale_subtext: section.settings.sale_subtext,
+          sale_end: section.settings.sale_end,
+          show_delivery: section.settings.show_delivery,
+          delivery_min: section.settings.delivery_min,
+          delivery_max: section.settings.delivery_max
+        %}
+
+        {%- if section.settings.show_countdown -%}
+          <div class="countdown-box" data-countdown-cutoff="{{ section.settings.cutoff_hour }}">
+            {% render 'icon', name: 'clock' %}
+            <span>{{ section.settings.countdown_text }} <strong data-countdown-time>&nbsp;</strong></span>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.stock_note != blank -%}
+          <p class="stock-note"><span class="pulse-dot"></span> {{ section.settings.stock_note }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.note_heading != blank or section.settings.note_text != blank -%}
+          <div class="note-box">
+            {% render 'icon', name: 'tool' %}
+            <div>
+              <strong>{{ section.settings.note_heading }}</strong>
+              <p>{{ section.settings.note_text }}</p>
+            </div>
+          </div>
+        {%- endif -%}
+
+        <div class="trust-row">
+          <div class="trust-row__item">{% render 'icon', name: 'flag' %}<span>{{ section.settings.trust_1 }}</span></div>
+          <div class="trust-row__item">{% render 'icon', name: 'truck' %}<span>{{ section.settings.trust_2 }}</span></div>
+          <div class="trust-row__item">{% render 'icon', name: 'shield' %}<span>{{ section.settings.trust_3 }}</span></div>
+        </div>
+
+        {%- if section.settings.show_payment_icons -%}
+          <div class="payment-icons">
+            {%- for type in shop.enabled_payment_types -%}
+              {{ type | payment_type_svg_tag }}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div style="margin-top: 28px">
+          {%- if product.description != blank -%}
+            <details class="acc" open>
+              <summary>The Full Story {% render 'icon', name: 'plus' %}</summary>
+              <div class="acc__body rte">{{ product.description }}</div>
+            </details>
+          {%- endif -%}
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'accordion' -%}
+                <details class="acc" {{ block.shopify_attributes }}>
+                  <summary>{{ block.settings.title }} {% render 'icon', name: 'plus' %}</summary>
+                  <div class="acc__body rte">{{ block.settings.content }}</div>
+                </details>
+              {%- when '@app' -%}
+                {% render block %}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} Sticky mobile add-to-cart {%- endcomment -%}
+<div class="sticky-atc" data-sticky-atc>
+  <div class="sticky-atc__meta">
+    <div class="sticky-atc__title">{{ product.title }}</div>
+    <div class="sticky-atc__price" data-price-current>{{ current_variant.price | money }}</div>
+  </div>
+  <button type="button" class="btn btn--primary" data-sticky-submit {% unless current_variant.available %}disabled{% endunless %}>
+    {% if current_variant.available %}{{ section.settings.button_label | default: 'Add to Cart' }}{% else %}Sold Out{% endif %}
+  </button>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ request.origin | append: product.url | json }},
+  {% if product.featured_image %}"image": [{{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}],{% endif %}
+  "description": {{ product.description | strip_html | truncate: 300 | json }},
+  "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+  "offers": {
+    "@type": "Offer",
+    "price": {{ current_variant.price | divided_by: 100.0 | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "availability": "{% if current_variant.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "url": {{ request.origin | append: product.url | json }}
+  }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "vendor_label",
+      "label": "Label above title",
+      "default": "Small-Batch Wood Carving"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "info": "Only show a real rating from real reviews."
+    },
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Hand-carved solid wood. Burned-in detail. Signed, numbered, and ready to hang."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add to Cart — Ships Free"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dynamic_checkout",
+      "label": "Show dynamic checkout button (Shop Pay etc.)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "bundle_heading",
+      "label": "Bundle offers heading",
+      "info": "Shown above 'Bundle offer' blocks. Pair with a Shopify automatic volume discount (Discounts → Amount off products → quantity minimum) so the savings are real at checkout.",
+      "default": "Bundle & Save"
+    },
+    {
+      "type": "text",
+      "id": "button_note",
+      "label": "Text under buttons",
+      "default": "Secure checkout · 60-day money-back guarantee"
+    },
+    {
+      "type": "header",
+      "content": "Workshop note box"
+    },
+    {
+      "type": "text",
+      "id": "note_heading",
+      "label": "Note heading",
+      "default": "From the workshop"
+    },
+    {
+      "type": "textarea",
+      "id": "note_text",
+      "label": "Note text",
+      "default": "Every flag is carved, stained, and sealed by hand, then inspected before it ships. Hand-worked means no two are exactly alike."
+    },
+    {
+      "type": "header",
+      "content": "Sale offer",
+      "info": "Honest urgency: the box hides itself after the end date."
+    },
+    {
+      "type": "text",
+      "id": "sale_text",
+      "label": "Sale text",
+      "info": "e.g. Father's Day Sale — 30% off everything. Leave blank to hide. Pair with a real discount."
+    },
+    {
+      "type": "text",
+      "id": "sale_subtext",
+      "label": "Sale subtext",
+      "default": "Applied automatically at checkout"
+    },
+    {
+      "type": "text",
+      "id": "sale_end",
+      "label": "Sale end date (YYYY-MM-DD)",
+      "info": "Keep deadlines real — the box disappears after this date."
+    },
+    {
+      "type": "header",
+      "content": "Delivery estimate"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_delivery",
+      "label": "Show \"arrives by\" date range",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "delivery_min",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "unit": "d",
+      "label": "Fastest delivery (days)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "delivery_max",
+      "min": 2,
+      "max": 45,
+      "step": 1,
+      "unit": "d",
+      "label": "Slowest delivery (days)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Urgency"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Show dispatch countdown",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "cutoff_hour",
+      "min": 0,
+      "max": 23,
+      "step": 1,
+      "label": "Daily dispatch cutoff hour (24h, visitor's local time)",
+      "default": 14
+    },
+    {
+      "type": "text",
+      "id": "countdown_text",
+      "label": "Countdown text",
+      "default": "Order within"
+    },
+    {
+      "type": "text",
+      "id": "stock_note",
+      "label": "Scarcity note",
+      "info": "Only use if it's true — trust is the whole brand."
+    },
+    {
+      "type": "header",
+      "content": "Trust row"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust item 1",
+      "default": "Hand-carved solid wood"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust item 2",
+      "default": "Free insured U.S. shipping"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust item 3",
+      "default": "60-day money-back guarantee"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit (buy column)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text",
+          "default": "Carved from solid hardwood"
+        }
+      ]
+    },
+    {
+      "type": "bundle",
+      "name": "Bundle offer (buy column)",
+      "settings": [
+        {
+          "type": "range",
+          "id": "qty",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "label": "Quantity",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Single Carving"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Free U.S. shipping"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "info": "e.g. Most Popular"
+        },
+        {
+          "type": "text",
+          "id": "save_text",
+          "label": "Savings pill",
+          "info": "e.g. Save 10% — must match a real volume discount."
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion (buy column)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Shipping & Returns"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Free insured shipping anywhere in the U.S. In-stock pieces ship within 1 business day. 60-day money-back guarantee — we even cover return shipping.</p>"
+        }
+      ]
+    },
+    {
+      "type": "tile_banner",
+      "name": "Gallery tile: banner",
+      "settings": [
+        {
+          "type": "select",
+          "id": "scheme",
+          "label": "Color",
+          "options": [
+            { "value": "navy", "label": "Navy" },
+            { "value": "red", "label": "Red" },
+            { "value": "cream", "label": "Cream" }
+          ],
+          "default": "navy"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading",
+          "default": "A flag worthy of the people who carried it."
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        { "type": "text", "id": "pill_1", "label": "Pill 1", "default": "Hand-carved waving form" },
+        { "type": "text", "id": "pill_2", "label": "Pill 2", "default": "Burned-in eagle & stars" },
+        { "type": "text", "id": "pill_3", "label": "Pill 3", "default": "Solid wood, real weight" }
+      ]
+    },
+    {
+      "type": "tile_info",
+      "name": "Gallery tile: info list",
+      "settings": [
+        {
+          "type": "select",
+          "id": "scheme",
+          "label": "Color",
+          "options": [
+            { "value": "cream", "label": "Cream" },
+            { "value": "navy", "label": "Navy" },
+            { "value": "red", "label": "Red" }
+          ],
+          "default": "cream"
+        },
+        {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full width",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "What's in the box"
+        },
+        { "type": "text", "id": "item_1", "label": "Item 1", "default": "Your hand-signed, numbered carving" },
+        { "type": "text", "id": "item_2", "label": "Item 2", "default": "Keyhole mounts + rated hardware" },
+        { "type": "text", "id": "item_3", "label": "Item 3", "default": "Certificate of authenticity" }
+      ]
+    },
+    {
+      "type": "tile_guarantee",
+      "name": "Gallery tile: guarantee badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "scheme",
+          "label": "Color",
+          "options": [
+            { "value": "cream", "label": "Cream" },
+            { "value": "navy", "label": "Navy" }
+          ],
+          "default": "cream"
+        },
+        { "type": "text", "id": "badge_value", "label": "Badge value", "default": "60" },
+        { "type": "text", "id": "badge_label", "label": "Badge label", "default": "Days" },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Hang it risk-free for 60 days"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "If it doesn't stop you in your tracks every time you walk past it, send it back for a full refund. We even cover return shipping."
+        }
+      ]
+    },
+    {
+      "type": "tile_image",
+      "name": "Gallery tile: extra image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "checkbox", "id": "full_width", "label": "Full width", "default": false }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

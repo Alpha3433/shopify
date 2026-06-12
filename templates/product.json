@@ -1,12 +1,32 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "product-main",
       "blocks": {
-        "b1": { "type": "benefit", "settings": { "text": "Solid wood — feels heavy, because it is" } },
-        "b2": { "type": "benefit", "settings": { "text": "Stars, stripes & eagle carved in deep relief — never printed" } },
-        "b3": { "type": "benefit", "settings": { "text": "Arrives ready to hang — hardware included" } },
-        "b4": { "type": "benefit", "settings": { "text": "No two alike — every flag is one of one" } },
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Solid wood — feels heavy, because it is"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "text": "Stars, stripes & eagle carved in deep relief — never printed"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "text": "Arrives ready to hang — hardware included"
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "text": "No two alike — every flag is one of one"
+          }
+        },
         "t1": {
           "type": "tile_banner",
           "settings": {
@@ -42,7 +62,16 @@
           }
         }
       },
-      "block_order": ["b1", "b2", "b3", "b4", "t1", "t2", "a1", "a2"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "t1",
+        "t2",
+        "a1",
+        "a2"
+      ],
       "settings": {
         "rating_text": "",
         "button_label": "Add to Cart — Ships Free",
@@ -101,7 +130,11 @@
           }
         }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
         "eyebrow": "From American Homes",
         "heading": "“Is It Really Hand-Carved?” Ask the Folks Who Own One.",
@@ -111,11 +144,30 @@
     "guarantee": {
       "type": "guarantee",
       "blocks": {
-        "g1": { "type": "item", "settings": { "text": "60-day money-back guarantee — full refund" } },
-        "g2": { "type": "item", "settings": { "text": "Free, fully-insured U.S. shipping" } },
-        "g3": { "type": "item", "settings": { "text": "Arrives damaged? Replaced free — no questions" } }
+        "g1": {
+          "type": "item",
+          "settings": {
+            "text": "60-day money-back guarantee — full refund"
+          }
+        },
+        "g2": {
+          "type": "item",
+          "settings": {
+            "text": "Free, fully-insured U.S. shipping"
+          }
+        },
+        "g3": {
+          "type": "item",
+          "settings": {
+            "text": "Arrives damaged? Replaced free — no questions"
+          }
+        }
       },
-      "block_order": ["g1", "g2", "g3"],
+      "block_order": [
+        "g1",
+        "g2",
+        "g3"
+      ],
       "settings": {
         "eyebrow": "Our Promise",
         "heading": "Hang It in Your Home, Risk-Free, for 60 Days.",
@@ -161,7 +213,13 @@
           }
         }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
       "settings": {}
     },
     "final_cta": {

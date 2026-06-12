@@ -1,0 +1,24 @@
+<div class="section section--tight">
+  <div class="container">
+    <p>{{ section.settings.text }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Test minimal",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Sync canary"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Test minimal"
+    }
+  ]
+}
+{% endschema %}

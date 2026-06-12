@@ -5,5 +5,6 @@ set -e
 cd "$(dirname "$0")"
 mkdir -p dist
 rm -f dist/old-glory-theme.zip
+mkdir -p dist
 zip -r dist/old-glory-theme.zip assets config layout locales sections snippets templates -x "*.DS_Store"
 echo "Built dist/old-glory-theme.zip"
