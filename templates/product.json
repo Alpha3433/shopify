@@ -59,7 +59,7 @@
             "save_text": "Save 10%",
             "discount": 10,
             "price_text": "",
-            "highlight": true
+            "highlight": false
           }
         },
         "a1": {
