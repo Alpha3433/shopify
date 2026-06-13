@@ -6,50 +6,39 @@
   <div class="container">
     <div class="pdp__grid">
 
-      {%- comment -%} Product gallery: one large image + clickable thumbnails {%- endcomment -%}
-      <div class="pdp__media" data-gallery data-reveal="left">
-        <div class="gallery__main">
-          {%- if product.featured_image -%}
-            <img
-              data-gallery-main
-              src="{{ product.featured_image | image_url: width: 1000 }}"
-              srcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 1000 }} 1000w, {{ product.featured_image | image_url: width: 1400 }} 1400w"
-              sizes="(min-width: 880px) 52vw, 92vw"
-              alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
-              width="1000" height="1000"
-              fetchpriority="high">
-          {%- else -%}
-            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-          {%- endif -%}
+      {%- comment -%} Product gallery: full-bleed swipe carousel (mobile) / image + thumbnails (desktop) {%- endcomment -%}
+      <div class="pdp__media" data-carousel data-reveal="left">
+        <div class="carousel__viewport" data-carousel-viewport>
+          <div class="carousel__track" data-carousel-track>
+            {%- if product.images.size > 0 -%}
+              {%- for image in product.images -%}
+                <div class="carousel__slide">
+                  <img
+                    src="{{ image | image_url: width: 1000 }}"
+                    srcset="{{ image | image_url: width: 600 }} 600w, {{ image | image_url: width: 1000 }} 1000w, {{ image | image_url: width: 1400 }} 1400w"
+                    sizes="(min-width: 880px) 52vw, 100vw"
+                    alt="{{ image.alt | escape | default: product.title | escape }}"
+                    width="1000" height="1000"
+                    {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+                </div>
+              {%- endfor -%}
+            {%- else -%}
+              <div class="carousel__slide">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+            {%- endif -%}
+          </div>
         </div>
 
-        {%- assign tile_images = section.blocks | where: 'type', 'tile_image' -%}
-        {%- if product.images.size > 1 or tile_images.size > 0 -%}
-          <div class="gallery__thumbs">
+        {%- if product.images.size > 1 -%}
+          <div class="carousel__dots" data-carousel-dots>
             {%- for image in product.images -%}
-              <button
-                type="button"
-                class="gallery__thumb{% if forloop.first %} is-active{% endif %}"
-                data-gallery-thumb
-                data-full="{{ image | image_url: width: 1000 }}"
-                data-full-srcset="{{ image | image_url: width: 600 }} 600w, {{ image | image_url: width: 1000 }} 1000w, {{ image | image_url: width: 1400 }} 1400w"
-                aria-label="View image {{ forloop.index }}">
+              <button type="button" class="carousel__dot{% if forloop.first %} is-active{% endif %}" data-carousel-go="{{ forloop.index0 }}" aria-label="Go to image {{ forloop.index }}"></button>
+            {%- endfor -%}
+          </div>
+          <div class="carousel__thumbs">
+            {%- for image in product.images -%}
+              <button type="button" class="carousel__thumb{% if forloop.first %} is-active{% endif %}" data-carousel-go="{{ forloop.index0 }}" aria-label="View image {{ forloop.index }}">
                 <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape }}" loading="lazy" width="76" height="76">
               </button>
-            {%- endfor -%}
-            {%- for block in tile_images -%}
-              {%- if block.settings.image -%}
-                <button
-                  type="button"
-                  class="gallery__thumb"
-                  data-gallery-thumb
-                  data-full="{{ block.settings.image | image_url: width: 1000 }}"
-                  data-full-srcset="{{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 1000 }} 1000w"
-                  aria-label="View detail image"
-                  {{ block.shopify_attributes }}>
-                  <img src="{{ block.settings.image | image_url: width: 160 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="76" height="76">
-                </button>
-              {%- endif -%}
             {%- endfor -%}
           </div>
         {%- endif -%}

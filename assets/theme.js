@@ -155,6 +155,69 @@
     });
   }
 
+  /* ---------- Product gallery carousel (swipe on mobile, thumbnails on desktop) ---------- */
+  function initCarousels() {
+    document.querySelectorAll('[data-carousel]').forEach(function (root) {
+      var viewport = root.querySelector('[data-carousel-viewport]');
+      var track = root.querySelector('[data-carousel-track]');
+      if (!viewport || !track) return;
+      var slides = track.children;
+      if (slides.length < 2) return;
+      var dots = root.querySelectorAll('.carousel__dot');
+      var thumbs = root.querySelectorAll('.carousel__thumb');
+      var goEls = root.querySelectorAll('[data-carousel-go]');
+      var mq = window.matchMedia('(min-width: 880px)');
+      var current = 0;
+
+      function setActive(i) {
+        current = i;
+        dots.forEach(function (d, idx) { d.classList.toggle('is-active', idx === i); });
+        thumbs.forEach(function (t, idx) { t.classList.toggle('is-active', idx === i); });
+      }
+
+      function go(i) {
+        i = Math.max(0, Math.min(slides.length - 1, i));
+        if (mq.matches) {
+          track.style.transform = 'translateX(' + (-i * 100) + '%)';
+        } else {
+          viewport.scrollTo({ left: viewport.clientWidth * i, behavior: 'smooth' });
+        }
+        setActive(i);
+      }
+
+      goEls.forEach(function (el) {
+        el.addEventListener('click', function () {
+          go(parseInt(el.getAttribute('data-carousel-go'), 10) || 0);
+        });
+      });
+
+      // Mobile: keep the dots in sync as the user swipes.
+      var raf = null;
+      viewport.addEventListener('scroll', function () {
+        if (mq.matches || raf) return;
+        raf = requestAnimationFrame(function () {
+          raf = null;
+          var i = Math.round(viewport.scrollLeft / viewport.clientWidth);
+          if (i !== current) setActive(i);
+        });
+      }, { passive: true });
+
+      // Reposition cleanly when crossing the desktop/mobile breakpoint.
+      function onModeChange() {
+        if (mq.matches) {
+          viewport.scrollLeft = 0;
+          track.style.transform = 'translateX(' + (-current * 100) + '%)';
+        } else {
+          track.style.transform = '';
+          viewport.scrollTo({ left: viewport.clientWidth * current, behavior: 'auto' });
+        }
+      }
+      if (mq.addEventListener) mq.addEventListener('change', onModeChange);
+      else if (mq.addListener) mq.addListener(onModeChange);
+      onModeChange();
+    });
+  }
+
   /* ---------- Variant picker (pill radios or selects) ---------- */
   function initVariantPickers() {
     document.querySelectorAll('[data-product-form]').forEach(function (wrapper) {
@@ -546,6 +609,7 @@
     initMobileMenu();
     initAnnouncement();
     initGalleries();
+    initCarousels();
     initVariantPickers();
     initBundles();
     initQty();

@@ -552,6 +552,49 @@ p { margin: 0; }
 .gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .gallery__thumb.is-active, .gallery__thumb:hover { border-color: var(--red); opacity: 1; }
 
+/* ---------- Product gallery carousel (PDP) ---------- */
+.carousel__viewport {
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--paper); border: 1px solid var(--line);
+}
+.carousel__track { display: flex; }
+.carousel__slide { flex: 0 0 100%; aspect-ratio: 1 / 1; }
+.carousel__slide img, .carousel__slide .placeholder-svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.carousel__dots { display: none; }
+.carousel__dot {
+  width: 8px; height: 8px; border-radius: 999px; padding: 0; border: 0; cursor: pointer;
+  background: var(--cream-3); transition: background-color 0.2s, width 0.2s;
+}
+.carousel__dot.is-active { background: var(--red); width: 22px; }
+
+.carousel__thumbs { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.carousel__thumb {
+  width: 72px; height: 72px; border-radius: var(--radius-sm); overflow: hidden;
+  border: 1.5px solid transparent; opacity: 0.75; padding: 0; background: none; cursor: pointer;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+.carousel__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.carousel__thumb.is-active, .carousel__thumb:hover { border-color: var(--red); opacity: 1; }
+
+@media (min-width: 880px) {
+  /* Desktop: show one slide, moved by transform; thumbnails drive it. */
+  .carousel__track { transition: transform 0.35s var(--ease-out); }
+}
+@media (max-width: 879px) {
+  /* Mobile: full-bleed, swipeable, with dots; thumbnails hidden. */
+  .pdp__media { margin-inline: calc(clamp(18px, 4vw, 40px) * -1); }
+  .carousel__viewport {
+    border-radius: 0; border-left: 0; border-right: 0;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .carousel__viewport::-webkit-scrollbar { display: none; }
+  .carousel__slide { aspect-ratio: 4 / 3; scroll-snap-align: start; }
+  .carousel__dots { display: flex; gap: 7px; justify-content: center; margin-top: 14px; }
+  .carousel__thumbs { display: none; }
+}
+
 .buybox__panel { position: relative; }
 .buybox__panel .rating-line { margin-bottom: 14px; color: var(--muted); }
 .buybox__title { margin-bottom: 8px; font-size: clamp(1.7rem, 3vw, 2.4rem); }
