@@ -6,103 +6,52 @@
   <div class="container">
     <div class="pdp__grid">
 
-      {%- comment -%} Collage gallery: product photos + content tiles {%- endcomment -%}
-      <div class="pdp__gallery">
-        {%- if product.images.size > 0 -%}
-          {%- for image in product.images limit: 2 -%}
-            <div class="tile{% if forloop.first and product.images.size == 1 %} tile--full{% endif %}">
-              <img
-                src="{{ image | image_url: width: 800 }}"
-                srcset="{{ image | image_url: width: 500 }} 500w, {{ image | image_url: width: 800 }} 800w, {{ image | image_url: width: 1100 }} 1100w"
-                sizes="(min-width: 880px) 28vw, 46vw"
-                alt="{{ image.alt | escape | default: product.title | escape }}"
-                width="800" height="800"
-                {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
-            </div>
-          {%- endfor -%}
-        {%- else -%}
-          <div class="tile">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
-          <div class="tile">{{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
-        {%- endif -%}
+      {%- comment -%} Product gallery: one large image + clickable thumbnails {%- endcomment -%}
+      <div class="pdp__media" data-gallery data-reveal="left">
+        <div class="gallery__main">
+          {%- if product.featured_image -%}
+            <img
+              data-gallery-main
+              src="{{ product.featured_image | image_url: width: 1000 }}"
+              srcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 1000 }} 1000w, {{ product.featured_image | image_url: width: 1400 }} 1400w"
+              sizes="(min-width: 880px) 52vw, 92vw"
+              alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
+              width="1000" height="1000"
+              fetchpriority="high">
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
 
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'tile_banner' -%}
-              <div class="tile tile--full tile--content tile--{{ block.settings.scheme }}" {{ block.shopify_attributes }}>
-                <h2 class="tile__heading">{{ block.settings.heading }}</h2>
-                {%- if block.settings.text != blank -%}
-                  <p class="tile__text">{{ block.settings.text }}</p>
-                {%- endif -%}
-                <div class="tile__pills">
-                  {%- if block.settings.pill_1 != blank -%}
-                    <span class="tile__pill">{% render 'icon', name: 'check' %} {{ block.settings.pill_1 }}</span>
-                  {%- endif -%}
-                  {%- if block.settings.pill_2 != blank -%}
-                    <span class="tile__pill">{% render 'icon', name: 'check' %} {{ block.settings.pill_2 }}</span>
-                  {%- endif -%}
-                  {%- if block.settings.pill_3 != blank -%}
-                    <span class="tile__pill">{% render 'icon', name: 'check' %} {{ block.settings.pill_3 }}</span>
-                  {%- endif -%}
-                </div>
-              </div>
-
-            {%- when 'tile_info' -%}
-              <div class="tile tile--content tile--{{ block.settings.scheme }}{% if block.settings.full_width %} tile--full{% endif %}" {{ block.shopify_attributes }}>
-                <h3 class="tile__heading">{{ block.settings.heading }}</h3>
-                {%- if block.settings.item_1 != blank or block.settings.item_2 != blank or block.settings.item_3 != blank -%}
-                  <ul class="tile__list">
-                    {%- if block.settings.item_1 != blank -%}
-                      <li>{% render 'icon', name: 'check-circle' %} {{ block.settings.item_1 }}</li>
-                    {%- endif -%}
-                    {%- if block.settings.item_2 != blank -%}
-                      <li>{% render 'icon', name: 'check-circle' %} {{ block.settings.item_2 }}</li>
-                    {%- endif -%}
-                    {%- if block.settings.item_3 != blank -%}
-                      <li>{% render 'icon', name: 'check-circle' %} {{ block.settings.item_3 }}</li>
-                    {%- endif -%}
-                  </ul>
-                {%- endif -%}
-              </div>
-
-            {%- when 'tile_guarantee' -%}
-              <div class="tile tile--full tile--content tile--guarantee tile--{{ block.settings.scheme }}" {{ block.shopify_attributes }}>
-                <div class="tile-badge">
-                  <span class="tile-badge__num">{{ block.settings.badge_value }}</span>
-                  <span class="tile-badge__label">{{ block.settings.badge_label }}</span>
-                </div>
-                <h3 class="tile__heading">{{ block.settings.heading }}</h3>
-                <p class="tile__text">{{ block.settings.text }}</p>
-              </div>
-
-            {%- when 'tile_image' -%}
-              <div class="tile{% if block.settings.full_width %} tile--full{% endif %}" {{ block.shopify_attributes }}>
-                {%- if block.settings.image -%}
-                  <img
-                    src="{{ block.settings.image | image_url: width: 1100 }}"
-                    srcset="{{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 1100 }} 1100w"
-                    sizes="(min-width: 880px) {% if block.settings.full_width %}56vw{% else %}28vw{% endif %}, 92vw"
-                    alt="{{ block.settings.image.alt | escape }}"
-                    loading="lazy"
-                    width="1100" height="{% if block.settings.full_width %}825{% else %}1100{% endif %}">
-                {%- else -%}
-                  {{ 'product-3' | placeholder_svg_tag: 'placeholder-svg' }}
-                {%- endif -%}
-              </div>
-          {%- endcase -%}
-        {%- endfor -%}
-
-        {%- if product.images.size > 2 -%}
-          {%- for image in product.images offset: 2 limit: 8 -%}
-            <div class="tile">
-              <img
-                src="{{ image | image_url: width: 800 }}"
-                srcset="{{ image | image_url: width: 500 }} 500w, {{ image | image_url: width: 800 }} 800w"
-                sizes="(min-width: 880px) 28vw, 46vw"
-                alt="{{ image.alt | escape | default: product.title | escape }}"
-                loading="lazy"
-                width="800" height="800">
-            </div>
-          {%- endfor -%}
+        {%- assign tile_images = section.blocks | where: 'type', 'tile_image' -%}
+        {%- if product.images.size > 1 or tile_images.size > 0 -%}
+          <div class="gallery__thumbs">
+            {%- for image in product.images -%}
+              <button
+                type="button"
+                class="gallery__thumb{% if forloop.first %} is-active{% endif %}"
+                data-gallery-thumb
+                data-full="{{ image | image_url: width: 1000 }}"
+                data-full-srcset="{{ image | image_url: width: 600 }} 600w, {{ image | image_url: width: 1000 }} 1000w, {{ image | image_url: width: 1400 }} 1400w"
+                aria-label="View image {{ forloop.index }}">
+                <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape }}" loading="lazy" width="76" height="76">
+              </button>
+            {%- endfor -%}
+            {%- for block in tile_images -%}
+              {%- if block.settings.image -%}
+                <button
+                  type="button"
+                  class="gallery__thumb"
+                  data-gallery-thumb
+                  data-full="{{ block.settings.image | image_url: width: 1000 }}"
+                  data-full-srcset="{{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 1000 }} 1000w"
+                  aria-label="View detail image"
+                  {{ block.shopify_attributes }}>
+                  <img src="{{ block.settings.image | image_url: width: 160 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="76" height="76">
+                </button>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
         {%- endif -%}
       </div>
 

@@ -62,27 +62,6 @@
             "highlight": true
           }
         },
-        "t1": {
-          "type": "tile_banner",
-          "settings": {
-            "scheme": "navy",
-            "heading": "A flag worthy of the people who carried it.",
-            "text": "",
-            "pill_1": "Hand-carved waving form",
-            "pill_2": "Eagle & stars in deep relief",
-            "pill_3": "Solid wood, real weight"
-          }
-        },
-        "t2": {
-          "type": "tile_guarantee",
-          "settings": {
-            "scheme": "cream",
-            "badge_value": "60",
-            "badge_label": "Days",
-            "heading": "Hang it risk-free for 60 days",
-            "text": "If it doesn't stop you in your tracks every time you walk past it, tell us — full refund, and you don't even need to ship it back."
-          }
-        },
         "a1": {
           "type": "accordion",
           "settings": {
@@ -105,8 +84,6 @@
         "b4",
         "bn1",
         "bn2",
-        "t1",
-        "t2",
         "a1",
         "a2"
       ],
