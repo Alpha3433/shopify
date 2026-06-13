@@ -91,7 +91,7 @@
         "vendor_label": "Small-Batch Wood Carving",
         "rating_text": "",
         "tagline": "Hand-carved solid wood. Deep relief detail. Ready to hang the day it arrives.",
-        "button_label": "Add to Cart — Ships Free",
+        "button_label": "Add to Cart",
         "show_dynamic_checkout": false,
         "bundle_heading": "Bundle & Save",
         "button_note": "Secure checkout · 60-day money-back guarantee",
@@ -261,7 +261,7 @@
       "settings": {
         "heading": "Hang It Once. Pass It Down.",
         "subheading": "A printed sign gets replaced. A carved flag gets inherited.",
-        "cta_label": "Get Yours — Ships Free",
+        "cta_label": "Get Yours",
         "cta_scroll": true,
         "cta_link": "",
         "reassure_1": "Free U.S. shipping",

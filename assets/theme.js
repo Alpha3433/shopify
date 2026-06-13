@@ -166,6 +166,8 @@
       var dots = root.querySelectorAll('.carousel__dot');
       var thumbs = root.querySelectorAll('.carousel__thumb');
       var goEls = root.querySelectorAll('[data-carousel-go]');
+      var prevBtn = root.querySelector('[data-carousel-prev]');
+      var nextBtn = root.querySelector('[data-carousel-next]');
       var mq = window.matchMedia('(min-width: 880px)');
       var current = 0;
 
@@ -173,6 +175,8 @@
         current = i;
         dots.forEach(function (d, idx) { d.classList.toggle('is-active', idx === i); });
         thumbs.forEach(function (t, idx) { t.classList.toggle('is-active', idx === i); });
+        if (prevBtn) prevBtn.disabled = i === 0;
+        if (nextBtn) nextBtn.disabled = i === slides.length - 1;
       }
 
       function go(i) {
@@ -190,6 +194,8 @@
           go(parseInt(el.getAttribute('data-carousel-go'), 10) || 0);
         });
       });
+      if (prevBtn) prevBtn.addEventListener('click', function () { go(current - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { go(current + 1); });
 
       // Mobile: keep the dots in sync as the user swipes.
       var raf = null;
@@ -215,6 +221,7 @@
       if (mq.addEventListener) mq.addEventListener('change', onModeChange);
       else if (mq.addListener) mq.addListener(onModeChange);
       onModeChange();
+      setActive(0);
     });
   }
 

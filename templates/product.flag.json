@@ -115,7 +115,7 @@
                 "vendor_label": "Small-Batch Wood Carving",
                 "rating_text": "4.9/5 from 800+ verified owners",
                 "tagline": "The hand-carved eagle & American flag — solid wood, deep relief, ready to hang the day it arrives.",
-                "button_label": "Add to Cart — Ships Free",
+                "button_label": "Add to Cart",
                 "show_dynamic_checkout": true,
                 "button_note": "Secure checkout · 60-day money-back guarantee",
                 "show_countdown": false,
@@ -475,7 +475,7 @@
             "settings": {
                 "heading": "Hang It Once. Pass It Down Forever.",
                 "subheading": "Your grandkids won't fight over a printed sign from a big-box store. They'll fight over this.",
-                "cta_label": "Claim Yours — Ships Free",
+                "cta_label": "Claim Yours",
                 "cta_scroll": true,
                 "reassure_1": "Free U.S. shipping",
                 "reassure_2": "60-day money-back guarantee",

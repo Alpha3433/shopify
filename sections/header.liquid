@@ -26,16 +26,6 @@
     </nav>
 
     <div class="site-header__actions">
-      {%- if section.settings.show_search -%}
-        <a href="{{ routes.search_url }}" class="header-icon-btn" aria-label="Search">
-          {% render 'icon', name: 'search' %}
-        </a>
-      {%- endif -%}
-      {%- if shop.customer_accounts_enabled and section.settings.show_account -%}
-        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header-icon-btn" aria-label="Account">
-          {% render 'icon', name: 'user' %}
-        </a>
-      {%- endif -%}
       <a href="{{ routes.cart_url }}" class="header-icon-btn" data-cart-open aria-label="Open cart">
         {% render 'icon', name: 'cart' %}
         <span class="cart-count-bubble" data-cart-count data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
