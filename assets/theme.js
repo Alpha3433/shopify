@@ -305,6 +305,25 @@
           }
           if (stickyBtn) stickyBtn.disabled = true;
         }
+
+        // Low-stock indicator — real inventory only, shown when at/below the threshold.
+        var stockEl = wrapper.querySelector('[data-stock-low]');
+        if (stockEl) {
+          if (stockEl._map === undefined) {
+            var sj = wrapper.querySelector('[data-stock-json]');
+            try { stockEl._map = sj ? JSON.parse(sj.textContent) : null; } catch (e) { stockEl._map = null; }
+          }
+          var info = (stockEl._map && variant) ? stockEl._map[variant.id] : null;
+          var threshold = parseInt(stockEl.getAttribute('data-stock-threshold'), 10) || 10;
+          if (info && info.tracked && info.qty > 0 && info.qty <= threshold) {
+            var txtEl = stockEl.querySelector('[data-stock-low-text]');
+            var tmpl = stockEl.getAttribute('data-stock-text') || 'Only [count] left in stock';
+            if (txtEl) txtEl.textContent = tmpl.replace('[count]', info.qty);
+            stockEl.hidden = false;
+          } else {
+            stockEl.hidden = true;
+          }
+        }
       }
 
       var bundleGroup = wrapper.querySelector('[data-bundle-group]');

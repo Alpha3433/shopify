@@ -123,6 +123,17 @@
             </fieldset>
           {%- endif -%}
 
+          {%- if section.settings.show_low_stock -%}
+            <p class="stock-note" data-stock-low data-stock-threshold="{{ section.settings.low_stock_threshold }}" data-stock-text="{{ section.settings.low_stock_text | escape }}" hidden>
+              <span class="pulse-dot"></span> <span data-stock-low-text></span>
+            </p>
+            <script type="application/json" data-stock-json>{
+              {%- for v in product.variants -%}
+                "{{ v.id }}": { "qty": {{ v.inventory_quantity | default: 0 }}, "tracked": {% if v.inventory_management != blank %}true{% else %}false{% endif %} }{% unless forloop.last %},{% endunless %}
+              {%- endfor -%}
+            }</script>
+          {%- endif -%}
+
           <input type="hidden" name="id" value="{{ current_variant.id }}">
           <div data-atc-anchor></div>
           <div class="qty-row">
@@ -396,6 +407,33 @@
       "id": "stock_note",
       "label": "Scarcity note",
       "info": "Only use if it's true — trust is the whole brand."
+    },
+    {
+      "type": "header",
+      "content": "Low-stock indicator",
+      "info": "Pulls REAL inventory. Only shows when stock is genuinely at or below the threshold — it never invents a number."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_low_stock",
+      "label": "Show \"Only X left\" when stock is low",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "low_stock_threshold",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "label": "Show when stock is at or below",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "low_stock_text",
+      "label": "Low-stock text",
+      "info": "Use [count] for the live number.",
+      "default": "Only [count] left in stock"
     },
     {
       "type": "header",
