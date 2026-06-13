@@ -37,12 +37,6 @@
       <a href="{{ routes.cart_url }}/checkout" class="btn btn--primary btn--full btn--lg">
         {% render 'icon', name: 'lock' %} Secure Checkout
       </a>
-      <ul class="cart-trust">
-        <li>{% render 'icon', name: 'lock' %} Secure SSL checkout</li>
-        <li>{% render 'icon', name: 'shield' %} 60-day money-back</li>
-        <li>{% render 'icon', name: 'truck' %} Free insured shipping</li>
-        <li>{% render 'icon', name: 'flag' %} Hand-carved solid wood</li>
-      </ul>
       {%- if shop.enabled_payment_types.size > 0 -%}
         <div class="cart-payments">
           {%- for type in shop.enabled_payment_types -%}
