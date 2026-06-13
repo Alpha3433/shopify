@@ -128,9 +128,7 @@
         <div class="price">
           <span class="price__current" data-price-current>{{ current_variant.price | money }}</span>
           <s class="price__compare" data-price-compare {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
-          {%- if current_variant.compare_at_price > current_variant.price -%}
-            <span class="price__save">Save {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%</span>
-          {%- endif -%}
+          <span class="price__save" data-price-save {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>{% if current_variant.compare_at_price > current_variant.price %}Save {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%{% endif %}</span>
         </div>
 
         {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
@@ -156,6 +154,7 @@
                     class="visually-hidden"
                     name="{{ section.id }}-bundle"
                     data-bundle-qty="{{ block.settings.qty }}"
+                    data-bundle-discount="{{ block.settings.discount | default: 0 }}"
                     {% if forloop.first %}checked{% endif %}>
                   {%- if block.settings.badge != blank -%}
                     <span class="bundle-card__badge">{{ block.settings.badge }}</span>
@@ -529,13 +528,24 @@
           "type": "text",
           "id": "save_text",
           "label": "Savings pill",
-          "info": "e.g. Save 10% — must match a real automatic volume discount."
+          "info": "e.g. Save 10% — must match the Discount % below and a real Shopify automatic discount."
+        },
+        {
+          "type": "range",
+          "id": "discount",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Discount %",
+          "info": "Updates the shown price live when this card is picked. MUST match the real automatic discount you create in Discounts, or checkout won't match.",
+          "default": 0
         },
         {
           "type": "text",
           "id": "price_text",
           "label": "Price line (optional)",
-          "info": "e.g. $322 total · $161 each. Leave blank to show only the savings pill. Update if you change prices."
+          "info": "e.g. One to keep, one to give. Extra line under the title. Leave blank if not needed."
         },
         {
           "type": "checkbox",

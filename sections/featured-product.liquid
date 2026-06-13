@@ -65,9 +65,7 @@
           <div class="price">
             <span class="price__current" data-price-current>{{ current_variant.price | money }}</span>
             <s class="price__compare" data-price-compare {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
-            {%- if current_variant.compare_at_price > current_variant.price -%}
-              <span class="price__save">Save {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%</span>
-            {%- endif -%}
+            <span class="price__save" data-price-save {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>{% if current_variant.compare_at_price > current_variant.price %}Save {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%{% endif %}</span>
           </div>
 
           {%- if section.blocks.size > 0 -%}

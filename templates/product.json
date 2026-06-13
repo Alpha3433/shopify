@@ -44,6 +44,7 @@
             "subtitle": "Just for your wall",
             "badge": "",
             "save_text": "",
+            "discount": 0,
             "price_text": "",
             "highlight": false
           }
@@ -56,20 +57,9 @@
             "subtitle": "One to keep, one to gift",
             "badge": "Most Popular",
             "save_text": "Save 10%",
+            "discount": 10,
             "price_text": "",
             "highlight": true
-          }
-        },
-        "bn3": {
-          "type": "bundle",
-          "settings": {
-            "qty": 3,
-            "title": "3 Flags",
-            "subtitle": "For the whole family",
-            "badge": "Best Value",
-            "save_text": "Save 15%",
-            "price_text": "",
-            "highlight": false
           }
         },
         "t1": {
@@ -115,7 +105,6 @@
         "b4",
         "bn1",
         "bn2",
-        "bn3",
         "t1",
         "t2",
         "a1",

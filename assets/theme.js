@@ -188,21 +188,40 @@
         var btn = wrapper.querySelector('[data-atc-button]');
         var priceEl = wrapper.querySelector('[data-price-current]');
         var compareEl = wrapper.querySelector('[data-price-compare]');
+        var saveEl = wrapper.querySelector('[data-price-save]');
         var stickyPrice = document.querySelector('[data-sticky-atc] [data-price-current]');
         var stickyBtn = document.querySelector('[data-sticky-atc] [data-sticky-submit]');
+
+        // Selected bundle: a quantity multiplier plus an optional extra discount %
+        // (the discount % must match the real Shopify automatic discount).
+        var bundleInput = wrapper.querySelector('input[data-bundle-qty]:checked');
+        var qty = bundleInput ? (parseInt(bundleInput.getAttribute('data-bundle-qty'), 10) || 1) : 1;
+        var disc = bundleInput ? (parseFloat(bundleInput.getAttribute('data-bundle-discount')) || 0) : 0;
+        var qtyInput = wrapper.querySelector('input[name="quantity"]');
+        if (qtyInput) qtyInput.value = qty;
+
         if (variant) {
           if (idInput) idInput.value = variant.id;
-          if (priceEl) priceEl.textContent = formatMoney(variant.price);
-          if (stickyPrice) stickyPrice.textContent = formatMoney(variant.price);
-          if (stickyBtn) stickyBtn.disabled = !variant.available;
+
+          var unit = variant.price;
+          var unitCompare = (variant.compare_at_price && variant.compare_at_price > variant.price) ? variant.compare_at_price : 0;
+          var current = Math.round(unit * qty * (1 - disc / 100));
+          var compareBase = (unitCompare || unit) * qty;
+          var showCompare = compareBase > current;
+
+          if (priceEl) priceEl.textContent = formatMoney(current);
+          if (stickyPrice) stickyPrice.textContent = formatMoney(current);
           if (compareEl) {
-            if (variant.compare_at_price && variant.compare_at_price > variant.price) {
-              compareEl.textContent = formatMoney(variant.compare_at_price);
-              compareEl.hidden = false;
-            } else {
-              compareEl.hidden = true;
-            }
+            if (showCompare) { compareEl.textContent = formatMoney(compareBase); compareEl.hidden = false; }
+            else { compareEl.hidden = true; }
           }
+          if (saveEl) {
+            if (showCompare) {
+              saveEl.textContent = 'Save ' + Math.round((compareBase - current) / compareBase * 100) + '%';
+              saveEl.hidden = false;
+            } else { saveEl.hidden = true; }
+          }
+          if (stickyBtn) stickyBtn.disabled = !variant.available;
           if (btn) {
             btn.disabled = !variant.available;
             var label = btn.querySelector('[data-atc-label]');
@@ -218,12 +237,15 @@
         }
       }
 
+      var bundleGroup = wrapper.querySelector('[data-bundle-group]');
       selects.forEach(function (s) { s.addEventListener('change', update); });
       groups.forEach(function (g) {
         g.addEventListener('change', function (e) {
           if (e.target.matches('input')) update();
         });
       });
+      if (bundleGroup) bundleGroup.addEventListener('change', update);
+      update();
     });
   }
 
