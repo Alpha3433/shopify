@@ -533,14 +533,15 @@ p { margin: 0; }
 .gallery__main {
   border-radius: var(--radius-lg); overflow: hidden;
   background: var(--paper); border: 1px solid var(--line);
+  aspect-ratio: 1 / 1;
 }
-.gallery__main img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; transition: opacity 0.25s ease; }
-.gallery__main .placeholder-svg { aspect-ratio: 1 / 1; }
+.gallery__main img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.25s ease; }
+.gallery__main .placeholder-svg { width: 100%; height: 100%; }
 @media (max-width: 749px) {
-  /* Shorter landscape crop on phones so the price + buy button sit closer to the top.
-     The eagle's wings run left-to-right, so trimming top/bottom keeps the whole carving. */
-  .gallery__main img,
-  .gallery__main .placeholder-svg { aspect-ratio: 4 / 3; }
+  /* Shorter landscape box on phones so the price + buy button sit closer to the top.
+     A 4:3 crop centers on the carving and trims the easel/floor. Aspect-ratio lives on
+     the container so it can't be overridden by the image's own width/height attributes. */
+  .gallery__main { aspect-ratio: 4 / 3; }
 }
 .gallery__thumbs { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
 .gallery__thumb {
