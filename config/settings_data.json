@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_navy": "#0d1b2e",
@@ -6,6 +15,45 @@
     "color_cream": "#f7f2e7",
     "color_ink": "#221f1a",
     "page_width": 1200,
-    "free_shipping_threshold": 0
+    "free_shipping_threshold": 0,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "message_1": "★ Father's Day Sale — 30% off everything",
+          "message_2": "",
+          "message_3": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_width": 150,
+          "menu": "main-menu",
+          "show_search": true,
+          "show_account": true,
+          "mobile_cta_label": "Shop Now"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "tagline": "Hand-carved wooden flag art with depth you can feel. Every piece is carved from solid wood and finished by hand — built to hang for generations.",
+          "menu_1_heading": "Shop",
+          "menu_1": "main-menu",
+          "menu_2_heading": "Support",
+          "menu_2": "footer",
+          "show_subscribe": true,
+          "subscribe_heading": "Subscribe",
+          "subscribe_text": "Workshop updates, new carvings, and the occasional story. No spam — we're too busy carving.",
+          "trust_1": "Small-Batch · Carved to Order",
+          "trust_2": "Hand-carved solid wood",
+          "trust_3": "60-Day Money-Back Guarantee",
+          "trust_4": "Secure 256-bit Checkout",
+          "show_payment_icons": true
+        }
+      }
+    },
+    "content_for_index": []
   }
 }
