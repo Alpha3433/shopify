@@ -751,6 +751,9 @@ p { margin: 0; }
 
 .pdp__buy { position: relative; }
 @media (min-width: 880px) { .pdp__buy { position: sticky; top: 96px; } }
+/* Gallery tracks down the page with the buy column, releasing at the next
+   section (the Story "You Can't Print Depth" block). */
+@media (min-width: 880px) { .pdp__media { position: sticky; top: 96px; align-self: start; } }
 .pdp__vendor {
   font-size: 0.74rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--red); margin-bottom: 10px;
