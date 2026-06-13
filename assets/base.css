@@ -536,6 +536,12 @@ p { margin: 0; }
 }
 .gallery__main img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; transition: opacity 0.25s ease; }
 .gallery__main .placeholder-svg { aspect-ratio: 1 / 1; }
+@media (max-width: 749px) {
+  /* Shorter landscape crop on phones so the price + buy button sit closer to the top.
+     The eagle's wings run left-to-right, so trimming top/bottom keeps the whole carving. */
+  .gallery__main img,
+  .gallery__main .placeholder-svg { aspect-ratio: 4 / 3; }
+}
 .gallery__thumbs { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
 .gallery__thumb {
   width: 72px; height: 72px; border-radius: var(--radius-sm); overflow: hidden;
