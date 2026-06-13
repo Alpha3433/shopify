@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -32,6 +41,7 @@
           "settings": {
             "scheme": "navy",
             "heading": "A flag worthy of the people who carried it.",
+            "text": "",
             "pill_1": "Hand-carved waving form",
             "pill_2": "Eagle & stars in deep relief",
             "pill_3": "Solid wood, real weight"
@@ -73,8 +83,15 @@
         "a2"
       ],
       "settings": {
+        "vendor_label": "Small-Batch Wood Carving",
         "rating_text": "",
+        "tagline": "Hand-carved solid wood. Deep relief detail. Ready to hang the day it arrives.",
         "button_label": "Add to Cart — Ships Free",
+        "show_dynamic_checkout": false,
+        "bundle_heading": "Bundle & Save",
+        "button_note": "Secure checkout · 60-day money-back guarantee",
+        "note_heading": "From the workshop",
+        "note_text": "Every flag is carved, stained, and sealed by hand, then inspected before it ships. Hand-worked means no two are exactly alike.",
         "sale_text": "Father's Day Sale — 30% off everything",
         "sale_subtext": "Applied automatically at checkout",
         "sale_end": "2026-06-21",
@@ -82,16 +99,24 @@
         "delivery_min": 8,
         "delivery_max": 14,
         "show_countdown": false,
-        "stock_note": ""
+        "cutoff_hour": 14,
+        "countdown_text": "Order within",
+        "stock_note": "",
+        "trust_1": "Hand-carved solid wood",
+        "trust_2": "Free insured U.S. shipping",
+        "trust_3": "60-day money-back guarantee",
+        "show_payment_icons": true
       }
     },
     "story": {
       "type": "story",
       "settings": {
+        "color_scheme": "cream",
+        "flip": false,
+        "stamp_text": "CARVED BY HAND · NO TWO ALIKE",
         "eyebrow": "Why We Make These",
         "heading": "You Can't Print Depth.",
         "text": "<p>Pick up a printed flag and you feel a board. Pick up a carved one and you feel ridges, grain, and weight — the difference between a picture of a thing and the thing itself.</p><p>Every flag we sell is carved from solid wood and finished by hand in small batches. The waving ripple, the eagle's feathers, the rows of stars — all of it sits in real relief, which is why no two flags are ever exactly alike.</p><p>We check every piece before it ships. If yours arrives less than perfect, we replace it free. That's the whole arrangement.</p>",
-        "stamp_text": "CARVED BY HAND · NO TWO ALIKE",
         "signature_name": "",
         "signature_role": ""
       }
@@ -220,7 +245,11 @@
         "q4",
         "q5"
       ],
-      "settings": {}
+      "settings": {
+        "eyebrow": "Straight Answers",
+        "heading": "Questions? We Shoot Straight.",
+        "subheading": ""
+      }
     },
     "final_cta": {
       "type": "final-cta",
@@ -229,6 +258,7 @@
         "subheading": "A printed sign gets replaced. A carved flag gets inherited.",
         "cta_label": "Get Yours — Ships Free",
         "cta_scroll": true,
+        "cta_link": "",
         "reassure_1": "Free U.S. shipping",
         "reassure_2": "60-day money-back guarantee",
         "reassure_3": "Arrives ready to hang"
