@@ -66,6 +66,13 @@
         "label": "Free shipping threshold",
         "info": "In your store currency (e.g. 75 = free shipping over $75). Set to 0 to hide the progress bar.",
         "default": 0
+      },
+      {
+        "type": "text",
+        "id": "cart_urgency",
+        "label": "Cart urgency message",
+        "info": "Shown at the top of the cart drawer. Keep it honest — tie it to a real sale. Leave blank to hide.",
+        "default": "Father's Day Sale — 30% off applied at checkout"
       }
     ]
   },

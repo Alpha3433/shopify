@@ -608,6 +608,21 @@
     });
   }
 
+  /* ---------- FAQ: only one question open at a time ---------- */
+  function initFaqAccordion() {
+    document.querySelectorAll('.faq__list').forEach(function (list) {
+      var items = list.querySelectorAll('details.faq-item');
+      items.forEach(function (item) {
+        item.addEventListener('toggle', function () {
+          if (!item.open) return;
+          items.forEach(function (other) {
+            if (other !== item) other.open = false;
+          });
+        });
+      });
+    });
+  }
+
   /* ---------- Init ---------- */
   document.addEventListener('DOMContentLoaded', function () {
     initReveal();
@@ -617,6 +632,7 @@
     initAnnouncement();
     initGalleries();
     initCarousels();
+    initFaqAccordion();
     initVariantPickers();
     initBundles();
     initQty();

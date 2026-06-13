@@ -13,6 +13,13 @@
       <div class="ship-bar__track"><div class="ship-bar__fill"></div></div>
     </div>
 
+    {%- if settings.cart_urgency != blank -%}
+      <div class="cart-drawer__urgency">
+        {% render 'icon', name: 'gift' %}
+        <span>{{ settings.cart_urgency }}</span>
+      </div>
+    {%- endif -%}
+
     <div class="cart-drawer__items" data-cart-items>
       <div class="cart-drawer__empty">
         {% render 'icon', name: 'cart' %}
@@ -30,10 +37,19 @@
       <a href="{{ routes.cart_url }}/checkout" class="btn btn--primary btn--full btn--lg">
         {% render 'icon', name: 'lock' %} Secure Checkout
       </a>
-      <div class="footer-trust">
-        <span>{% render 'icon', name: 'shield' %} 60-Day Guarantee</span>
-        <span>{% render 'icon', name: 'flag' %} Hand-Carved Wood</span>
-      </div>
+      <ul class="cart-trust">
+        <li>{% render 'icon', name: 'lock' %} Secure SSL checkout</li>
+        <li>{% render 'icon', name: 'shield' %} 60-day money-back</li>
+        <li>{% render 'icon', name: 'truck' %} Free insured shipping</li>
+        <li>{% render 'icon', name: 'flag' %} Hand-carved solid wood</li>
+      </ul>
+      {%- if shop.enabled_payment_types.size > 0 -%}
+        <div class="cart-payments">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag }}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     </div>
   </aside>
 </div>
