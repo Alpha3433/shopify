@@ -40,7 +40,9 @@
                         "title": "Single Carving",
                         "subtitle": "Free insured U.S. shipping",
                         "badge": "",
-                        "save_text": ""
+                        "save_text": "",
+                        "price_text": "",
+                        "highlight": false
                     }
                 },
                 "bu2": {
@@ -50,7 +52,9 @@
                         "title": "Patriot Pair",
                         "subtitle": "One for home, one for a gift",
                         "badge": "Most Popular",
-                        "save_text": "Save 10%"
+                        "save_text": "Save 10%",
+                        "price_text": "",
+                        "highlight": true
                     }
                 },
                 "bu3": {
@@ -60,7 +64,9 @@
                         "title": "Family Set",
                         "subtitle": "The heirloom for every household",
                         "badge": "",
-                        "save_text": "Save 15%"
+                        "save_text": "Save 15%",
+                        "price_text": "",
+                        "highlight": false
                     }
                 },
                 "tb1": {

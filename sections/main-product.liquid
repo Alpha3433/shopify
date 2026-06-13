@@ -150,7 +150,7 @@
             <fieldset class="bundle-cards" data-bundle-group>
               <legend class="opt-label">{{ section.settings.bundle_heading }}</legend>
               {%- for block in bundle_blocks -%}
-                <label class="bundle-card" {{ block.shopify_attributes }}>
+                <label class="bundle-card{% if block.settings.highlight %} bundle-card--highlight{% endif %}" {{ block.shopify_attributes }}>
                   <input
                     type="radio"
                     class="visually-hidden"
@@ -166,6 +166,9 @@
                     {%- if block.settings.subtitle != blank -%}
                       <span class="bundle-card__sub">{{ block.settings.subtitle }}</span>
                     {%- endif -%}
+                    {%- if block.settings.price_text != blank -%}
+                      <span class="bundle-card__price">{{ block.settings.price_text }}</span>
+                    {%- endif -%}
                   </span>
                   {%- if block.settings.save_text != blank -%}
                     <span class="bundle-card__save">{{ block.settings.save_text }}</span>
@@ -178,11 +181,15 @@
           <input type="hidden" name="id" value="{{ current_variant.id }}">
           <div data-atc-anchor></div>
           <div class="qty-row">
-            <div class="qty">
-              <button type="button" data-qty-change="-1" aria-label="Decrease quantity">{% render 'icon', name: 'minus' %}</button>
-              <input type="number" name="quantity" value="1" min="1" aria-label="Quantity">
-              <button type="button" data-qty-change="1" aria-label="Increase quantity">{% render 'icon', name: 'plus' %}</button>
-            </div>
+            {%- if bundle_blocks.size > 0 -%}
+              <input type="hidden" name="quantity" value="1">
+            {%- else -%}
+              <div class="qty">
+                <button type="button" data-qty-change="-1" aria-label="Decrease quantity">{% render 'icon', name: 'minus' %}</button>
+                <input type="number" name="quantity" value="1" min="1" aria-label="Quantity">
+                <button type="button" data-qty-change="1" aria-label="Increase quantity">{% render 'icon', name: 'plus' %}</button>
+              </div>
+            {%- endif -%}
             <button
               type="submit"
               class="btn btn--primary btn--lg"
@@ -504,13 +511,13 @@
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Single Carving"
+          "default": "1 Flag"
         },
         {
           "type": "text",
           "id": "subtitle",
           "label": "Subtitle",
-          "default": "Free U.S. shipping"
+          "default": "Just for your wall"
         },
         {
           "type": "text",
@@ -522,7 +529,20 @@
           "type": "text",
           "id": "save_text",
           "label": "Savings pill",
-          "info": "e.g. Save 10% — must match a real volume discount."
+          "info": "e.g. Save 10% — must match a real automatic volume discount."
+        },
+        {
+          "type": "text",
+          "id": "price_text",
+          "label": "Price line (optional)",
+          "info": "e.g. $322 total · $161 each. Leave blank to show only the savings pill. Update if you change prices."
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Highlight as the standout option",
+          "info": "Adds a ring + emphasis. Does not pre-select it — the first card stays selected so the shown price is honest.",
+          "default": false
         }
       ]
     },
