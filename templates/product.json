@@ -261,13 +261,13 @@
         "g2": {
           "type": "item",
           "settings": {
-            "text": "Free fully insured U.S. shipping"
+            "text": "Free U.S. shipping"
           }
         },
         "g3": {
           "type": "item",
           "settings": {
-            "text": "Arrives damaged? Replaced free — no questions"
+            "text": "Arrives damaged? Replaced free no questions"
           }
         }
       },
