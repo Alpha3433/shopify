@@ -24,17 +24,19 @@
       <div class="homes__viewport" data-scroller-viewport>
         {%- for block in section.blocks -%}
           <figure class="homes__card" data-scroller-item {{ block.shopify_attributes }}>
-            {%- if block.settings.image -%}
-              <img
-                src="{{ block.settings.image | image_url: width: 700 }}"
-                srcset="{{ block.settings.image | image_url: width: 500 }} 500w, {{ block.settings.image | image_url: width: 700 }} 700w, {{ block.settings.image | image_url: width: 1000 }} 1000w"
-                sizes="(min-width: 760px) 33vw, 80vw"
-                alt="{{ block.settings.image.alt | escape | default: section.settings.heading | escape }}"
-                width="700" height="700"
-                loading="lazy">
-            {%- else -%}
-              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
-            {%- endif -%}
+            <div class="homes__card-media">
+              {%- if block.settings.image -%}
+                <img
+                  src="{{ block.settings.image | image_url: width: 700 }}"
+                  srcset="{{ block.settings.image | image_url: width: 500 }} 500w, {{ block.settings.image | image_url: width: 700 }} 700w, {{ block.settings.image | image_url: width: 1000 }} 1000w"
+                  sizes="(min-width: 760px) 33vw, 80vw"
+                  alt="{{ block.settings.image.alt | escape | default: section.settings.heading | escape }}"
+                  width="700" height="700"
+                  loading="lazy">
+              {%- else -%}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
             {%- if block.settings.caption != blank -%}
               <figcaption>{{ block.settings.caption }}</figcaption>
             {%- endif -%}
