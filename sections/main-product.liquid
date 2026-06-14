@@ -89,6 +89,12 @@
         {%- form 'product', product, data-ajax-cart: 'true' -%}
           {% render 'variant-pills', product: product, uid: section.id %}
 
+          {% render 'offer-urgency',
+            show_delivery: section.settings.show_delivery,
+            delivery_min: section.settings.delivery_min,
+            delivery_max: section.settings.delivery_max
+          %}
+
           {%- assign bundle_blocks = section.blocks | where: 'type', 'bundle' -%}
           {%- if bundle_blocks.size > 0 -%}
             <fieldset class="bundle-cards" data-bundle-group>
@@ -181,10 +187,7 @@
         {% render 'offer-urgency',
           sale_text: section.settings.sale_text,
           sale_subtext: section.settings.sale_subtext,
-          sale_end: section.settings.sale_end,
-          show_delivery: section.settings.show_delivery,
-          delivery_min: section.settings.delivery_min,
-          delivery_max: section.settings.delivery_max
+          sale_end: section.settings.sale_end
         %}
 
         {%- if section.settings.show_countdown -%}
