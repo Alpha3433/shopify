@@ -16,9 +16,18 @@
           {% render 'stars', rating: block.settings.rating %}
           <p class="t-card__quote">{{ block.settings.quote }}</p>
           <div class="t-card__author">
-            <div>
-              <div class="t-card__name">{{ block.settings.name }}</div>
-              <div class="t-card__loc">{{ block.settings.location }}</div>
+            <div class="t-card__person">
+              {%- if block.settings.photo -%}
+                <img class="t-card__avatar"
+                  src="{{ block.settings.photo | image_url: width: 96 }}"
+                  srcset="{{ block.settings.photo | image_url: width: 96 }} 1x, {{ block.settings.photo | image_url: width: 192 }} 2x"
+                  alt="{{ block.settings.name | escape }}"
+                  width="48" height="48" loading="lazy">
+              {%- endif -%}
+              <div>
+                <div class="t-card__name">{{ block.settings.name }}</div>
+                <div class="t-card__loc">{{ block.settings.location }}</div>
+              </div>
             </div>
             {%- if block.settings.verified -%}
               <span class="verified">{% render 'icon', name: 'check-circle' %} Verified</span>
@@ -84,6 +93,12 @@
           "id": "location",
           "label": "Location",
           "default": "Amarillo, Texas"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Customer photo",
+          "info": "Optional. A small round photo of the customer, shown next to their name."
         },
         {
           "type": "checkbox",
