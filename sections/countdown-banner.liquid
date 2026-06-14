@@ -16,7 +16,7 @@
 >
   <div class="container countdown-bar__inner">
     {%- if section.settings.heading != blank -%}
-      <span class="countdown-bar__text">{{ section.settings.heading }}</span>
+      <span class="countdown-bar__text" style="font-size: {{ section.settings.text_size | default: 14 }}px;">{{ section.settings.heading }}</span>
     {%- endif -%}
 
     {%- if show_timer or section.settings.cta_label != blank -%}
@@ -46,6 +46,16 @@
       "label": "Banner text",
       "info": "The text on the left side of the bar.",
       "default": "Father's Day Sale — 30% Off Everything"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Banner text size",
+      "min": 10,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 14
     },
     {
       "type": "select",

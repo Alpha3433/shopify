@@ -408,14 +408,21 @@ p { margin: 0; }
 /* ==========================================================================
    Countdown promo panel
    ========================================================================== */
-.countdown-bar { background: linear-gradient(100deg, var(--navy) 0%, var(--navy-2) 58%, var(--navy-3) 100%); color: #fff; }
+.countdown-bar { background: var(--navy); color: var(--cream); position: relative; }
+.countdown-bar::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  background: linear-gradient(90deg,
+    var(--red) 0%, var(--red) 33.3%,
+    var(--gold) 33.3%, var(--gold) 66.6%,
+    var(--navy-3) 66.6%, var(--navy-3) 100%);
+}
 .countdown-bar__inner {
   display: flex; flex-wrap: wrap; align-items: center;
   gap: 10px 16px; padding-block: 10px;
 }
 .countdown-bar__text {
   font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em;
-  font-size: clamp(0.8rem, 1.6vw, 0.98rem); color: #fff; text-align: left;
+  font-size: clamp(0.8rem, 1.6vw, 0.98rem); color: var(--cream); text-align: left;
 }
 .countdown-bar__right { display: flex; align-items: center; gap: 12px; margin-left: auto; }
 .countdown-bar__timer { display: flex; align-items: stretch; gap: 7px; }
