@@ -884,17 +884,37 @@ p { margin: 0; }
 /* ==========================================================================
    Testimonials
    ========================================================================== */
+.testimonials__wrap { position: relative; }
 .testimonials__grid {
   display: grid; gap: 16px;
   grid-auto-flow: column; grid-auto-columns: min(86%, 380px);
   overflow-x: auto; scroll-snap-type: x mandatory;
-  padding-bottom: 4px; margin-inline: -4px; padding-inline: 4px;
+  padding-block: 10px 6px; margin-inline: -4px; padding-inline: 4px;
   scrollbar-width: none; -ms-overflow-style: none;
 }
 .testimonials__grid::-webkit-scrollbar { display: none; }
 @media (min-width: 880px) {
-  .testimonials__grid { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); overflow: visible; }
+  .testimonials__grid { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); overflow: visible; padding-block: 6px; }
 }
+.t-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94); border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--navy); box-shadow: var(--shadow-sm); cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.t-arrow:hover { background: #fff; }
+.t-arrow--prev { left: 6px; }
+.t-arrow--next { right: 6px; }
+.t-arrow svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.t-dots { display: flex; gap: 7px; justify-content: center; margin-top: 18px; }
+.t-dot {
+  width: 8px; height: 8px; border-radius: 999px; border: 0; padding: 0; cursor: pointer;
+  background: var(--cream-3); transition: background-color 0.2s, width 0.2s;
+}
+.t-dot.is-active { background: var(--red); width: 22px; }
+@media (min-width: 880px) { .t-arrow, .t-dots { display: none; } }
 .t-card {
   scroll-snap-align: start;
   background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg);
@@ -1080,6 +1100,7 @@ p { margin: 0; }
 .footer__grid { display: grid; gap: 40px; padding-block: clamp(48px, 7vw, 80px) 40px; }
 @media (min-width: 880px) { .footer__grid { grid-template-columns: 1.5fr 0.8fr 0.8fr 1.2fr; } }
 .footer__brand .site-header__wordmark { color: var(--cream); font-size: 1.55rem; }
+.footer__logo { display: block; max-width: 220px; width: auto; height: auto; }
 .footer__brand p { margin-top: 14px; max-width: 340px; color: rgba(247, 242, 231, 0.65); font-size: 0.93rem; }
 .footer__heading { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
 .footer__menu { list-style: none; padding: 0; display: grid; gap: 11px; font-size: 0.93rem; }

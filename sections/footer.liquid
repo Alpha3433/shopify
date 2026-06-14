@@ -3,7 +3,14 @@
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <span class="site-header__wordmark"><span class="star" style="color: var(--red)">★</span> {{ shop.name }}</span>
+        {%- if section.settings.logo -%}
+          <img class="footer__logo"
+            src="{{ section.settings.logo | image_url: width: 440 }}"
+            srcset="{{ section.settings.logo | image_url: width: 220 }} 1x, {{ section.settings.logo | image_url: width: 440 }} 2x"
+            alt="{{ shop.name | escape }}" loading="lazy">
+        {%- else -%}
+          <span class="site-header__wordmark"><span class="star" style="color: var(--red)">★</span> {{ shop.name }}</span>
+        {%- endif -%}
         <p>{{ section.settings.tagline }}</p>
         <div class="footer__social">
           {%- if settings.social_facebook != blank -%}
@@ -100,6 +107,12 @@
 {
   "name": "Footer",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer logo",
+      "info": "Upload your logo to replace the text wordmark. A transparent PNG reads best on the dark footer."
+    },
     {
       "type": "textarea",
       "id": "tagline",
