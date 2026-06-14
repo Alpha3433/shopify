@@ -54,6 +54,16 @@
           "trust_4": "",
           "show_payment_icons": false
         }
+      },
+      "countdown-banner": {
+        "type": "countdown-banner",
+        "settings": {
+          "heading": "30% Off Everything",
+          "deadline": "2026-06-21 23:59",
+          "cta_label": "",
+          "cta_scroll": true,
+          "cta_link": ""
+        }
       }
     },
     "content_for_index": []
