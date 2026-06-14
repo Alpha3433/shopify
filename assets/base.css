@@ -1336,7 +1336,7 @@ p { margin: 0; }
   background: var(--paper); border: 1px solid var(--line);
 }
 @media (min-width: 760px) { .homes__card { width: calc((100% - 32px) / 3); } }
-.homes__card-media { aspect-ratio: 1 / 1; overflow: hidden; }
+.homes__card-media { aspect-ratio: 4 / 5; overflow: hidden; }
 .homes__card-media img, .homes__card-media .placeholder-svg { width: 100%; height: 100%; object-fit: cover; display: block; }
 .homes__card figcaption { padding: 10px 14px; font-size: 0.84rem; color: var(--muted); }
 
