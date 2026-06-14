@@ -31,8 +31,8 @@
           "logo": "shopify://shop_images/hf_20260614_082143_ea361251-df69-460f-bc3d-d0dbafe01a31-removebg-preview.png",
           "logo_width": 280,
           "menu": "main-menu",
-          "show_search": true,
-          "show_account": true,
+          "show_search": false,
+          "show_account": false,
           "mobile_cta_label": "Shop Now"
         }
       },
