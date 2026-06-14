@@ -1359,6 +1359,7 @@ p { margin: 0; }
   background: var(--cream-3); transition: background-color 0.2s, width 0.2s;
 }
 .homes__dot.is-active { background: var(--red); width: 22px; }
+.homes .section-head h2 { font-size: clamp(1.35rem, 3vw, 2rem); }
 
 /* Review list (Amazon-style) */
 .reviews__layout { display: grid; gap: clamp(28px, 4vw, 56px); align-items: start; }
