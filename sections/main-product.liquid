@@ -167,6 +167,13 @@
             {{ form | payment_button }}
           {%- endif -%}
           <p class="btn-note">{% render 'icon', name: 'lock' %} {{ section.settings.button_note }}</p>
+          {%- if section.settings.show_payment_icons -%}
+            <div class="payment-icons">
+              {%- for type in shop.enabled_payment_types -%}
+                {{ type | payment_type_svg_tag }}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
         {%- endform -%}
 
         {% render 'offer-urgency',
@@ -204,14 +211,6 @@
           <div class="trust-row__item">{% render 'icon', name: 'truck' %}<span>{{ section.settings.trust_2 }}</span></div>
           <div class="trust-row__item">{% render 'icon', name: 'shield' %}<span>{{ section.settings.trust_3 }}</span></div>
         </div>
-
-        {%- if section.settings.show_payment_icons -%}
-          <div class="payment-icons">
-            {%- for type in shop.enabled_payment_types -%}
-              {{ type | payment_type_svg_tag }}
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
 
         <div style="margin-top: 28px">
           {%- if product.description != blank -%}
