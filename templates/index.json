@@ -44,25 +44,25 @@
         "b1": {
           "type": "benefit",
           "settings": {
-            "text": "Solid wood — feels heavy, because it is"
+            "text": "Solid wood that feels heavy, because it is"
           }
         },
         "b2": {
           "type": "benefit",
           "settings": {
-            "text": "Stars, stripes & eagle carved in deep relief — never printed"
+            "text": "Stars, stripes, and eagle carved in deep relief, never printed"
           }
         },
         "b3": {
           "type": "benefit",
           "settings": {
-            "text": "Arrives ready to hang — hardware included"
+            "text": "Arrives ready to hang, hardware included"
           }
         },
         "b4": {
           "type": "benefit",
           "settings": {
-            "text": "No two alike — every flag is one of one"
+            "text": "No two alike, every flag is one of one"
           }
         }
       },

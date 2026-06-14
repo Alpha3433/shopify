@@ -15,25 +15,25 @@
         "b1": {
           "type": "benefit",
           "settings": {
-            "text": "Solid wood — feels heavy, because it is"
+            "text": "Solid wood that feels heavy, because it is"
           }
         },
         "b2": {
           "type": "benefit",
           "settings": {
-            "text": "Stars, stripes & eagle carved in deep relief — never printed"
+            "text": "Stars, stripes, and eagle carved in deep relief, never printed"
           }
         },
         "b3": {
           "type": "benefit",
           "settings": {
-            "text": "Arrives ready to hang — hardware included"
+            "text": "Arrives ready to hang, hardware included"
           }
         },
         "b4": {
           "type": "benefit",
           "settings": {
-            "text": "No two alike — every flag is one of one"
+            "text": "No two alike, every flag is one of one"
           }
         },
         "bn1": {
@@ -98,7 +98,7 @@
       "settings": {
         "vendor_label": "Small-Batch Wood Carving",
         "rating_text": "",
-        "tagline": "Hand-carved solid wood. Deep relief detail. Ready to hang the day it arrives.",
+        "tagline": "Hand-carved from solid wood, with real depth you can feel. Ready to hang the day it arrives.",
         "description_title": "The Full Story",
         "button_label": "ADD TO CART",
         "show_dynamic_checkout": false,
