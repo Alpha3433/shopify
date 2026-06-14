@@ -673,7 +673,7 @@ p { margin: 0; }
 .pill-opt:has(input:checked) { background: var(--navy); color: var(--cream); border-color: var(--navy); }
 .pill-opt:has(input:focus-visible) { outline: 3px solid var(--gold); outline-offset: 2px; }
 
-.qty-row { display: flex; gap: 12px; align-items: stretch; margin-bottom: 12px; }
+.qty-row { display: flex; gap: 12px; align-items: stretch; margin-top: 16px; margin-bottom: 12px; }
 .qty {
   display: inline-flex; align-items: center;
   border: 1.5px solid var(--line); border-radius: var(--pill); background: var(--paper);
