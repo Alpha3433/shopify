@@ -107,6 +107,9 @@
         "cutoff_hour": 14,
         "countdown_text": "Order within",
         "stock_note": "",
+        "show_low_stock": true,
+        "low_stock_threshold": 10,
+        "low_stock_text": "Only [count] left in stock",
         "trust_1": "Hand-carved solid wood",
         "trust_2": "Free insured U.S. shipping",
         "trust_3": "60-day money-back guarantee",
@@ -118,6 +121,7 @@
       "settings": {
         "color_scheme": "cream",
         "flip": false,
+        "image": "shopify://shop_images/hf_20260614_072835_903e3646-47a3-4862-a8d5-41ce76fa4a24.jpg",
         "stamp_text": "CARVED BY HAND · NO TWO ALIKE",
         "eyebrow": "Why We Make These",
         "heading": "You Can't Print Depth.",
