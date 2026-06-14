@@ -226,14 +226,14 @@
           "type": "question",
           "settings": {
             "question": "Is it really hand-carved?",
-            "answer": "<p>Yes. Every flag is carved from solid wood and finished by hand — the stars, stripes, and eagle sit in real relief. Run your fingers across it and you'll feel the depth. Because it's hand-worked, no two are exactly alike.</p>"
+            "answer": "<p>Yes. Every flag is carved from solid wood and finished by hand; the stars, stripes, and eagle sit in real relief. Run your fingers across it and you'll feel the depth. Because it's hand-worked, no two are exactly alike.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
             "question": "How big is it, and is it heavy?",
-            "answer": "<p>Sizes are listed in inches right on the size selector. It's solid wood, so it has real weight to it — that's the first thing people notice when they pick it up. Mounting hardware rated for the weight is included.</p>"
+            "answer": "<p>Sizes are listed in inches right on the size selector. It's solid wood, so it has real weight to it, that's the first thing people notice when they pick it up. Mounting hardware rated for the weight is included.</p>"
           }
         },
         "q3": {
