@@ -283,51 +283,6 @@
         "reassure_2": "60-day money-back guarantee",
         "reassure_3": "Arrives ready to hang"
       }
-    },
-    "stats_WPr3yR": {
-      "type": "stats",
-      "blocks": {
-        "stat_rw6Gxy": {
-          "type": "stat",
-          "settings": {
-            "value": "2500",
-            "suffix": "+",
-            "label": "Carvings in American homes"
-          }
-        },
-        "stat_Uc63K7": {
-          "type": "stat",
-          "settings": {
-            "value": "50",
-            "suffix": "+",
-            "label": "States shipped to"
-          }
-        },
-        "stat_DRAGRQ": {
-          "type": "stat",
-          "settings": {
-            "value": "4.9",
-            "suffix": "★",
-            "label": "Average owner rating"
-          }
-        },
-        "stat_UUcFL9": {
-          "type": "stat",
-          "settings": {
-            "value": "100",
-            "suffix": "%",
-            "label": "Hand-carved — never printed"
-          }
-        }
-      },
-      "block_order": [
-        "stat_rw6Gxy",
-        "stat_Uc63K7",
-        "stat_DRAGRQ",
-        "stat_UUcFL9"
-      ],
-      "name": "Stats",
-      "settings": {}
     }
   },
   "order": [
@@ -336,7 +291,6 @@
     "testimonials",
     "guarantee",
     "faq",
-    "final_cta",
-    "stats_WPr3yR"
+    "final_cta"
   ]
 }
