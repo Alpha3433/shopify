@@ -103,7 +103,7 @@
         "sale_end": "2026-06-21",
         "show_delivery": true,
         "delivery_min": 8,
-        "delivery_max": 14,
+        "delivery_max": 8,
         "delivery_text": "Order Today And Receive By [date]",
         "show_countdown": true,
         "cutoff_hour": 14,
