@@ -1,27 +1,37 @@
-{%- assign has_deadline = false -%}
-{%- if section.settings.deadline != blank -%}{%- assign has_deadline = true -%}{%- endif -%}
+{%- assign mode = section.settings.mode | default: 'fixed' -%}
+{%- assign show_timer = false -%}
+{%- if mode == 'midnight' -%}
+  {%- assign show_timer = true -%}
+{%- elsif section.settings.deadline != blank -%}
+  {%- assign show_timer = true -%}
+{%- endif -%}
 {%- if section.settings.cta_scroll -%}
   {%- assign cta_href = '#buy' -%}
 {%- else -%}
   {%- assign cta_href = section.settings.cta_link | default: routes.all_products_collection_url -%}
 {%- endif -%}
 
-<section class="countdown-bar"{% if has_deadline %} data-deadline="{{ section.settings.deadline | escape }}"{% endif %}>
+<section class="countdown-bar"
+  {%- if mode == 'midnight' %} data-countdown-midnight{% elsif show_timer %} data-deadline="{{ section.settings.deadline | escape }}"{% endif -%}
+>
   <div class="container countdown-bar__inner">
     {%- if section.settings.heading != blank -%}
       <span class="countdown-bar__text">{{ section.settings.heading }}</span>
     {%- endif -%}
 
-    {%- if has_deadline -%}
-      <div class="countdown-bar__timer" aria-label="Time remaining">
-        <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-htotal>00</span><span class="countdown-bar__label">Hrs</span></span>
-        <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-m>00</span><span class="countdown-bar__label">Min</span></span>
-        <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-s>00</span><span class="countdown-bar__label">Sec</span></span>
+    {%- if show_timer or section.settings.cta_label != blank -%}
+      <div class="countdown-bar__right">
+        {%- if show_timer -%}
+          <div class="countdown-bar__timer" aria-label="Time remaining">
+            <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-htotal>00</span><span class="countdown-bar__label">Hrs</span></span>
+            <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-m>00</span><span class="countdown-bar__label">Min</span></span>
+            <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-s>00</span><span class="countdown-bar__label">Sec</span></span>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ cta_href }}" class="countdown-bar__cta">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
       </div>
-    {%- endif -%}
-
-    {%- if section.settings.cta_label != blank -%}
-      <a href="{{ cta_href }}" class="countdown-bar__cta">{{ section.settings.cta_label }}</a>
     {%- endif -%}
   </div>
 </section>
@@ -34,13 +44,25 @@
       "type": "text",
       "id": "heading",
       "label": "Banner text",
+      "info": "The text on the left side of the bar.",
       "default": "Father's Day Sale — 30% Off Everything"
+    },
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "Countdown type",
+      "options": [
+        { "value": "fixed", "label": "Fixed date & time" },
+        { "value": "midnight", "label": "Counts down to midnight (resets daily)" }
+      ],
+      "default": "fixed",
+      "info": "“Midnight” counts down to the end of each day in the visitor's local time, then restarts — a perpetual daily urgency timer."
     },
     {
       "type": "text",
       "id": "deadline",
-      "label": "Countdown deadline",
-      "info": "Format: YYYY-MM-DD HH:MM (visitor's local time). The whole banner hides automatically once it passes. Leave blank for no countdown. Tip: keep it under ~4 days so the hours stay short and urgent.",
+      "label": "Countdown deadline (fixed mode only)",
+      "info": "Format: YYYY-MM-DD HH:MM (visitor's local time). The whole banner hides automatically once it passes. Leave blank for no countdown. Tip: keep it under ~4 days so the hours stay short and urgent. Ignored when countdown type is set to Midnight.",
       "default": "2026-06-21 23:59"
     },
     {

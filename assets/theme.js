@@ -355,10 +355,21 @@
 
   /* ---------- Promo countdown (deadline chips) ---------- */
   function initPromoCountdown() {
-    document.querySelectorAll('[data-deadline]').forEach(function (el) {
-      var raw = (el.getAttribute('data-deadline') || '').trim().replace(' ', 'T');
-      var deadline = new Date(raw);
-      if (!raw || isNaN(deadline.getTime())) { el.hidden = true; return; }
+    document.querySelectorAll('[data-deadline], [data-countdown-midnight]').forEach(function (el) {
+      var midnight = el.hasAttribute('data-countdown-midnight');
+      function nextMidnight() {
+        var d = new Date();
+        d.setHours(24, 0, 0, 0);
+        return d;
+      }
+      function computeDeadline() {
+        if (midnight) return nextMidnight();
+        var raw = (el.getAttribute('data-deadline') || '').trim().replace(' ', 'T');
+        var dl = new Date(raw);
+        return (!raw || isNaN(dl.getTime())) ? null : dl;
+      }
+      var deadline = computeDeadline();
+      if (!deadline) { el.hidden = true; return; }
       var nums = {
         d: el.querySelector('[data-count-d]'),
         h: el.querySelector('[data-count-h]'),
@@ -370,9 +381,14 @@
       function tick() {
         var diff = deadline - new Date();
         if (diff <= 0) {
-          el.hidden = true;
-          if (timer) clearInterval(timer);
-          return;
+          if (midnight) {
+            deadline = nextMidnight();
+            diff = deadline - new Date();
+          } else {
+            el.hidden = true;
+            if (timer) clearInterval(timer);
+            return;
+          }
         }
         var d = Math.floor(diff / 86400000);
         var h = Math.floor((diff % 86400000) / 3600000);
