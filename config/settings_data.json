@@ -61,6 +61,7 @@
           "heading": "fathers day sale - 30% Off Everything",
           "text_size": 10,
           "timer_size": 12,
+          "timer_position": "right",
           "mode": "midnight",
           "deadline": "2026-06-21 23:59",
           "cta_label": "",

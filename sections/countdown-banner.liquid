@@ -10,8 +10,9 @@
 {%- else -%}
   {%- assign cta_href = section.settings.cta_link | default: routes.all_products_collection_url -%}
 {%- endif -%}
+{%- assign timer_pos = section.settings.timer_position | default: 'right' -%}
 
-<section class="countdown-bar"
+<section class="countdown-bar countdown-bar--pos-{{ timer_pos }}"
   {%- if mode == 'midnight' %} data-countdown-midnight{% elsif show_timer %} data-deadline="{{ section.settings.deadline | escape }}"{% endif -%}
 >
   <div class="container countdown-bar__inner">
@@ -67,6 +68,17 @@
       "step": 1,
       "unit": "px",
       "default": 16
+    },
+    {
+      "type": "select",
+      "id": "timer_position",
+      "label": "Timer position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
     },
     {
       "type": "select",

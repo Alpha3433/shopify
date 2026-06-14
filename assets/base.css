@@ -425,6 +425,9 @@ p { margin: 0; }
   font-size: clamp(0.8rem, 1.6vw, 0.98rem); color: var(--cream); text-align: left;
 }
 .countdown-bar__right { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+.countdown-bar--pos-left .countdown-bar__right { margin-left: 0; margin-right: auto; }
+.countdown-bar--pos-center .countdown-bar__right { margin-inline: auto; }
+.countdown-bar--pos-right .countdown-bar__right { margin-left: auto; margin-right: 0; }
 .countdown-bar__timer { display: flex; align-items: stretch; gap: 0.44em; font-size: 16px; }
 .countdown-bar__unit {
   background: var(--cream); border-radius: 0.44em;
