@@ -246,16 +246,6 @@
         "reassure_3": "Arrives ready to hang"
       }
     },
-    "countdown_banner": {
-      "type": "countdown-banner",
-      "settings": {
-        "heading": "Father's Day Sale — 30% Off Everything",
-        "deadline": "2026-06-21 23:59",
-        "cta_label": "",
-        "cta_scroll": true,
-        "cta_link": ""
-      }
-    },
     "homes": {
       "type": "homes-gallery",
       "blocks": {
@@ -291,7 +281,6 @@
   },
   "order": [
     "hero",
-    "countdown_banner",
     "homes",
     "story",
     "featured_product",
