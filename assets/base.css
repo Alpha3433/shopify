@@ -479,6 +479,18 @@ p { margin: 0; }
 .story__media-frame img { width: 100%; object-fit: cover; aspect-ratio: 4 / 5; }
 .story__media-frame .placeholder-svg { aspect-ratio: 4 / 5; }
 .story__media::after { display: none; }
+
+/* On the product page, match the Story image to the square opening gallery image
+   (same column width + square crop). Homepage and Our Story keep the portrait look. */
+.template-product .story__media-frame img,
+.template-product .story__media-frame .placeholder-svg { aspect-ratio: 1 / 1; }
+@media (min-width: 880px) {
+  .template-product .story__grid { grid-template-columns: 1.12fr 0.88fr; }
+}
+@media (max-width: 879px) {
+  .template-product .story__media-frame img,
+  .template-product .story__media-frame .placeholder-svg { aspect-ratio: 4 / 3; }
+}
 .story__stamp {
   position: absolute; top: -18px; right: 14px;
   width: 92px; height: 92px; border-radius: 50%;
