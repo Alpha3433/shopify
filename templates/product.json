@@ -147,12 +147,14 @@
         "photo_pWMW7M": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/hf_20260614_124645_d705ed05-f659-4ca1-b768-c3f118f4bfc9.png",
             "caption": ""
           }
         },
         "photo_igaQF8": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/hf_20260614_124708_3c4150e8-a510-4c46-9ad7-d830ae830b2e.png",
             "caption": ""
           }
         }
