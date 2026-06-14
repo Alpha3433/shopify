@@ -20,7 +20,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "message_1": "★ Father's Day Sale — 30% off everything",
+          "message_1": "Father's Day Sale — 30% off everything",
           "message_2": "",
           "message_3": ""
         }
