@@ -40,6 +40,7 @@
       "footer": {
         "type": "footer",
         "settings": {
+          "logo": "shopify://shop_images/hf_20260614_082143_ea361251-df69-460f-bc3d-d0dbafe01a31-removebg-preview.png",
           "tagline": "Hand-carved wooden flag art with depth you can feel. Every piece is carved from solid wood and finished by hand, built to hang for generations.",
           "menu_1_heading": "Shop",
           "menu_1": "main-menu",
