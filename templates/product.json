@@ -175,12 +175,7 @@
         "photo_Uh99qy": {
           "type": "photo",
           "settings": {
-            "caption": ""
-          }
-        },
-        "photo_jbjLWJ": {
-          "type": "photo",
-          "settings": {
+            "image": "shopify://shop_images/hf_20260614_125218_317c0600-6243-412f-8fab-161d2ac203e0.png",
             "caption": ""
           }
         }
@@ -192,8 +187,7 @@
         "photo_igaQF8",
         "photo_zgwjBb",
         "photo_zQP6xe",
-        "photo_Uh99qy",
-        "photo_jbjLWJ"
+        "photo_Uh99qy"
       ],
       "name": "In American homes",
       "settings": {
