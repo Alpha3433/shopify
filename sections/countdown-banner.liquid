@@ -22,7 +22,7 @@
     {%- if show_timer or section.settings.cta_label != blank -%}
       <div class="countdown-bar__right">
         {%- if show_timer -%}
-          <div class="countdown-bar__timer" aria-label="Time remaining">
+          <div class="countdown-bar__timer" style="font-size: {{ section.settings.timer_size | default: 16 }}px;" aria-label="Time remaining">
             <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-htotal>00</span><span class="countdown-bar__label">Hrs</span></span>
             <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-m>00</span><span class="countdown-bar__label">Min</span></span>
             <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-s>00</span><span class="countdown-bar__label">Sec</span></span>
@@ -56,6 +56,17 @@
       "step": 1,
       "unit": "px",
       "default": 14
+    },
+    {
+      "type": "range",
+      "id": "timer_size",
+      "label": "Countdown timer size",
+      "info": "Scales the whole timer — boxes, numbers and labels together.",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
     },
     {
       "type": "select",
