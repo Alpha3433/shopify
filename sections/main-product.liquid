@@ -221,7 +221,7 @@
         <div style="margin-top: 28px">
           {%- if product.description != blank -%}
             <details class="acc" open>
-              <summary>The Full Story {% render 'icon', name: 'plus' %}</summary>
+              <summary>{{ section.settings.description_title | default: 'The Full Story' }} {% render 'icon', name: 'plus' %}</summary>
               <div class="acc__body rte">{{ product.description }}</div>
             </details>
           {%- endif -%}
@@ -293,6 +293,13 @@
       "id": "tagline",
       "label": "Tagline",
       "default": "Hand-carved solid wood. Deep relief detail. Ready to hang the day it arrives."
+    },
+    {
+      "type": "text",
+      "id": "description_title",
+      "label": "Description accordion title",
+      "info": "The label on the product-description dropdown.",
+      "default": "The Full Story"
     },
     {
       "type": "text",
