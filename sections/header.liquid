@@ -11,7 +11,7 @@
             srcset="{{ section.settings.logo | image_url: width: 300 }} 300w, {{ section.settings.logo | image_url: width: 600 }} 600w"
             sizes="{{ section.settings.logo_width }}px"
             alt="{{ shop.name | escape }}"
-            style="max-width: {{ section.settings.logo_width }}px"
+            style="width: {{ section.settings.logo_width }}px"
             loading="eager">
         {%- else -%}
           <span class="site-header__wordmark"><span class="star">★</span> {{ shop.name }}</span>
@@ -69,7 +69,7 @@
       "type": "range",
       "id": "logo_width",
       "min": 80,
-      "max": 280,
+      "max": 520,
       "step": 10,
       "unit": "px",
       "label": "Logo width",

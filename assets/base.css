@@ -227,8 +227,7 @@ p { margin: 0; }
 }
 .site-header__left { display: flex; align-items: center; gap: 8px; justify-self: start; grid-column: 1; }
 .site-header__logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-.site-header__logo img { display: block; width: auto; height: auto; max-height: 72px; }
-@media (max-width: 749px) { .site-header__logo img { max-height: 52px; } }
+.site-header__logo img { display: block; height: auto; max-width: 100%; }
 .site-header__wordmark {
   font-family: var(--font-display); font-weight: 600; font-size: 1.4rem;
   letter-spacing: 0; color: var(--navy); line-height: 1;
