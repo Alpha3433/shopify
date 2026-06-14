@@ -223,7 +223,7 @@ p { margin: 0; }
 .site-header.is-scrolled { box-shadow: var(--shadow-sm); }
 .site-header__inner {
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
-  padding-block: 14px;
+  padding-block: 6px;
 }
 .site-header__left { display: flex; align-items: center; gap: 8px; justify-self: start; grid-column: 1; }
 .site-header__logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -482,15 +482,16 @@ p { margin: 0; }
 .story__media::after { display: none; }
 
 /* On the product page, match the Story image to the square opening gallery image
-   (same column width + square crop). Homepage and Our Story keep the portrait look. */
-.template-product .story__media-frame img,
-.template-product .story__media-frame .placeholder-svg { aspect-ratio: 1 / 1; }
+   (same column width + square crop). Aspect-ratio lives on the container so the
+   image's width/height attributes can't override it. Homepage/Our Story stay portrait. */
+.template-product .story__media-frame { aspect-ratio: 1 / 1; }
+.template-product .story__media-frame img { height: 100%; aspect-ratio: auto; }
+.template-product .story__media-frame .placeholder-svg { height: 100%; aspect-ratio: auto; }
 @media (min-width: 880px) {
   .template-product .story__grid { grid-template-columns: 1.12fr 0.88fr; }
 }
 @media (max-width: 879px) {
-  .template-product .story__media-frame img,
-  .template-product .story__media-frame .placeholder-svg { aspect-ratio: 4 / 3; }
+  .template-product .story__media-frame { aspect-ratio: 4 / 3; }
 }
 .story__stamp {
   position: absolute; top: -18px; right: 14px;
