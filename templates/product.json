@@ -283,6 +283,79 @@
         "reassure_2": "60-day money-back guarantee",
         "reassure_3": "Arrives ready to hang"
       }
+    },
+    "comparison_xkVy8d": {
+      "type": "comparison",
+      "blocks": {
+        "them_item_CBnTad": {
+          "type": "them_item",
+          "settings": {
+            "text": "A photo of a flag, printed on MDF or plastic"
+          }
+        },
+        "them_item_4dCDmJ": {
+          "type": "them_item",
+          "settings": {
+            "text": "Fades and warps within a year or two"
+          }
+        },
+        "them_item_ExgU4W": {
+          "type": "them_item",
+          "settings": {
+            "text": "Identical to ten thousand others"
+          }
+        },
+        "them_item_EH6R9p": {
+          "type": "them_item",
+          "settings": {
+            "text": "Flat to the touch — because it is flat"
+          }
+        },
+        "us_item_fyTX4N": {
+          "type": "us_item",
+          "settings": {
+            "text": "Carved from solid hardwood"
+          }
+        },
+        "us_item_fBRYW9": {
+          "type": "us_item",
+          "settings": {
+            "text": "Detail carved in deep relief — built to outlast you"
+          }
+        },
+        "us_item_raTaL3": {
+          "type": "us_item",
+          "settings": {
+            "text": "Every piece unique — carved, not copied"
+          }
+        },
+        "us_item_erPdJN": {
+          "type": "us_item",
+          "settings": {
+            "text": "Backed by a 60-day keep-it guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "them_item_CBnTad",
+        "them_item_4dCDmJ",
+        "them_item_ExgU4W",
+        "them_item_EH6R9p",
+        "us_item_fyTX4N",
+        "us_item_fBRYW9",
+        "us_item_raTaL3",
+        "us_item_erPdJN"
+      ],
+      "name": "Comparison",
+      "settings": {
+        "eyebrow": "Read the Fine Print",
+        "heading": "You’ve Seen What “For Patriots” Usually Means.",
+        "subheading": "Flip over most flag décor and you’ll find a sticker that tells the real story. Here’s the difference you’re paying for.",
+        "them_label": "What they sell",
+        "them_title": "Mass-Produced “Patriotic” Décor",
+        "us_label": "What you hang instead",
+        "us_title": "A Hand-Carved Wooden Heirloom"
+      }
     }
   },
   "order": [
@@ -291,6 +364,7 @@
     "testimonials",
     "guarantee",
     "faq",
-    "final_cta"
+    "final_cta",
+    "comparison_xkVy8d"
   ]
 }
