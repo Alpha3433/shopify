@@ -59,6 +59,7 @@
         "type": "countdown-banner",
         "settings": {
           "heading": "30% Off Everything",
+          "mode": "midnight",
           "deadline": "2026-06-21 23:59",
           "cta_label": "",
           "cta_scroll": true,
