@@ -233,7 +233,8 @@ p { margin: 0; }
   letter-spacing: 0; color: var(--navy); line-height: 1;
 }
 .site-header__wordmark .star { color: var(--red); }
-.site-header__nav { display: none; grid-column: 2; }
+.site-header__center { grid-column: 2; justify-self: center; min-width: 0; display: flex; align-items: center; }
+.site-header__nav { display: none; }
 .site-header__actions { display: flex; align-items: center; gap: 4px; justify-self: end; grid-column: 3; }
 .header-icon-btn {
   position: relative; display: inline-flex; align-items: center; justify-content: center;

@@ -1,29 +1,42 @@
+{%- capture logo_markup -%}
+<a href="{{ routes.root_url }}" class="site-header__logo">
+  {%- if section.settings.logo -%}
+    <img
+      src="{{ section.settings.logo | image_url: width: 600 }}"
+      srcset="{{ section.settings.logo | image_url: width: 300 }} 300w, {{ section.settings.logo | image_url: width: 600 }} 600w"
+      sizes="{{ section.settings.logo_width }}px"
+      alt="{{ shop.name | escape }}"
+      style="width: {{ section.settings.logo_width }}px"
+      loading="eager">
+  {%- else -%}
+    <span class="site-header__wordmark"><span class="star">★</span> {{ shop.name }}</span>
+  {%- endif -%}
+</a>
+{%- endcapture -%}
+
+{%- capture nav_markup -%}
+<nav class="site-header__nav" aria-label="Main navigation">
+  {%- for link in section.settings.menu.links -%}
+    <a href="{{ link.url }}">{{ link.title }}</a>
+  {%- endfor -%}
+</nav>
+{%- endcapture -%}
+
+{%- assign center_logo = false -%}
+{%- if section.settings.logo_position == 'center' -%}{%- assign center_logo = true -%}{%- endif -%}
+
 <header class="site-header" data-header>
-  <div class="container site-header__inner">
+  <div class="container site-header__inner{% if center_logo %} site-header__inner--center{% endif %}">
     <div class="site-header__left">
       <button type="button" class="header-icon-btn menu-toggle" data-menu-open aria-label="Open menu">
         {% render 'icon', name: 'menu' %}
       </button>
-      <a href="{{ routes.root_url }}" class="site-header__logo">
-        {%- if section.settings.logo -%}
-          <img
-            src="{{ section.settings.logo | image_url: width: 600 }}"
-            srcset="{{ section.settings.logo | image_url: width: 300 }} 300w, {{ section.settings.logo | image_url: width: 600 }} 600w"
-            sizes="{{ section.settings.logo_width }}px"
-            alt="{{ shop.name | escape }}"
-            style="width: {{ section.settings.logo_width }}px"
-            loading="eager">
-        {%- else -%}
-          <span class="site-header__wordmark"><span class="star">★</span> {{ shop.name }}</span>
-        {%- endif -%}
-      </a>
+      {%- if center_logo -%}{{ nav_markup }}{%- else -%}{{ logo_markup }}{%- endif -%}
     </div>
 
-    <nav class="site-header__nav" aria-label="Main navigation">
-      {%- for link in section.settings.menu.links -%}
-        <a href="{{ link.url }}">{{ link.title }}</a>
-      {%- endfor -%}
-    </nav>
+    <div class="site-header__center">
+      {%- if center_logo -%}{{ logo_markup }}{%- else -%}{{ nav_markup }}{%- endif -%}
+    </div>
 
     <div class="site-header__actions">
       <a href="{{ routes.cart_url }}" class="header-icon-btn" data-cart-open aria-label="Open cart">
@@ -74,6 +87,17 @@
       "unit": "px",
       "label": "Logo width",
       "default": 150
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Logo position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left",
+      "info": "Center puts the logo in the middle, with the menu on the left."
     },
     {
       "type": "link_list",
