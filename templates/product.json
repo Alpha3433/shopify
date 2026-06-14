@@ -79,8 +79,8 @@
         "a2": {
           "type": "accordion",
           "settings": {
-            "title": "Care & Materials",
-            "content": "<p>Solid hardwood with a hand-rubbed, furniture-grade finish. Dust with a dry cloth — that's it.</p>"
+            "title": "Shipping & Returns",
+            "content": "<p>Every flag is made in small batches and checked by hand before it leaves. Orders are dispatched within 2–4 business days; delivery typically takes 7–13 days, tracked and fully insured the whole way.<br/><br/><strong>Free shipping on all U.S. orders.</strong><br/><br/><strong>Returns:</strong> We stand behind every flag. If yours arrives damaged, or just doesn't stop you in your tracks, tell us within <strong>60 days</strong> and we'll make it right with a replacement or full refund, and you won't even need to ship it back.<br/><br/><strong>Damaged in transit?</strong> Email us a photo within 48 hours and we'll handle the carrier claim and send a replacement at no cost to you.<br/></p>"
           }
         }
       },
