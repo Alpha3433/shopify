@@ -1,7 +1,19 @@
 <section class="section">
   <div class="container">
-    <div class="guarantee__panel" data-reveal="zoom">
-      <div class="guarantee__icon">{% render 'icon', name: 'shield' %}</div>
+    <div class="guarantee__panel{% if section.settings.image %} guarantee__panel--photo{% endif %}" data-reveal="zoom">
+      {%- if section.settings.image -%}
+        <div class="guarantee__media">
+          <img
+            src="{{ section.settings.image | image_url: width: 640 }}"
+            srcset="{{ section.settings.image | image_url: width: 420 }} 420w, {{ section.settings.image | image_url: width: 640 }} 640w, {{ section.settings.image | image_url: width: 900 }} 900w"
+            sizes="(min-width: 820px) 280px, 70vw"
+            alt="{{ section.settings.image.alt | escape | default: section.settings.heading | escape }}"
+            width="640" height="640"
+            loading="lazy">
+        </div>
+      {%- else -%}
+        <div class="guarantee__icon">{% render 'icon', name: 'shield' %}</div>
+      {%- endif -%}
       <div class="guarantee__content">
         {%- if section.settings.eyebrow != blank -%}
           <p class="eyebrow">{{ section.settings.eyebrow }}</p>
@@ -22,6 +34,12 @@
 {
   "name": "Guarantee",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo",
+      "info": "Upload a photo to replace the red badge (e.g. the flag on a wall). Leave empty to show the red shield badge."
+    },
     {
       "type": "text",
       "id": "eyebrow",
