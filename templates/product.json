@@ -105,7 +105,7 @@
         "delivery_min": 6,
         "delivery_max": 5,
         "delivery_text": "Order Today And Receive By [date]",
-        "show_countdown": true,
+        "show_countdown": false,
         "cutoff_hour": 14,
         "countdown_text": "Order within",
         "stock_note": "",
