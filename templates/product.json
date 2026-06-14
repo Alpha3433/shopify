@@ -110,7 +110,7 @@
         "show_low_stock": true,
         "low_stock_threshold": 10,
         "low_stock_text": "Only [count] left in stock",
-        "low_stock_fixed": 0,
+        "low_stock_fixed": 4,
         "trust_1": "Hand-carved solid wood",
         "trust_2": "Free insured U.S. shipping",
         "trust_3": "60-day money-back guarantee",
