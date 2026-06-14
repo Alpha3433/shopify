@@ -7,11 +7,11 @@
       <a href="{{ routes.root_url }}" class="site-header__logo">
         {%- if section.settings.logo -%}
           <img
-            src="{{ section.settings.logo | image_url: width: 300 }}"
-            srcset="{{ section.settings.logo | image_url: width: 300 }} 1x, {{ section.settings.logo | image_url: width: 600 }} 2x"
+            src="{{ section.settings.logo | image_url: width: 600 }}"
+            srcset="{{ section.settings.logo | image_url: width: 300 }} 300w, {{ section.settings.logo | image_url: width: 600 }} 600w"
+            sizes="{{ section.settings.logo_width }}px"
             alt="{{ shop.name | escape }}"
-            width="{{ section.settings.logo_width }}"
-            style="width: {{ section.settings.logo_width }}px"
+            style="max-width: {{ section.settings.logo_width }}px"
             loading="eager">
         {%- else -%}
           <span class="site-header__wordmark"><span class="star">★</span> {{ shop.name }}</span>
