@@ -87,14 +87,14 @@
         {%- endif -%}
 
         {%- form 'product', product, data-ajax-cart: 'true' -%}
-          {% render 'variant-pills', product: product, uid: section.id %}
-
           {% render 'offer-urgency',
             show_delivery: section.settings.show_delivery,
             delivery_min: section.settings.delivery_min,
             delivery_max: section.settings.delivery_max,
             delivery_text: section.settings.delivery_text
           %}
+
+          {% render 'variant-pills', product: product, uid: section.id %}
 
           {%- assign bundle_blocks = section.blocks | where: 'type', 'bundle' -%}
           {%- if bundle_blocks.size > 0 -%}
