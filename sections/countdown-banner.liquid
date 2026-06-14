@@ -1,46 +1,28 @@
-<section class="section--tight section">
-  <div class="container">
-    <div class="promo-panel" data-reveal="zoom">
-      <div class="promo-panel__copy">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="eyebrow" style="color: var(--cream)">{{ section.settings.eyebrow }}</p>
-        {%- endif -%}
-        <h2>{{ section.settings.heading }}</h2>
-        {%- if section.settings.text != blank -%}
-          <p>{{ section.settings.text }}</p>
-        {%- endif -%}
+{%- assign has_deadline = false -%}
+{%- if section.settings.deadline != blank -%}{%- assign has_deadline = true -%}{%- endif -%}
+{%- if section.settings.cta_scroll -%}
+  {%- assign cta_href = '#buy' -%}
+{%- else -%}
+  {%- assign cta_href = section.settings.cta_link | default: routes.all_products_collection_url -%}
+{%- endif -%}
+
+<section class="countdown-bar"{% if has_deadline %} data-deadline="{{ section.settings.deadline | escape }}"{% endif %}>
+  <div class="container countdown-bar__inner">
+    {%- if section.settings.heading != blank -%}
+      <span class="countdown-bar__text">{{ section.settings.heading }}</span>
+    {%- endif -%}
+
+    {%- if has_deadline -%}
+      <div class="countdown-bar__timer" aria-label="Time remaining">
+        <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-htotal>00</span><span class="countdown-bar__label">Hrs</span></span>
+        <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-m>00</span><span class="countdown-bar__label">Min</span></span>
+        <span class="countdown-bar__unit"><span class="countdown-bar__num" data-count-s>00</span><span class="countdown-bar__label">Sec</span></span>
       </div>
-      <div class="promo-panel__side">
-        {%- if section.settings.deadline != blank -%}
-          <div class="promo-count" data-deadline="{{ section.settings.deadline | escape }}" aria-label="Time remaining">
-            <div class="promo-count__chip">
-              <span class="promo-count__num" data-count-d>00</span>
-              <span class="promo-count__label">Days</span>
-            </div>
-            <div class="promo-count__chip">
-              <span class="promo-count__num" data-count-h>00</span>
-              <span class="promo-count__label">Hrs</span>
-            </div>
-            <div class="promo-count__chip">
-              <span class="promo-count__num" data-count-m>00</span>
-              <span class="promo-count__label">Min</span>
-            </div>
-            <div class="promo-count__chip">
-              <span class="promo-count__num" data-count-s>00</span>
-              <span class="promo-count__label">Sec</span>
-            </div>
-          </div>
-        {%- endif -%}
-        {%- if section.settings.cta_label != blank -%}
-          {%- if section.settings.cta_scroll -%}
-            {%- assign cta_href = '#buy' -%}
-          {%- else -%}
-            {%- assign cta_href = section.settings.cta_link | default: routes.all_products_collection_url -%}
-          {%- endif -%}
-          <a href="{{ cta_href }}" class="btn btn--light btn--lg">{{ section.settings.cta_label }}</a>
-        {%- endif -%}
-      </div>
-    </div>
+    {%- endif -%}
+
+    {%- if section.settings.cta_label != blank -%}
+      <a href="{{ cta_href }}" class="countdown-bar__cta">{{ section.settings.cta_label }}</a>
+    {%- endif -%}
   </div>
 </section>
 
@@ -50,39 +32,26 @@
   "settings": [
     {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Limited Run"
-    },
-    {
-      "type": "textarea",
       "id": "heading",
-      "label": "Heading",
-      "default": "The Independence Day batch is almost spoken for."
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Text",
-      "default": "Each batch is small because each one is carved by hand. When this run is gone, the next one starts from raw lumber."
+      "label": "Banner text",
+      "default": "Father's Day Sale — 30% Off Everything"
     },
     {
       "type": "text",
       "id": "deadline",
       "label": "Countdown deadline",
-      "info": "Format: YYYY-MM-DD HH:MM (visitor's local time). The countdown hides automatically once it passes. Leave blank for no countdown.",
-      "default": "2026-07-04 20:00"
+      "info": "Format: YYYY-MM-DD HH:MM (visitor's local time). The whole banner hides automatically once it passes. Leave blank for no countdown. Tip: keep it under ~4 days so the hours stay short and urgent.",
+      "default": "2026-06-21 23:59"
     },
     {
       "type": "text",
       "id": "cta_label",
-      "label": "Button label",
-      "default": "Reserve Yours"
+      "label": "Button label (optional)"
     },
     {
       "type": "checkbox",
       "id": "cta_scroll",
-      "label": "Scroll to the buy box instead of linking",
+      "label": "Button scrolls to the buy box instead of linking",
       "default": true
     },
     {

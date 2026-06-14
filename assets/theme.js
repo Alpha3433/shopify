@@ -362,6 +362,7 @@
       var nums = {
         d: el.querySelector('[data-count-d]'),
         h: el.querySelector('[data-count-h]'),
+        htotal: el.querySelector('[data-count-htotal]'),
         m: el.querySelector('[data-count-m]'),
         s: el.querySelector('[data-count-s]')
       };
@@ -379,6 +380,7 @@
         var s = Math.floor((diff % 60000) / 1000);
         if (nums.d) nums.d.textContent = String(d).padStart(2, '0');
         if (nums.h) nums.h.textContent = String(h).padStart(2, '0');
+        if (nums.htotal) nums.htotal.textContent = String(d * 24 + h).padStart(2, '0');
         if (nums.m) nums.m.textContent = String(m).padStart(2, '0');
         if (nums.s) nums.s.textContent = String(s).padStart(2, '0');
       }

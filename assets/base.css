@@ -408,37 +408,35 @@ p { margin: 0; }
 /* ==========================================================================
    Countdown promo panel
    ========================================================================== */
-.promo-panel {
-  background: var(--navy); color: var(--cream);
-  border-radius: var(--radius-lg);
-  padding: clamp(30px, 5vw, 56px);
-  display: grid; gap: 30px; align-items: center;
-  position: relative; overflow: hidden;
+.countdown-bar { background: linear-gradient(90deg, var(--navy) 0%, var(--navy) 30%, var(--red) 100%); color: #fff; }
+.countdown-bar__inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: clamp(12px, 3vw, 26px); padding-block: 11px;
 }
-.promo-panel::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(640px 320px at 85% 10%, rgba(201, 162, 39, 0.16), transparent 60%);
+.countdown-bar__text {
+  font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em;
+  font-size: clamp(0.8rem, 1.6vw, 0.98rem); color: #fff; text-align: center;
 }
-@media (min-width: 880px) { .promo-panel { grid-template-columns: 1.1fr auto; } }
-.promo-panel__copy { position: relative; display: grid; gap: 14px; justify-items: start; }
-.promo-panel__copy h2 { color: #fff; max-width: 18ch; }
-.promo-panel__copy p { color: rgba(247, 242, 231, 0.75); }
-.promo-panel__side { position: relative; display: grid; gap: 20px; justify-items: center; }
-.promo-count { display: flex; gap: 10px; }
-.promo-count__chip {
-  width: clamp(58px, 7vw, 76px);
-  background: var(--red); color: #fff;
-  border-radius: var(--radius-sm);
-  padding: 12px 6px 10px;
-  text-align: center;
-  display: grid; gap: 2px;
+.countdown-bar__timer { display: flex; align-items: stretch; gap: 7px; }
+.countdown-bar__unit {
+  background: var(--cream); border-radius: 7px;
+  padding: 4px 9px 5px; min-width: 46px;
+  display: flex; flex-direction: column; align-items: center; line-height: 1;
 }
-.promo-count__num {
-  font-family: var(--font-display); font-weight: 600;
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1;
-  font-variant-numeric: tabular-nums;
+.countdown-bar__num {
+  font-family: var(--font-display); font-weight: 700; color: var(--navy);
+  font-size: 1.2rem; font-variant-numeric: tabular-nums;
 }
-.promo-count__label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; }
+.countdown-bar__label {
+  font-size: 0.5rem; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--red); margin-top: 2px;
+}
+.countdown-bar__cta {
+  background: var(--cream); color: var(--navy); font-weight: 700;
+  padding: 8px 18px; border-radius: var(--pill); text-decoration: none;
+  font-size: 0.84rem; white-space: nowrap; transition: background-color 0.2s ease;
+}
+.countdown-bar__cta:hover { background: #fff; }
 
 /* ==========================================================================
    Comparison
