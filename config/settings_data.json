@@ -59,9 +59,9 @@
         "type": "countdown-banner",
         "settings": {
           "heading": "fathers day sale - 30% Off Everything",
-          "text_size": 10,
+          "text_size": 13,
           "timer_size": 12,
-          "timer_position": "right",
+          "timer_position": "center",
           "mode": "midnight",
           "deadline": "2026-06-21 23:59",
           "cta_label": "",
