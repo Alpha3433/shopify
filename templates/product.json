@@ -69,6 +69,13 @@
             "content": "<p>Free, fully-insured U.S. shipping on every order. Dispatched within 2–4 business days; delivery typically takes 8–14 days, tracked the whole way. 60-day money-back guarantee — full refund, no need to ship it back.</p>"
           }
         },
+        "accordion_7nBCpr": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Free, fully-insured U.S. shipping on every order. Dispatched within 2–4 business days; delivery typically takes 8–14 days, tracked the whole way. 60-day money-back guarantee — full refund, no need to ship it back.</p>"
+          }
+        },
         "a2": {
           "type": "accordion",
           "settings": {
@@ -85,6 +92,7 @@
         "bn1",
         "bn2",
         "a1",
+        "accordion_7nBCpr",
         "a2"
       ],
       "settings": {
