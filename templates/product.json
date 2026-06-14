@@ -309,13 +309,6 @@
             "answer": "<p>Each flag is dispatched within 2–4 business days, free and fully insured anywhere in the U.S. Delivery typically takes 7–13 days, tracked the whole way, the exact “arrives by” estimate is shown right above the Add to Cart button.</p>"
           }
         },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "Can I give it as a gift?",
-            "answer": "<p>It's one of the most popular Father's Day, Veterans Day, and retirement gifts we know of.</p>"
-          }
-        },
         "q5": {
           "type": "question",
           "settings": {
@@ -328,7 +321,6 @@
         "q1",
         "q2",
         "q3",
-        "q4",
         "q5"
       ],
       "settings": {
