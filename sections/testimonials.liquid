@@ -20,21 +20,22 @@
       <div class="testimonials__grid" data-scroller-viewport>
         {%- for block in section.blocks -%}
           <div class="t-card" data-scroller-item data-reveal style="--reveal-delay: {{ forloop.index0 | modulo: 3 }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.photo -%}
+            <div class="t-card__media">
+              <img
+                src="{{ block.settings.photo | image_url: width: 760 }}"
+                srcset="{{ block.settings.photo | image_url: width: 480 }} 480w, {{ block.settings.photo | image_url: width: 760 }} 760w, {{ block.settings.photo | image_url: width: 1100 }} 1100w"
+                sizes="(min-width: 880px) 30vw, 86vw"
+                alt="{{ block.settings.name | escape | append: ' — verified buyer photo' }}"
+                width="760" height="570" loading="lazy">
+            </div>
+          {%- endif -%}
           {% render 'stars', rating: block.settings.rating %}
           <p class="t-card__quote">{{ block.settings.quote }}</p>
           <div class="t-card__author">
-            <div class="t-card__person">
-              {%- if block.settings.photo -%}
-                <img class="t-card__avatar"
-                  src="{{ block.settings.photo | image_url: width: 96 }}"
-                  srcset="{{ block.settings.photo | image_url: width: 96 }} 1x, {{ block.settings.photo | image_url: width: 192 }} 2x"
-                  alt="{{ block.settings.name | escape }}"
-                  width="48" height="48" loading="lazy">
-              {%- endif -%}
-              <div>
-                <div class="t-card__name">{{ block.settings.name }}</div>
-                <div class="t-card__loc">{{ block.settings.location }}</div>
-              </div>
+            <div>
+              <div class="t-card__name">{{ block.settings.name }}</div>
+              <div class="t-card__loc">{{ block.settings.location }}</div>
             </div>
             {%- if block.settings.verified -%}
               <span class="verified">{% render 'icon', name: 'check-circle' %} Verified</span>
@@ -119,8 +120,8 @@
         {
           "type": "image_picker",
           "id": "photo",
-          "label": "Customer photo",
-          "info": "Optional. A small round photo of the customer, shown next to their name."
+          "label": "Proof photo (shown above the review)",
+          "info": "Optional. A real buyer's photo of the flag — visual proof shown across the top of the card."
         },
         {
           "type": "checkbox",
