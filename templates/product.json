@@ -258,16 +258,10 @@
     "guarantee": {
       "type": "guarantee",
       "blocks": {
-        "g1": {
-          "type": "item",
-          "settings": {
-            "text": "60-day money-back guarantee — full refund"
-          }
-        },
         "g2": {
           "type": "item",
           "settings": {
-            "text": "Free, fully-insured U.S. shipping"
+            "text": "Free fully insured U.S. shipping"
           }
         },
         "g3": {
@@ -278,7 +272,6 @@
         }
       },
       "block_order": [
-        "g1",
         "g2",
         "g3"
       ],
