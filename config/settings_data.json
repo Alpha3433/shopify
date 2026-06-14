@@ -29,7 +29,8 @@
         "type": "header",
         "settings": {
           "logo": "shopify://shop_images/hf_20260614_082143_ea361251-df69-460f-bc3d-d0dbafe01a31-removebg-preview.png",
-          "logo_width": 280,
+          "logo_width": 160,
+          "logo_position": "center",
           "menu": "main-menu",
           "show_search": false,
           "show_account": false,
