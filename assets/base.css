@@ -1323,6 +1323,43 @@ p { margin: 0; }
   padding: 4px 12px; border-radius: var(--pill);
 }
 
+/* In-American-homes customer photo carousel */
+.homes__wrap { position: relative; }
+.homes__viewport {
+  display: flex; gap: 16px; overflow-x: auto;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.homes__viewport::-webkit-scrollbar { display: none; }
+.homes__card {
+  flex: 0 0 auto; width: min(80%, 360px); margin: 0; scroll-snap-align: start;
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--paper); border: 1px solid var(--line);
+}
+@media (min-width: 760px) { .homes__card { width: calc((100% - 32px) / 3); } }
+.homes__card img, .homes__card .placeholder-svg { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+.homes__card figcaption { padding: 10px 14px; font-size: 0.84rem; color: var(--muted); }
+
+.homes__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92); border: 1px solid var(--line);
+  display: none; align-items: center; justify-content: center;
+  color: var(--navy); box-shadow: var(--shadow-sm); cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.homes__arrow:hover { background: #fff; }
+.homes__arrow--prev { left: 8px; }
+.homes__arrow--next { right: 8px; }
+.homes__arrow svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@media (hover: hover) and (min-width: 760px) { .homes__arrow { display: flex; } }
+
+.homes__dots { display: flex; gap: 7px; justify-content: center; margin-top: 18px; }
+.homes__dot {
+  width: 8px; height: 8px; border-radius: 999px; border: 0; padding: 0; cursor: pointer;
+  background: var(--cream-3); transition: background-color 0.2s, width 0.2s;
+}
+.homes__dot.is-active { background: var(--red); width: 22px; }
+
 /* Review list (Amazon-style) */
 .reviews__layout { display: grid; gap: clamp(28px, 4vw, 56px); align-items: start; }
 @media (min-width: 880px) { .reviews__layout { grid-template-columns: 0.8fr 1.2fr; } }

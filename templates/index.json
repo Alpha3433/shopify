@@ -255,11 +255,44 @@
         "cta_scroll": true,
         "cta_link": ""
       }
+    },
+    "homes": {
+      "type": "homes-gallery",
+      "blocks": {
+        "p1": {
+          "type": "photo",
+          "settings": {}
+        },
+        "p2": {
+          "type": "photo",
+          "settings": {}
+        },
+        "p3": {
+          "type": "photo",
+          "settings": {}
+        },
+        "p4": {
+          "type": "photo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "eyebrow": "From American Homes",
+        "heading": "Proudly Displayed in American Homes",
+        "subheading": ""
+      }
     }
   },
   "order": [
     "hero",
     "countdown_banner",
+    "homes",
     "story",
     "featured_product",
     "testimonials",

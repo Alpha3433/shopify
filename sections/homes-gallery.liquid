@@ -1,0 +1,116 @@
+<section class="section homes" data-scroller>
+  <div class="container">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="section-head">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 data-reveal style="--reveal-delay: 1">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p data-reveal style="--reveal-delay: 2">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="homes__wrap" data-reveal>
+      {%- if section.blocks.size > 1 -%}
+        <button type="button" class="homes__arrow homes__arrow--prev" data-scroller-prev aria-label="Previous photos">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      {%- endif -%}
+
+      <div class="homes__viewport" data-scroller-viewport>
+        {%- for block in section.blocks -%}
+          <figure class="homes__card" data-scroller-item {{ block.shopify_attributes }}>
+            {%- if block.settings.image -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 700 }}"
+                srcset="{{ block.settings.image | image_url: width: 500 }} 500w, {{ block.settings.image | image_url: width: 700 }} 700w, {{ block.settings.image | image_url: width: 1000 }} 1000w"
+                sizes="(min-width: 760px) 33vw, 80vw"
+                alt="{{ block.settings.image.alt | escape | default: section.settings.heading | escape }}"
+                width="700" height="700"
+                loading="lazy">
+            {%- else -%}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+            {%- if block.settings.caption != blank -%}
+              <figcaption>{{ block.settings.caption }}</figcaption>
+            {%- endif -%}
+          </figure>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.blocks.size > 1 -%}
+        <button type="button" class="homes__arrow homes__arrow--next" data-scroller-next aria-label="Next photos">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 1 -%}
+      <div class="homes__dots" data-scroller-dots>
+        {%- for block in section.blocks -%}
+          <button type="button" class="homes__dot{% if forloop.first %} is-active{% endif %}" data-scroller-dot="{{ forloop.index0 }}" aria-label="Go to photo {{ forloop.index }}"></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "In American homes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Proudly Displayed in American Homes"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "info": "Use real customer photos here. Only claim numbers (e.g. 'hundreds of homes') once they're true."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Customer photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo",
+          "info": "A real customer's photo of the flag on their wall."
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption (optional)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [
+    {
+      "name": "In American homes",
+      "blocks": [
+        { "type": "photo" },
+        { "type": "photo" },
+        { "type": "photo" },
+        { "type": "photo" }
+      ]
+    }
+  ]
+}
+{% endschema %}
