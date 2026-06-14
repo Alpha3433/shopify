@@ -80,7 +80,7 @@
           "type": "accordion",
           "settings": {
             "title": "Shipping & Returns",
-            "content": "<p>Every flag is made in small batches and checked by hand before it leaves. Orders are dispatched within 2–4 business days; delivery typically takes 7–13 days, tracked and fully insured the whole way.<br/><br/><strong>Free shipping on all U.S. orders.</strong><br/><br/><strong>Returns:</strong> We stand behind every flag. If yours arrives damaged, or just doesn't stop you in your tracks, tell us within <strong>60 days</strong> and we'll make it right with a replacement or full refund, and you won't even need to ship it back.<br/><br/><strong>Damaged in transit?</strong> Email us a photo within 48 hours and we'll handle the carrier claim and send a replacement at no cost to you.<br/></p>"
+            "content": "<p>Every flag is made in small batches and checked by hand before it leaves. Orders are dispatched within 2–4 business days; delivery typically takes 7–13 days, tracked and fully insured the whole way.<br/><br/><strong>Free shipping on all U.S. orders.</strong><br/><br/><strong>Returns:</strong> I stand behind every flag. If yours arrives damaged, or just doesn't stop you in your tracks, tell me within <strong>30 days</strong> and I'll make it a replacement or provide a full refund.<br/><br/><strong>Damaged in transit?</strong> Email me a photo within 48 hours and I'll handle the carrier claim and send a replacement at no cost to you.</p>"
           }
         }
       },
@@ -258,21 +258,6 @@
         "subheading": "Replace these placeholders with your real customer reviews before launch."
       }
     },
-    "give_back": {
-      "type": "give-back",
-      "settings": {
-        "color_scheme": "navy",
-        "flip": false,
-        "image_badge": "In partnership with Hire Heroes USA",
-        "eyebrow": "Our Pledge",
-        "heading": "Every Flag Gives Back to Those Who Served",
-        "stat_value": "10%",
-        "stat_label": "of every purchase goes to Hire Heroes USA",
-        "text": "<p>Jim's Flag Co. was built on respect for the men and women behind the flag. That's why <strong>10% of every purchase</strong> goes to <strong>Hire Heroes USA</strong> — a nonprofit that helps U.S. veterans and military spouses build meaningful civilian careers.</p><p>Hang one of our flags and you're not just adding something beautiful to your wall — you're helping a veteran write their next chapter.</p>",
-        "link_label": "Learn About Hire Heroes USA",
-        "link_url": "https://www.hireheroesusa.org"
-      }
-    },
     "guarantee": {
       "type": "guarantee",
       "blocks": {
@@ -363,7 +348,6 @@
     "homes_gallery_NYqfgR",
     "story",
     "testimonials",
-    "give_back",
     "guarantee",
     "faq",
     "final_cta"
