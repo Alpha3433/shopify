@@ -720,8 +720,8 @@ p { margin: 0; }
 .offer-box span { color: var(--muted); font-size: 0.84rem; }
 
 .delivery-note {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-size: 0.86rem; margin-top: 14px;
+  display: flex; width: fit-content; align-items: center; gap: 9px;
+  font-size: 0.86rem; margin: 20px 0;
   border: 1px solid var(--line); border-radius: var(--pill);
   padding: 8px 16px;
 }
