@@ -40,19 +40,19 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "tagline": "Hand-carved wooden flag art with depth you can feel. Every piece is carved from solid wood and finished by hand — built to hang for generations.",
+          "tagline": "Hand-carved wooden flag art with depth you can feel. Every piece is carved from solid wood and finished by hand, built to hang for generations.",
           "menu_1_heading": "Shop",
           "menu_1": "main-menu",
           "menu_2_heading": "Support",
           "menu_2": "footer",
-          "show_subscribe": true,
+          "show_subscribe": false,
           "subscribe_heading": "Subscribe",
           "subscribe_text": "Workshop updates, new carvings, and the occasional story. No spam — we're too busy carving.",
           "trust_1": "Small-Batch · Carved to Order",
           "trust_2": "Hand-carved solid wood",
           "trust_3": "60-Day Money-Back Guarantee",
           "trust_4": "Secure 256-bit Checkout",
-          "show_payment_icons": true
+          "show_payment_icons": false
         }
       }
     },
