@@ -157,13 +157,41 @@
             "image": "shopify://shop_images/hf_20260614_124708_3c4150e8-a510-4c46-9ad7-d830ae830b2e.png",
             "caption": ""
           }
+        },
+        "photo_zgwjBb": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "photo_zQP6xe": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "photo_Uh99qy": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "photo_jbjLWJ": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
         }
       },
       "block_order": [
         "photo_aLJDYn",
         "photo_UDP43F",
         "photo_pWMW7M",
-        "photo_igaQF8"
+        "photo_igaQF8",
+        "photo_zgwjBb",
+        "photo_zQP6xe",
+        "photo_Uh99qy",
+        "photo_jbjLWJ"
       ],
       "name": "In American homes",
       "settings": {
