@@ -532,6 +532,49 @@ p { margin: 0; }
 }
 
 /* ==========================================================================
+   Gives back (cause / donation)
+   ========================================================================== */
+.give-back__grid { display: grid; gap: clamp(30px, 5vw, 60px); align-items: center; }
+@media (min-width: 880px) {
+  .give-back__grid { grid-template-columns: 1fr 1fr; }
+  .give-back__grid--flip .give-back__media { order: 2; }
+}
+.give-back__media { position: relative; }
+.give-back__media-frame {
+  border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line);
+  aspect-ratio: 4 / 3; background: var(--cream-2);
+}
+.section--navy .give-back__media-frame { border-color: var(--line-light); }
+.give-back__media-frame img,
+.give-back__media-frame .placeholder-svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+.give-back__badge {
+  position: absolute; left: 16px; bottom: 16px;
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(13, 27, 46, 0.86); color: var(--cream);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 8px 14px; border-radius: var(--pill);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.give-back__badge-star { color: var(--gold-2); }
+.give-back__content .eyebrow { margin-bottom: 16px; }
+.give-back__content h2 { margin-bottom: 18px; }
+.give-back__stat {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px;
+  margin: 4px 0 20px;
+}
+.give-back__stat-value {
+  font-family: var(--font-display); font-weight: 700; line-height: 0.9;
+  font-size: clamp(3rem, 8vw, 4.6rem); color: var(--red);
+}
+.section--navy .give-back__stat-value { color: var(--gold-2); }
+.give-back__stat-label { font-size: 1rem; font-weight: 600; color: var(--ink); max-width: 22ch; }
+.section--navy .give-back__stat-label { color: var(--cream); }
+.give-back__text { display: grid; gap: 14px; color: var(--muted); }
+.section--navy .give-back__text { color: rgba(247, 242, 231, 0.8); }
+.give-back__text strong { color: inherit; font-weight: 700; }
+.give-back__cta { margin-top: 26px; }
+
+/* ==========================================================================
    Benefits
    ========================================================================== */
 .benefits__grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }

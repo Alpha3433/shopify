@@ -1,0 +1,132 @@
+<section class="section give-back{% if section.settings.color_scheme == 'navy' %} section--navy{% endif %}">
+  <div class="container">
+    <div class="give-back__grid{% if section.settings.flip %} give-back__grid--flip{% endif %}">
+      <div class="give-back__media" data-reveal="left">
+        <div class="give-back__media-frame">
+          {%- if section.settings.image -%}
+            <img
+              src="{{ section.settings.image | image_url: width: 900 }}"
+              srcset="{{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 900 }} 900w, {{ section.settings.image | image_url: width: 1300 }} 1300w"
+              sizes="(min-width: 880px) 46vw, 92vw"
+              alt="{{ section.settings.image.alt | escape | default: section.settings.heading | escape }}"
+              loading="lazy" width="1200" height="900">
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        {%- if section.settings.image_badge != blank -%}
+          <span class="give-back__badge"><span class="give-back__badge-star">★</span> {{ section.settings.image_badge }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="give-back__content" data-reveal="right">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2>{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.stat_value != blank -%}
+          <div class="give-back__stat">
+            <span class="give-back__stat-value">{{ section.settings.stat_value }}</span>
+            {%- if section.settings.stat_label != blank -%}
+              <span class="give-back__stat-label">{{ section.settings.stat_label }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="give-back__text rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.settings.link_label != blank -%}
+          <a class="btn btn--gold give-back__cta" href="{{ section.settings.link_url | default: '#' }}"{% if section.settings.link_url != blank %} target="_blank" rel="noopener"{% endif %}>{{ section.settings.link_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gives Back",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "navy", "label": "Navy" },
+        { "value": "cream", "label": "Cream" }
+      ],
+      "default": "navy"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip",
+      "label": "Image on right",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo",
+      "info": "A landscape photo of the charity's work (veterans, the team, an event). Only use a photo you have permission to use."
+    },
+    {
+      "type": "text",
+      "id": "image_badge",
+      "label": "Photo badge (overlay)",
+      "info": "Small label shown over the photo. Leave blank to hide.",
+      "default": "In partnership with Hire Heroes USA"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our Pledge"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Every Flag Gives Back to Those Who Served"
+    },
+    {
+      "type": "text",
+      "id": "stat_value",
+      "label": "Stat value",
+      "default": "10%"
+    },
+    {
+      "type": "text",
+      "id": "stat_label",
+      "label": "Stat label",
+      "default": "of every purchase goes to Hire Heroes USA"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "info": "Only publish this claim once the donation is genuinely in place — false charitable claims are illegal.",
+      "default": "<p>Jim's Flag Co. was built on respect for the men and women behind the flag. That's why <strong>10% of every purchase</strong> goes to <strong>Hire Heroes USA</strong> — a nonprofit that helps U.S. veterans and military spouses build meaningful civilian careers.</p><p>Hang one of our flags and you're not just adding something beautiful to your wall — you're helping a veteran write their next chapter.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Button label",
+      "info": "Leave blank to hide the button.",
+      "default": "Learn About Hire Heroes USA"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Button link",
+      "default": "https://www.hireheroesusa.org"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gives Back"
+    }
+  ]
+}
+{% endschema %}

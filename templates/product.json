@@ -258,6 +258,21 @@
         "subheading": "Replace these placeholders with your real customer reviews before launch."
       }
     },
+    "give_back": {
+      "type": "give-back",
+      "settings": {
+        "color_scheme": "navy",
+        "flip": false,
+        "image_badge": "In partnership with Hire Heroes USA",
+        "eyebrow": "Our Pledge",
+        "heading": "Every Flag Gives Back to Those Who Served",
+        "stat_value": "10%",
+        "stat_label": "of every purchase goes to Hire Heroes USA",
+        "text": "<p>Jim's Flag Co. was built on respect for the men and women behind the flag. That's why <strong>10% of every purchase</strong> goes to <strong>Hire Heroes USA</strong> — a nonprofit that helps U.S. veterans and military spouses build meaningful civilian careers.</p><p>Hang one of our flags and you're not just adding something beautiful to your wall — you're helping a veteran write their next chapter.</p>",
+        "link_label": "Learn About Hire Heroes USA",
+        "link_url": "https://www.hireheroesusa.org"
+      }
+    },
     "guarantee": {
       "type": "guarantee",
       "blocks": {
@@ -348,6 +363,7 @@
     "homes_gallery_NYqfgR",
     "story",
     "testimonials",
+    "give_back",
     "guarantee",
     "faq",
     "final_cta"
