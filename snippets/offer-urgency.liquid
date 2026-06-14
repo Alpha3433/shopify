@@ -29,13 +29,15 @@
 {%- if show_delivery -%}
   {%- liquid
     assign base_s = 'now' | date: '%s' | plus: 0
-    assign min_secs = delivery_min | default: 8 | times: 86400
     assign max_secs = delivery_max | default: 14 | times: 86400
-    assign eta_min = base_s | plus: min_secs
     assign eta_max = base_s | plus: max_secs
+    assign date_str = eta_max | date: '%B %-d'
+    assign date_html = '<strong>' | append: date_str | append: '</strong>'
+    assign dtext = delivery_text | default: 'Order Today And Receive By [date]'
+    assign dtext = dtext | escape | replace: '[date]', date_html
   -%}
   <p class="delivery-note">
     <span class="delivery-note__dot"></span>
-    <span>Order Today And Receive By <strong>{{ eta_max | date: '%B %-d' }}</strong></span>
+    <span>{{ dtext }}</span>
   </p>
 {%- endif -%}

@@ -720,13 +720,13 @@ p { margin: 0; }
 .offer-box span { color: var(--muted); font-size: 0.84rem; }
 
 .delivery-note {
-  display: flex; width: fit-content; align-items: center; gap: 9px;
-  font-size: 0.86rem; margin: 20px 0;
+  display: flex; width: fit-content; align-items: center; gap: 8px;
+  font-size: 0.76rem; margin: 20px 0;
   border: 1px solid var(--line); border-radius: var(--pill);
-  padding: 8px 16px;
+  padding: 6px 13px;
 }
 .delivery-note__dot {
-  width: 9px; height: 9px; border-radius: 50%; background: #2e7d4f; flex-shrink: 0;
+  width: 8px; height: 8px; border-radius: 50%; background: #2e7d4f; flex-shrink: 0;
   box-shadow: 0 0 0 3px rgba(46, 125, 79, 0.18);
 }
 
