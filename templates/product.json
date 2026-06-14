@@ -121,8 +121,8 @@
         "low_stock_threshold": 10,
         "low_stock_text": "Only [count] left in stock",
         "low_stock_fixed": 4,
-        "trust_1": "Hand-carved solid wood",
-        "trust_2": "Free insured U.S. shipping",
+        "trust_1": "",
+        "trust_2": "",
         "trust_3": "",
         "show_payment_icons": true
       }
