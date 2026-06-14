@@ -127,6 +127,48 @@
         "show_payment_icons": true
       }
     },
+    "homes_gallery_NYqfgR": {
+      "type": "homes-gallery",
+      "blocks": {
+        "photo_aLJDYn": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hf_20260614_123720_2073e10b-7641-48f1-8e27-26cba9bc9bc0.png",
+            "caption": ""
+          }
+        },
+        "photo_UDP43F": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "photo_pWMW7M": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "photo_igaQF8": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "photo_aLJDYn",
+        "photo_UDP43F",
+        "photo_pWMW7M",
+        "photo_igaQF8"
+      ],
+      "name": "In American homes",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Proudly Displayed in American Homes",
+        "subheading": ""
+      }
+    },
     "story": {
       "type": "story",
       "settings": {
@@ -282,47 +324,6 @@
         "reassure_1": "Free U.S. shipping",
         "reassure_2": "60-day money-back guarantee",
         "reassure_3": "Arrives ready to hang"
-      }
-    },
-    "homes_gallery_NYqfgR": {
-      "type": "homes-gallery",
-      "blocks": {
-        "photo_aLJDYn": {
-          "type": "photo",
-          "settings": {
-            "caption": ""
-          }
-        },
-        "photo_UDP43F": {
-          "type": "photo",
-          "settings": {
-            "caption": ""
-          }
-        },
-        "photo_pWMW7M": {
-          "type": "photo",
-          "settings": {
-            "caption": ""
-          }
-        },
-        "photo_igaQF8": {
-          "type": "photo",
-          "settings": {
-            "caption": ""
-          }
-        }
-      },
-      "block_order": [
-        "photo_aLJDYn",
-        "photo_UDP43F",
-        "photo_pWMW7M",
-        "photo_igaQF8"
-      ],
-      "name": "In American homes",
-      "settings": {
-        "eyebrow": "",
-        "heading": "Proudly Displayed in American Homes",
-        "subheading": ""
       }
     }
   },
