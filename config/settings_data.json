@@ -60,7 +60,7 @@
         "type": "countdown-banner",
         "settings": {
           "heading": "fathers day sale - 30% Off Everything",
-          "text_size": 13,
+          "text_size": 12,
           "timer_size": 12,
           "timer_position": "center",
           "mode": "midnight",
