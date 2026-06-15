@@ -345,6 +345,21 @@
         "heading": "Questions? We Shoot Straight.",
         "subheading": ""
       }
+    },
+    "17814825732ed2c505": {
+      "type": "apps",
+      "blocks": {
+        "trustwill_trustoo_review_widget_XcJLEn": {
+          "type": "shopify://apps/trustwill-trustoo/blocks/review-widget/c8f15077-6475-4e86-ad06-b66038d5ba2c",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "trustwill_trustoo_review_widget_XcJLEn"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -354,6 +369,7 @@
     "testimonials",
     "give_back_RfJmUM",
     "guarantee",
-    "faq"
+    "faq",
+    "17814825732ed2c505"
   ]
 }
