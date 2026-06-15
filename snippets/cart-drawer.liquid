@@ -33,9 +33,8 @@
         <span>Subtotal</span>
         <span data-cart-subtotal>{{ cart.total_price | money }}</span>
       </div>
-      <p class="cart-drawer__note">Shipping &amp; taxes calculated at checkout. Fully insured in transit — damaged pieces are replaced free.</p>
       <a href="{{ routes.cart_url }}/checkout" class="btn btn--primary btn--full btn--lg">
-        {% render 'icon', name: 'lock' %} Secure Checkout
+        {% render 'icon', name: 'lock' %} SECURE CHECKOUT
       </a>
       {%- if shop.enabled_payment_types.size > 0 -%}
         <div class="cart-payments">

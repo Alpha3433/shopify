@@ -72,7 +72,7 @@
         "id": "cart_urgency",
         "label": "Cart urgency message",
         "info": "Shown at the top of the cart drawer. Keep it honest — tie it to a real sale. Leave blank to hide.",
-        "default": "Father's Day Sale — 30% off applied at checkout"
+        "default": ""
       }
     ]
   },
