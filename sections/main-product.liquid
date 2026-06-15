@@ -60,6 +60,12 @@
 
         <h1 class="pdp__title">{{ product.title }}</h1>
 
+        {%- for block in section.blocks -%}
+          {%- if block.type == '@app' -%}
+            <div class="pdp__reviews">{% render block %}</div>
+          {%- endif -%}
+        {%- endfor -%}
+
         {%- if section.settings.rating_text != blank -%}
           <div class="rating-line">
             {% render 'stars', rating: 5 %}
@@ -234,8 +240,6 @@
                   <summary>{{ block.settings.title }} {% render 'icon', name: 'plus' %}</summary>
                   <div class="acc__body rte">{{ block.settings.content }}</div>
                 </details>
-              {%- when '@app' -%}
-                {% render block %}
             {%- endcase -%}
           {%- endfor -%}
         </div>
