@@ -345,19 +345,6 @@
         "heading": "Questions? We Shoot Straight.",
         "subheading": ""
       }
-    },
-    "final_cta": {
-      "type": "final-cta",
-      "settings": {
-        "heading": "Hang It Once. Pass It Down.",
-        "subheading": "A printed sign gets replaced. A carved flag gets inherited.",
-        "cta_label": "Get Yours",
-        "cta_scroll": true,
-        "cta_link": "",
-        "reassure_1": "",
-        "reassure_2": "",
-        "reassure_3": ""
-      }
     }
   },
   "order": [
@@ -367,7 +354,6 @@
     "testimonials",
     "give_back_RfJmUM",
     "guarantee",
-    "faq",
-    "final_cta"
+    "faq"
   ]
 }
