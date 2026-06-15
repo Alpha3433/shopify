@@ -12,6 +12,18 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "trustwill_trustoo_star_rating_widget_8HeYdn": {
+          "type": "shopify://apps/trustwill-trustoo/blocks/star-rating-widget/c8f15077-6475-4e86-ad06-b66038d5ba2c",
+          "settings": {
+            "star_size": 20,
+            "font_size": 16,
+            "text_color": "#585858",
+            "block_aligment": "left",
+            "rating_decimal_places": "1",
+            "margin_top": 10,
+            "margin_bottom": 0
+          }
+        },
         "b1": {
           "type": "benefit",
           "settings": {
@@ -85,6 +97,7 @@
         }
       },
       "block_order": [
+        "trustwill_trustoo_star_rating_widget_8HeYdn",
         "b1",
         "b2",
         "b3",
