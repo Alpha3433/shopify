@@ -13,13 +13,6 @@
       <div class="ship-bar__track"><div class="ship-bar__fill"></div></div>
     </div>
 
-    {%- if settings.cart_urgency != blank -%}
-      <div class="cart-drawer__urgency">
-        {% render 'icon', name: 'gift' %}
-        <span>{{ settings.cart_urgency }}</span>
-      </div>
-    {%- endif -%}
-
     <div class="cart-drawer__items" data-cart-items>
       <div class="cart-drawer__empty">
         {% render 'icon', name: 'cart' %}
