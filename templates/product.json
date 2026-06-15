@@ -185,22 +185,10 @@
             "caption": ""
           }
         },
-        "photo_F6rLm6": {
-          "type": "photo",
-          "settings": {
-            "caption": ""
-          }
-        },
         "photo_Npyhek": {
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/hf_20260615_051936_84e4412f-0baf-4dcf-a9f9-3b562f4eb6cd.jpg",
-            "caption": ""
-          }
-        },
-        "photo_Uh99qy": {
-          "type": "photo",
-          "settings": {
             "caption": ""
           }
         }
@@ -212,9 +200,7 @@
         "photo_igaQF8",
         "photo_zgwjBb",
         "photo_zQP6xe",
-        "photo_F6rLm6",
-        "photo_Npyhek",
-        "photo_Uh99qy"
+        "photo_Npyhek"
       ],
       "name": "In American homes",
       "settings": {
