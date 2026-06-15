@@ -65,7 +65,12 @@
       moneyFormat: {{ shop.money_format | json }},
       cartCount: {{ cart.item_count }},
       freeShippingThreshold: {{ settings.free_shipping_threshold | default: 0 | times: 100 }},
-      allProductsUrl: {{ routes.all_products_collection_url | json }}
+      allProductsUrl: {{ routes.all_products_collection_url | json }},
+      compareAt: {
+        {%- for line in cart.items -%}
+          {%- if line.variant.compare_at_price > line.variant.price -%}{{ line.variant.id | json }}: {{ line.variant.compare_at_price }},{%- endif -%}
+        {%- endfor -%}
+      }
     };
   </script>
   <script src="{{ 'theme.js' | asset_url }}" defer></script>

@@ -22,4 +22,11 @@
     {%- endfor -%}
   </div>
   <script type="application/json" data-product-json>{{ product | json }}</script>
+  <script>
+    window.theme = window.theme || {};
+    window.theme.compareAt = window.theme.compareAt || {};
+    {%- for v in product.variants -%}
+      {%- if v.compare_at_price > v.price -%}window.theme.compareAt[{{ v.id | json }}] = {{ v.compare_at_price }};{%- endif -%}
+    {%- endfor -%}
+  </script>
 {%- endunless -%}

@@ -507,6 +507,10 @@
             : '<div class="cart-line__img"></div>';
           var variantTitle = (item.variant_title && item.variant_title !== 'Default Title')
             ? '<div class="cart-line__variant">' + item.variant_title + '</div>' : '';
+          var capLine = ((theme.compareAt && theme.compareAt[item.variant_id]) || 0) * item.quantity;
+          var priceCell = (capLine > item.final_line_price)
+            ? '<span class="cart-line__price"><s class="cart-line__compare">' + formatMoney(capLine) + '</s> ' + formatMoney(item.final_line_price) + '</span>'
+            : '<span class="cart-line__price">' + formatMoney(item.final_line_price) + '</span>';
           return (
             '<div class="cart-line">' + img +
             '<div>' +
@@ -517,7 +521,7 @@
             '<span>' + item.quantity + '</span>' +
             '<button type="button" aria-label="Increase quantity" data-line-change="' + (item.quantity + 1) + '" data-line="' + line + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>' +
             '</span>' +
-            '<span class="cart-line__price">' + formatMoney(item.final_line_price) + '</span>' +
+            priceCell +
             '</div>' +
             '<button type="button" class="cart-line__remove" data-line-change="0" data-line="' + line + '">Remove</button>' +
             '</div></div>'
@@ -525,7 +529,17 @@
         }).join('');
         itemsEl.innerHTML = html;
         if (footEl) footEl.hidden = false;
-        if (subtotalEl) subtotalEl.textContent = formatMoney(cart.total_price);
+        if (subtotalEl) {
+          var totalCompare = 0;
+          cart.items.forEach(function (it) {
+            totalCompare += (theme.compareAt && theme.compareAt[it.variant_id]) ? theme.compareAt[it.variant_id] * it.quantity : it.final_line_price;
+          });
+          if (totalCompare > cart.total_price) {
+            subtotalEl.innerHTML = '<s class="cart-drawer__compare">' + formatMoney(totalCompare) + '</s> ' + formatMoney(cart.total_price);
+          } else {
+            subtotalEl.textContent = formatMoney(cart.total_price);
+          }
+        }
       }
 
       // Free shipping progress
