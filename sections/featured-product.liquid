@@ -92,7 +92,9 @@
               <span data-atc-label>{% if current_variant.available %}{{ section.settings.button_label | default: 'Add to Cart' }}{% else %}Sold Out{% endif %}</span>
               {% render 'icon', name: 'arrow-right' %}
             </button>
-            <p class="btn-note">{% render 'icon', name: 'lock' %} {{ section.settings.button_note }}</p>
+            {%- if section.settings.button_note != blank -%}
+              <p class="btn-note">{% render 'icon', name: 'lock' %} {{ section.settings.button_note }}</p>
+            {%- endif -%}
           </form>
 
           {% render 'offer-urgency',
@@ -116,11 +118,13 @@
             <p class="stock-note"><span class="pulse-dot"></span> {{ section.settings.stock_note }}</p>
           {%- endif -%}
 
-          <div class="trust-row">
-            <div class="trust-row__item">{% render 'icon', name: 'flag' %}<span>{{ section.settings.trust_1 }}</span></div>
-            <div class="trust-row__item">{% render 'icon', name: 'truck' %}<span>{{ section.settings.trust_2 }}</span></div>
-            <div class="trust-row__item">{% render 'icon', name: 'shield' %}<span>{{ section.settings.trust_3 }}</span></div>
-          </div>
+          {%- if section.settings.trust_1 != blank or section.settings.trust_2 != blank or section.settings.trust_3 != blank -%}
+            <div class="trust-row">
+              {%- if section.settings.trust_1 != blank -%}<div class="trust-row__item">{% render 'icon', name: 'flag' %}<span>{{ section.settings.trust_1 }}</span></div>{%- endif -%}
+              {%- if section.settings.trust_2 != blank -%}<div class="trust-row__item">{% render 'icon', name: 'truck' %}<span>{{ section.settings.trust_2 }}</span></div>{%- endif -%}
+              {%- if section.settings.trust_3 != blank -%}<div class="trust-row__item">{% render 'icon', name: 'shield' %}<span>{{ section.settings.trust_3 }}</span></div>{%- endif -%}
+            </div>
+          {%- endif -%}
 
         {%- else -%}
           <h3 class="buybox__title h2">Select a product</h3>

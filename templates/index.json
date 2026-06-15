@@ -77,11 +77,11 @@
         "eyebrow": "The Flag",
         "heading": "One Piece of Wood. One Flag. Yours.",
         "rating_text": "",
-        "tagline": "The hand-carved eagle & American flag — solid wood, deep relief detail, ready to hang the day it arrives.",
+        "tagline": "Hand-carved from solid wood, with real depth you can feel. Ready to hang the day it arrives.",
         "button_label": "Add to Cart",
-        "button_note": "Secure checkout · 60-day money-back guarantee",
-        "sale_text": "Father's Day Sale — 30% off everything",
-        "sale_subtext": "Applied automatically at checkout",
+        "button_note": "",
+        "sale_text": "",
+        "sale_subtext": "",
         "sale_end": "2026-06-21",
         "show_delivery": true,
         "delivery_min": 8,
@@ -90,9 +90,9 @@
         "cutoff_hour": 14,
         "countdown_text": "Order within",
         "stock_note": "",
-        "trust_1": "Hand-carved solid wood",
-        "trust_2": "Free insured U.S. shipping",
-        "trust_3": "60-day money-back guarantee"
+        "trust_1": "",
+        "trust_2": "",
+        "trust_3": ""
       }
     },
     "testimonials": {
