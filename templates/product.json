@@ -17,7 +17,7 @@
           "settings": {
             "star_size": 20,
             "font_size": 16,
-            "text_color": "#585858",
+            "text_color": "#4B4040",
             "block_aligment": "left",
             "rating_decimal_places": "1",
             "margin_top": 10,
