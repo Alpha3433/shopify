@@ -1216,8 +1216,8 @@ p { margin: 0; }
 .cart-line__img { width: 76px; height: 76px; border-radius: var(--radius-sm); object-fit: cover; border: 1px solid var(--line); background: var(--paper); }
 .cart-line__title { font-weight: 700; font-size: 0.92rem; line-height: 1.35; }
 .cart-line__variant { font-size: 0.79rem; color: var(--muted); margin-top: 2px; }
-.cart-line__row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; }
-.cart-line__qty { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: var(--pill); background: var(--paper); }
+.cart-line__row { display: flex; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 12px; margin-top: 10px; }
+.cart-line__qty { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: var(--pill); background: var(--paper); flex-shrink: 0; }
 .cart-line__qty button { width: 30px; height: 32px; display: grid; place-items: center; }
 .cart-line__qty button svg { width: 12px; height: 12px; }
 .cart-line__qty span { min-width: 26px; text-align: center; font-size: 0.87rem; font-weight: 700; }
