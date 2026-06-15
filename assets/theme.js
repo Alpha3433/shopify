@@ -683,27 +683,45 @@
       if (items.length < 2) return;
       var prev = root.querySelector('[data-scroller-prev]');
       var next = root.querySelector('[data-scroller-next]');
-      var dots = root.querySelectorAll('[data-scroller-dot]');
+      var dots = Array.prototype.slice.call(root.querySelectorAll('[data-scroller-dot]'));
 
-      function step() {
+      function cardStep() {
         return items[1].getBoundingClientRect().left - items[0].getBoundingClientRect().left || vp.clientWidth;
       }
-      function setActive() {
-        var i = Math.round(vp.scrollLeft / step());
-        i = Math.max(0, Math.min(items.length - 1, i));
-        dots.forEach(function (d, idx) { d.classList.toggle('is-active', idx === i); });
+      // How many cards are visible at once (1 on mobile, ~3 on desktop).
+      function perView() { return Math.max(1, Math.round(vp.clientWidth / cardStep())); }
+      // Number of "pages" of cards — this is how many dots we actually show.
+      function pageCount() { return Math.max(1, Math.ceil(items.length / perView())); }
+      function pageStep() { return cardStep() * perView(); }
+      function currentPage() {
+        var max = vp.scrollWidth - vp.clientWidth;
+        if (max - vp.scrollLeft < 2) return pageCount() - 1; // snapped to the end
+        return Math.max(0, Math.min(pageCount() - 1, Math.round(vp.scrollLeft / pageStep())));
       }
-      if (prev) prev.addEventListener('click', function () { vp.scrollBy({ left: -step(), behavior: 'smooth' }); });
-      if (next) next.addEventListener('click', function () { vp.scrollBy({ left: step(), behavior: 'smooth' }); });
+      function syncDots() {
+        var pages = pageCount();
+        var active = currentPage();
+        dots.forEach(function (d, idx) {
+          d.hidden = idx >= pages;
+          d.classList.toggle('is-active', idx < pages && idx === active);
+        });
+      }
+      if (prev) prev.addEventListener('click', function () { vp.scrollBy({ left: -pageStep(), behavior: 'smooth' }); });
+      if (next) next.addEventListener('click', function () { vp.scrollBy({ left: pageStep(), behavior: 'smooth' }); });
       dots.forEach(function (d, idx) {
-        d.addEventListener('click', function () { vp.scrollTo({ left: step() * idx, behavior: 'smooth' }); });
+        d.addEventListener('click', function () {
+          if (idx >= pageCount()) return;
+          vp.scrollTo({ left: pageStep() * idx, behavior: 'smooth' });
+        });
       });
       var raf = null;
-      vp.addEventListener('scroll', function () {
+      function schedule() {
         if (raf) return;
-        raf = requestAnimationFrame(function () { raf = null; setActive(); });
-      }, { passive: true });
-      setActive();
+        raf = requestAnimationFrame(function () { raf = null; syncDots(); });
+      }
+      vp.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule);
+      syncDots();
     });
   }
 
