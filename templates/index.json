@@ -25,6 +25,46 @@
         "stat_label": "Money-back guarantee — full refund, no need to send it back"
       }
     },
+    "homes": {
+      "type": "homes-gallery",
+      "blocks": {
+        "p1": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "p2": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "p3": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "p4": {
+          "type": "photo",
+          "settings": {
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "eyebrow": "From American Homes",
+        "heading": "Proudly Displayed in American Homes",
+        "subheading": ""
+      }
+    },
     "story": {
       "type": "story",
       "settings": {
@@ -86,6 +126,7 @@
         "show_delivery": true,
         "delivery_min": 8,
         "delivery_max": 14,
+        "delivery_text": "Order Today And Receive By [date]",
         "show_countdown": false,
         "cutoff_hour": 14,
         "countdown_text": "Order within",
@@ -93,144 +134,6 @@
         "trust_1": "",
         "trust_2": "",
         "trust_3": ""
-      }
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "blocks": {
-        "r1": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "Bought it for my dad for Father's Day. He's a man of few words. He hung it over the fireplace the same day and just said, “Now that's a flag.”",
-            "name": "Sarah K.",
-            "location": "Knoxville, Tennessee",
-            "verified": true
-          }
-        },
-        "r2": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "I was worried it'd look like the printed stuff at the big-box stores. Then I picked it up. It's heavy, the eagle detail is unreal, and you can see where it was worked by hand.",
-            "name": "Mike D.",
-            "location": "Cedar Rapids, Iowa",
-            "verified": true
-          }
-        },
-        "r3": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "Third one I've ordered. One for the house, one for my brother's retirement, one for my son's first home. This is what we'll pass down.",
-            "name": "Earl W.",
-            "location": "Mobile, Alabama",
-            "verified": true
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3"
-      ],
-      "settings": {
-        "eyebrow": "From American Homes",
-        "heading": "“Is It Really Hand-Carved?” Ask the Folks Who Own One.",
-        "subheading": "Real words from the folks who've hung one up — the heft of solid wood, the hand-carved detail, and the double-takes it gets from everyone who walks past."
-      }
-    },
-    "guarantee": {
-      "type": "guarantee",
-      "blocks": {
-        "g1": {
-          "type": "item",
-          "settings": {
-            "text": "60-day money-back guarantee — full refund"
-          }
-        },
-        "g2": {
-          "type": "item",
-          "settings": {
-            "text": "Free, fully-insured U.S. shipping"
-          }
-        },
-        "g3": {
-          "type": "item",
-          "settings": {
-            "text": "Arrives damaged? Replaced free — no questions"
-          }
-        }
-      },
-      "block_order": [
-        "g1",
-        "g2",
-        "g3"
-      ],
-      "settings": {
-        "eyebrow": "Our Promise",
-        "heading": "Hang It in Your Home, Risk-Free, for 60 Days.",
-        "text": "If it doesn't stop you in your tracks every time you walk past it, tell us. Full refund, no forms, no hard feelings — you don't even need to ship it back."
-      }
-    },
-    "faq": {
-      "type": "faq",
-      "blocks": {
-        "q1": {
-          "type": "question",
-          "settings": {
-            "question": "Is it really hand-carved?",
-            "answer": "<p>Yes. Every flag is carved from solid wood and finished by hand — the stars, stripes, and eagle sit in real relief. Run your fingers across it and you'll feel the depth. Because it's hand-worked, no two are exactly alike.</p>"
-          }
-        },
-        "q2": {
-          "type": "question",
-          "settings": {
-            "question": "How big is it, and is it heavy?",
-            "answer": "<p>Sizes are listed in inches right on the size selector. It's solid wood, so it has real weight to it — that's the first thing people notice when they pick it up. Mounting hardware rated for the weight is included.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "How do I hang it?",
-            "answer": "<p>It arrives ready to hang, hardware included. Most folks have it on the wall within five minutes of opening the box.</p>"
-          }
-        },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "How long until it arrives?",
-            "answer": "<p>Each flag is dispatched within 2–4 business days, free and fully insured anywhere in the U.S. Delivery typically takes 8–14 days, tracked the whole way — the exact “arrives by” estimate is shown right above the Add to Cart button.</p>"
-          }
-        },
-        "q5": {
-          "type": "question",
-          "settings": {
-            "question": "Can I give it as a gift?",
-            "answer": "<p>It's one of the most popular Father's Day, Veterans Day, and retirement gifts we know of. Add a gift note at checkout — we never include prices in the box.</p>"
-          }
-        },
-        "q6": {
-          "type": "question",
-          "settings": {
-            "question": "What if I don't love it?",
-            "answer": "<p>Tell us within 60 days and we'll refund you in full — you don't even need to ship it back. If it arrives damaged, we replace it free.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5",
-        "q6"
-      ],
-      "settings": {
-        "eyebrow": "Straight Answers",
-        "heading": "Questions? We Shoot Straight.",
-        "subheading": ""
       }
     },
     "final_cta": {
@@ -245,38 +148,6 @@
         "reassure_2": "60-day money-back guarantee",
         "reassure_3": "Arrives ready to hang"
       }
-    },
-    "homes": {
-      "type": "homes-gallery",
-      "blocks": {
-        "p1": {
-          "type": "photo",
-          "settings": {}
-        },
-        "p2": {
-          "type": "photo",
-          "settings": {}
-        },
-        "p3": {
-          "type": "photo",
-          "settings": {}
-        },
-        "p4": {
-          "type": "photo",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "p1",
-        "p2",
-        "p3",
-        "p4"
-      ],
-      "settings": {
-        "eyebrow": "From American Homes",
-        "heading": "Proudly Displayed in American Homes",
-        "subheading": ""
-      }
     }
   },
   "order": [
@@ -284,9 +155,6 @@
     "homes",
     "story",
     "featured_product",
-    "testimonials",
-    "guarantee",
-    "faq",
     "final_cta"
   ]
 }
