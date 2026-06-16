@@ -897,8 +897,7 @@ p { margin: 0; }
   color: var(--red); margin-bottom: 10px;
 }
 .pdp__title { font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin-bottom: 10px; }
-.pdp__reviews { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 2px 0 12px; }
-.pdp__rating-num { font-weight: 800; font-size: 1.02rem; color: var(--ink); line-height: 1; }
+.pdp__reviews { margin: 2px 0 12px; }
 .pdp__buy .rating-line { margin-bottom: 16px; color: var(--muted); }
 .pdp__tagline { color: var(--muted); margin-bottom: 18px; font-size: 0.98rem; }
 

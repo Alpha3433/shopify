@@ -62,13 +62,7 @@
 
         {%- for block in section.blocks -%}
           {%- if block.type == '@app' -%}
-            <div class="pdp__reviews">
-              {%- assign rating_mf = product.metafields.reviews.rating -%}
-              {%- if rating_mf != blank and rating_mf.value != blank -%}
-                <span class="pdp__rating-num">{{ rating_mf.value.rating | round: 1 }}</span>
-              {%- endif -%}
-              {% render block %}
-            </div>
+            <div class="pdp__reviews">{% render block %}</div>
           {%- endif -%}
         {%- endfor -%}
 
